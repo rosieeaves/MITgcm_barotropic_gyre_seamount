@@ -1,0 +1,1 @@
+/home/eavesr/MITgcm/model/src/config_check.F

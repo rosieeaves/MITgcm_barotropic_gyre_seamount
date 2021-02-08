@@ -1,0 +1,1 @@
+/home/eavesr/MITgcm/model/src/check_pickup.F

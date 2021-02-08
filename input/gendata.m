@@ -5,8 +5,9 @@ Ho=5000;  % ocean depth in meters
 nx=62; % number of gridpoints in x-direction
 ny=62; % number of gridpoints in y-direction
 
-% Flat bottom at z=-Ho
-h=-Ho*ones(nx,ny);
+% Load H array
+h=importdata('H.txt');
+h=-h;
 
 % Walls (surrounding domain) - generate bathymetry file
 h([1 end],:)=0;

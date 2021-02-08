@@ -1,0 +1,1 @@
+/home/eavesr/MITgcm/model/src/ini_dynvars.F
