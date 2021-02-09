@@ -11,6 +11,7 @@
 # momAdvection=.FALSE.,
  tempStepping=.FALSE.,
  saltStepping=.FALSE.,
+ useSingleCpuIO=.TRUE.,
  &
 
 # Elliptic solver parameters
