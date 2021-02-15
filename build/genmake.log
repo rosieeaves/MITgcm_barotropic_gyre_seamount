@@ -24,7 +24,7 @@ running: check_HAVE_CLOC()
  --> set FC_NAMEMANGLE='#define FC_NAMEMANGLE(X)  X ## _'
 icc -O0 -ip -m64 -xHost -mcmodel=medium -c genmake_tc_1.c
 ifort -m64 -convert big_endian -assume byterecl -mcmodel=medium -o genmake_tc genmake_tc_2.f genmake_tc_1.o
-  HELLO WORLD   1612792808.13507     
+  HELLO WORLD   1612891785.63676     
  --> set HAVE_CLOC='t'
 
 running: check_HAVE_SETRLSTK()
