@@ -3,8 +3,7 @@
 import numpy as np
 import matplotlib.pyplot as plt 
 
-bathy = np.load('bathy.npy')
-print(bathy)
+bathy = np.load('input/bathy.npy')
 
 x = np.linspace(1,62,62)*20
 y = np.linspace(1,62,62)*20

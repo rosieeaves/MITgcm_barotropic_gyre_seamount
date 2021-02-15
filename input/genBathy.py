@@ -1,7 +1,7 @@
 #%%
 
 import numpy as np
-import struct
+import xmitgcm as mit
 import matplotlib.pyplot as plt 
 
 Nx = 62
@@ -16,7 +16,13 @@ W = Ny
 H = 5000 # depth of basin
 h = 500 # height of seamount
 
-bathy = [[-(H-h*np.sin((np.pi*x[i])/L)*np.sin((np.pi*y[j])/W)) for i in range(len(x))] for j in range(len(y))]
+bathy = np.zeros((Nx,Ny))
+
+for i in range(Nx):
+    for j in range(Ny):
+        if i!=0 and i!=Nx-1 and j!=0 and j!=Ny-1:
+            bathy[i][j] = -(H-h*np.sin((np.pi*x[i])/L)*np.sin((np.pi*y[j])/W)) 
+
 
 X,Y = np.meshgrid(x,y)
 
@@ -28,10 +34,8 @@ plt.show()
 
 np.save('bathy', bathy)
 
-'''bathy = np.reshape(bathy, Nx*Ny, 'C')
+# %%
 
-f = open('bathy.bin','wb')
-f.write(struct.pack('>'+'d'*len(bathy), *bathy))
-f.close()'''
+mit.utils.write_to_binary(bathy.flatten(), 'bathy.bin')
 
 # %%
