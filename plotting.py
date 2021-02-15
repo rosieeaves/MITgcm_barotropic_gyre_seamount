@@ -1,4 +1,5 @@
 #%%
+# load data
 import numpy as np
 import xmitgcm as mit
 import matplotlib.pyplot as plt
@@ -12,6 +13,7 @@ W = data.W
 t = data.time
 
 #%%
+# check correct dimensions
 
 print(np.shape(U.mean(dim='time')))
 print(np.shape(U.mean(dim='XG').values))
@@ -20,6 +22,7 @@ print(np.shape(U.mean(dim='YC').values))
 print(np.shape(U.values + V.values))
 
 #%%
+# plot bathymetry
 
 print(np.shape(data.Depth.values))
 
