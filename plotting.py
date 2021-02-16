@@ -26,8 +26,8 @@ print(np.shape(U.values + V.values))
 
 print(np.shape(data.Depth.values))
 
-x = np.linspace(1,62,62)*20
-y = np.linspace(1,62,62)*20
+x = np.linspace(1,258,248)*5
+y = np.linspace(1,248,248)*5
 X,Y = np.meshgrid(x,y)
 
 plt.contourf(X,Y,data.Depth.values)
@@ -36,6 +36,12 @@ plt.ylabel('y (km)')
 cbar = plt.colorbar()
 cbar.set_label('Depth (m)')
 plt.show()
+
+#%%
+
+print(data.hFacC)
+print(data.drF)
+print(data.rA)
 
 #%%
 
@@ -49,13 +55,20 @@ plt.show()
 
 #%%
 
-KE = np.add(np.square(U.values),np.square(V.values),np.square(W.values))/2
+KE = (np.add(np.square(U.values),np.square(V.values),np.square(W.values))/2)*volume.values
+print(np.shape(KE))
 KE_sum = np.sum(np.sum(KE,axis=1),axis=1)
-#print(np.shape(KE_sum))
+print(np.shape(KE_sum))
+KE_volAvg = KE_sum/np.sum(volume.values)
+print(np.shape(KE_volAvg))
 
-plt.plot(t.values,KE_mean)
+#%%
+
+time = ((t.values/(10**9))*1200)/86400
+
+plt.plot(time,KE_volAvg)
 plt.show()
 
 
-# %%
 
+# %%
