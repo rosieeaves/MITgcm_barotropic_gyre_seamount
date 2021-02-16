@@ -486,8 +486,8 @@ CEOP
       INTEGER Ny
       INTEGER Nr
       PARAMETER (
-     &           sNx =  62,
-     &           sNy =  62,
+     &           sNx =  248,
+     &           sNy =  248,
      &           OLx =   2,
      &           OLy =   2,
      &           nSx =   1,
@@ -2179,8 +2179,8 @@ CEOP
       INTEGER Ny
       INTEGER Nr
       PARAMETER (
-     &           sNx =  62,
-     &           sNy =  62,
+     &           sNx =  248,
+     &           sNy =  248,
      &           OLx =   2,
      &           OLy =   2,
      &           nSx =   1,
@@ -3743,8 +3743,8 @@ CEOP
       INTEGER Ny
       INTEGER Nr
       PARAMETER (
-     &           sNx =  62,
-     &           sNy =  62,
+     &           sNx =  248,
+     &           sNy =  248,
      &           OLx =   2,
      &           OLy =   2,
      &           nSx =   1,
@@ -5327,8 +5327,8 @@ CEOP
       INTEGER Ny
       INTEGER Nr
       PARAMETER (
-     &           sNx =  62,
-     &           sNy =  62,
+     &           sNx =  248,
+     &           sNy =  248,
      &           OLx =   2,
      &           OLy =   2,
      &           nSx =   1,
@@ -6867,8 +6867,8 @@ CEOP
       INTEGER Ny
       INTEGER Nr
       PARAMETER (
-     &           sNx =  62,
-     &           sNy =  62,
+     &           sNx =  248,
+     &           sNy =  248,
      &           OLx =   2,
      &           OLy =   2,
      &           nSx =   1,
@@ -8420,8 +8420,8 @@ CEOP
       INTEGER Ny
       INTEGER Nr
       PARAMETER (
-     &           sNx =  62,
-     &           sNy =  62,
+     &           sNx =  248,
+     &           sNy =  248,
      &           OLx =   2,
      &           OLy =   2,
      &           nSx =   1,
@@ -9979,8 +9979,8 @@ CEOP
       INTEGER Ny
       INTEGER Nr
       PARAMETER (
-     &           sNx =  62,
-     &           sNy =  62,
+     &           sNx =  248,
+     &           sNy =  248,
      &           OLx =   2,
      &           OLy =   2,
      &           nSx =   1,
@@ -11716,8 +11716,8 @@ CEOP
       INTEGER Ny
       INTEGER Nr
       PARAMETER (
-     &           sNx =  62,
-     &           sNy =  62,
+     &           sNx =  248,
+     &           sNy =  248,
      &           OLx =   2,
      &           OLy =   2,
      &           nSx =   1,
