@@ -39,17 +39,17 @@
 # Gridding parameters
  &PARM04
  usingCartesianGrid=.TRUE.,
- delX=62*20.E3,
- delY=62*20.E3,
- xgOrigin=-20.E3,
- ygOrigin=-20.E3,
+ delX=248*5.E3,
+ delY=248*5.E3,
+ xgOrigin=-5.E3,
+ ygOrigin=-5.E3,
  delR=5000.,
  &
 
 # Input datasets
  &PARM05
  bathyFile='bathy.bin'
- zonalWindFile='windx_cosy.bin',
+ zonalWindFile='wind.bin',
 #zonalWindFile='windx_siny.bin',
  meridWindFile=,
  &

@@ -319,8 +319,8 @@ CEOP
       INTEGER Ny
       INTEGER Nr
       PARAMETER (
-     &           sNx =  62,
-     &           sNy =  62,
+     &           sNx =  248,
+     &           sNy =  248,
      &           OLx =   2,
      &           OLy =   2,
      &           nSx =   1,
@@ -819,7 +819,7 @@ CEOP
       CALL PRINT_MESSAGE( msgBuf, standardMessageUnit,
      &     SQUEEZE_RIGHT , 1)
       WRITE(msgBuf,'(2A)') '// Build date:        ',
-     &     'Mon 15 Feb 14:14:00 GMT 2021'
+     &     'Mon 15 Feb 15:18:47 GMT 2021'
       CALL PRINT_MESSAGE( msgBuf, standardMessageUnit,
      &     SQUEEZE_RIGHT , 1)
 
