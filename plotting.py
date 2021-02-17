@@ -51,7 +51,7 @@ class Data:
             plt.ylabel('y (km)')
             cbar = plt.colorbar()
             cbar.set_label('Streamfunction')
-            plt.title('Day' + str(t-1))
+            plt.title('Day ' + str(t))
             plt.show()
 
     def plot_bathymetry(self):
@@ -92,6 +92,54 @@ class Data:
         plt.colorbar()
         plt.show()
 
+    def plot_vorticity(self,times):
+
+        u = self.U.values
+        v = self.V.values
+
+        for t in times:
+
+            relVort = np.zeros((self.Nx,self.Ny))
+
+            # calculate vorticity matrix
+
+            for i in range(self.Nx):
+                for j in range(self.Ny):
+
+                    #dvdx
+                    if i==0:
+                        dvdx = (v[t-1][i+1][j] - v[t-1][i][j])/self.dx
+                    elif i==self.Nx-1:
+                        dvdx = (v[t-1][i][j] - v[t-1][i-1][j])/self.dx
+                    else:
+                        dvdx = (v[t-1][i+1][j] - v[t-1][i-1][j])/(2*self.dx)
+
+                    #dudy
+                    if j==0:
+                        dudy = (u[t-1][i][j+1] - u[t-1][i][j])/self.dy
+                    elif j==self.Ny-1:
+                        dudy = (u[t-1][i][j] - u[t-1][i][j-1])/self.dy
+                    else:
+                        dudy = (u[t-1][i][j+1] - u[t-1][i][j-1])/(2*self.dy)
+
+                    relVort[i][j] = dvdx - dudy
+
+            h = self.Depth.values
+            vorticity = (relVort)/h
+
+            # plot
+
+            X,Y = np.meshgrid(self.x,self.y)
+            plt.contour(X,Y,vorticity)
+            plt.xlabel('x (km)')
+            plt.ylabel('y (km)')
+            cbar = plt.colorbar()
+            cbar.set_label('Vorticity (s$^{-1}$)')
+            plt.title('Day ' + str(t))
+            plt.show()
+
+        
+
 
 #%%       
 iters = np.linspace(72,21600,300).astype(int).tolist()
@@ -99,12 +147,18 @@ baro_wind_mount = Data(dataDir='./run',iter_list=iters,geom='cartesian',dt=1200,
 
 #%%
 
-t = np.linspace(6,31,6).astype(int)
+t = np.linspace(5,30,6).astype(int) 
+#t = np.linspace(30,300,10).astype(int) 
 baro_wind_mount.plot_streamfunction(times=t)
 
 
 # %%
 
 baro_wind_mount.plot_KE_volAvg()
+
+# %%
+
+t = np.linspace(30,300,10).astype(int) 
+baro_wind_mount.plot_vorticity(times=t)
 
 # %%
