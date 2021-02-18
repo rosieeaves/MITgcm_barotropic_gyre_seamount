@@ -141,12 +141,15 @@ class Data:
 
     def plot_T(self,times):
 
-        T = self.T.values 
+        x_noBoundaries = self.x[1:self.Nx-1]
+        y_noBoundaries = self.y[1:self.Ny-1]
+
+        T_noBoundaries = np.delete(np.delete(np.delete(np.delete(self.T.values,self.Nx-1,1),0,1),self.Ny-1,2),0,2)
+
+        X_noBoundaries,Y_noBoundaries = np.meshgrid(x_noBoundaries,y_noBoundaries)
 
         for t in times:
-
-            X,Y = np.meshgrid(self.x,self.y)
-            plt.contourf(X,Y,T[t])
+            plt.contourf(X_noBoundaries,Y_noBoundaries,T_noBoundaries[t])
             plt.colorbar()
             plt.show()
 
@@ -155,7 +158,7 @@ class Data:
 
 #%%       
 #iters = np.linspace(72,21600,300).astype(int).tolist()
-iters = [round((i+1)*(86400/12000)) for i in range(30)]
+iters = np.linspace(16,480,30).astype(int)
 baro_wind_mount = Data(dataDir='./run',iter_list=iters,geom='cartesian',dt=1200,dumpFreq=86400,f0=10**(-4),beta=10**(-11))
 
 #%%
@@ -170,7 +173,7 @@ baro_wind_mount.plot_KE_volAvg()
 
 # %%
 
-t = np.linspace(30,300,10).astype(int) 
+#t = np.linspace(30,300,10).astype(int) 
 baro_wind_mount.plot_vorticity(times=t)
 
 # %%

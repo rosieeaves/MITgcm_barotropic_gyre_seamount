@@ -24,8 +24,8 @@
 # Time stepping parameters
  &PARM03
  nIter0=0,
- nTimeSteps=216,
- deltaT=12000.0,
+ nTimeSteps=480,
+ deltaT=5400.0,
  pChkptFreq=31104000.0,
  chkptFreq=25920000.0,
  dumpFreq=86400.0,

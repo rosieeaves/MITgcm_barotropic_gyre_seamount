@@ -5,7 +5,7 @@
  ];
  dataprec = [ 'float64' ];
  nrecords = [          9 ];
- timeStepNumber = [        216 ];
+ timeStepNumber = [        480 ];
  timeInterval = [  2.592000000000E+06 ];
  nFlds = [    9 ];
  fldList = {
