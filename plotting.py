@@ -33,6 +33,7 @@ class Data:
         self.U = self.data.U
         self.V = self.data.V
         self.W = self.data.W
+        self.T = self.data.T
 
     def plot_streamfunction(self,times):
         x_noBoundaries = self.x[1:self.Nx-1]
@@ -138,17 +139,28 @@ class Data:
             plt.title('Day ' + str(t))
             plt.show()
 
+    def plot_T(self,times):
+
+        T = self.T.values 
+
+        for t in times:
+
+            X,Y = np.meshgrid(self.x,self.y)
+            plt.contourf(X,Y,T[t])
+            plt.colorbar()
+            plt.show()
+
         
 
 
 #%%       
-iters = np.linspace(72,21600,300).astype(int).tolist()
+#iters = np.linspace(72,21600,300).astype(int).tolist()
+iters = [round((i+1)*(86400/12000)) for i in range(30)]
 baro_wind_mount = Data(dataDir='./run',iter_list=iters,geom='cartesian',dt=1200,dumpFreq=86400,f0=10**(-4),beta=10**(-11))
 
 #%%
 
 t = np.linspace(5,30,6).astype(int) 
-#t = np.linspace(30,300,10).astype(int) 
 baro_wind_mount.plot_streamfunction(times=t)
 
 
@@ -160,5 +172,10 @@ baro_wind_mount.plot_KE_volAvg()
 
 t = np.linspace(30,300,10).astype(int) 
 baro_wind_mount.plot_vorticity(times=t)
+
+# %%
+
+t = np.linspace(3,30,10).astype(int)
+baro_wind_mount.plot_T(t)
 
 # %%

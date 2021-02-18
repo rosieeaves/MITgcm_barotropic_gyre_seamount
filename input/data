@@ -2,9 +2,9 @@
 # Continuous equation parameters
  &PARM01
  viscAh=4.E2,
- f0=1.E-4,
- beta=1.E-11,
- rhoConst=1000.,
+ f0=0.7E-4,
+ beta=2.E-11,
+ rhoConst=1027.,
  gBaro=9.81,
  rigidLid=.FALSE.,
  implicitFreeSurface=.TRUE.,
@@ -24,8 +24,8 @@
 # Time stepping parameters
  &PARM03
  nIter0=0,
- nTimeSteps=21600,
- deltaT=1200.0,
+ nTimeSteps=216,
+ deltaT=12000.0,
  pChkptFreq=31104000.0,
  chkptFreq=25920000.0,
  dumpFreq=86400.0,

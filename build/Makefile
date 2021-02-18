@@ -1,11 +1,11 @@
 # Multithreaded + multi-processing makefile for:
 #    Linux atmlxint3 4.15.0-134-generic #138-Ubuntu SMP Fri Jan 15 10:52:18 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
 # This makefile was generated automatically on
-#    Mon 15 Feb 15:18:47 GMT 2021
+#    Thu 18 Feb 14:20:24 GMT 2021
 # by the command:
 #    /home/eavesr/MITgcm/tools/genmake2 -rootdir /home/eavesr/MITgcm -mods ../code -of /home/eavesr/MITgcm/tools/build_options/linux_amd64_ifort
 # executed by:
-#    eavesr@atmlxint3:/home/eavesr/Documents/MITgcm/MITgcm_barotropic_gyre_seamount/build
+#    eavesr@atmlxint3:/home/eavesr/Documents/MITgcm/MITgcm_barotropic_wind_seamount/build
 #
 # OPTFILE="/home/eavesr/MITgcm/tools/build_options/linux_amd64_ifort"
 #
@@ -1203,7 +1203,7 @@ BUILD_INFO.h:
 	@echo Creating $@ ...
 	-echo "#define THISVER 'checkpoint67v'" > $@
 	-echo "#define THISUSER 'eavesr'" >> $@
-	-echo "#define THISDATE 'Mon 15 Feb 15:18:47 GMT 2021'" >> $@
+	-echo "#define THISDATE 'Thu 18 Feb 14:20:24 GMT 2021'" >> $@
 	-echo "#define THISHOST 'atmlxint3'" >> $@
 
 # The normal chain of rules is (  .F - .f - .o  )
