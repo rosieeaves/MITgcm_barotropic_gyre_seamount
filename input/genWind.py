@@ -18,7 +18,7 @@ y=[(i+0.5)*dy for i in range(Ny)]
 tau = np.zeros((Nx,Ny))
 for i in range(Nx):
     for j in range(Ny):
-        tau[i][j] = -tauMax*np.cos((2*np.pi*y[j])/W)
+        tau[i][j] = -tauMax*np.cos((np.pi*y[j])/W)
 
 tau = np.transpose(tau)
 
