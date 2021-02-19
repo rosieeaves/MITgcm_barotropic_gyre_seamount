@@ -25,7 +25,7 @@ class Data:
 
         self.volume = np.mean(self.data.hFacC * self.data.drF * self.data.rA,2)
         self.t = self.data.time
-        self.time = ((self.t.values/(10**9))*self.dt)/self.dumpFreq
+        self.time = ((self.t.values/(10**9))*self.dt)
         self.f = [np.ones(self.Nx)*(self.f0+(i+0.5)*self.dy*self.beta) for i in range(self.Ny)]
         
         self.PH = self.data.PH
@@ -45,14 +45,17 @@ class Data:
         X_noBoundaries,Y_noBoundaries = np.meshgrid(x_noBoundaries,y_noBoundaries)
 
         for t in times:
-            streamfunc = np.divide(PH_noBoundaries[t-1],f_noBoundaries) 
+            time_index = ((t*86400)/self.dumpFreq - 1).astype(int)
+            print(time_index)
+            #streamfunc = np.divide(PH_noBoundaries[time_index],f_noBoundaries) 
+            streamfunc = PH_noBoundaries[time_index]
 
             plt.contour(X_noBoundaries,Y_noBoundaries,streamfunc)
             plt.xlabel('x (km)')
             plt.ylabel('y (km)')
             cbar = plt.colorbar()
             cbar.set_label('Streamfunction')
-            plt.title('Day ' + str(t))
+            plt.title('Day ' + str((self.time[time_index]/86400).astype(int)))
             plt.show()
 
     def plot_bathymetry(self):
@@ -100,6 +103,8 @@ class Data:
 
         for t in times:
 
+            time_index = ((t*86400)/self.dumpFreq - 1).astype(int)
+
             relVort = np.zeros((self.Nx,self.Ny))
 
             # calculate vorticity matrix
@@ -109,24 +114,24 @@ class Data:
 
                     #dvdx
                     if i==0:
-                        dvdx = (v[t-1][i+1][j] - v[t-1][i][j])/self.dx
+                        dvdx = (v[time_index][i+1][j] - v[time_index][i][j])/self.dx
                     elif i==self.Nx-1:
-                        dvdx = (v[t-1][i][j] - v[t-1][i-1][j])/self.dx
+                        dvdx = (v[time_index][i][j] - v[time_index][i-1][j])/self.dx
                     else:
-                        dvdx = (v[t-1][i+1][j] - v[t-1][i-1][j])/(2*self.dx)
+                        dvdx = (v[time_index][i+1][j] - v[time_index][i-1][j])/(2*self.dx)
 
                     #dudy
                     if j==0:
-                        dudy = (u[t-1][i][j+1] - u[t-1][i][j])/self.dy
+                        dudy = (u[time_index][i][j+1] - u[time_index][i][j])/self.dy
                     elif j==self.Ny-1:
-                        dudy = (u[t-1][i][j] - u[t-1][i][j-1])/self.dy
+                        dudy = (u[time_index][i][j] - u[time_index][i][j-1])/self.dy
                     else:
-                        dudy = (u[t-1][i][j+1] - u[t-1][i][j-1])/(2*self.dy)
+                        dudy = (u[time_index][i][j+1] - u[time_index][i][j-1])/(2*self.dy)
 
                     relVort[i][j] = dvdx - dudy
 
             h = self.Depth.values
-            vorticity = (relVort)/h
+            vorticity = relVort
 
             # plot
 
@@ -136,7 +141,7 @@ class Data:
             plt.ylabel('y (km)')
             cbar = plt.colorbar()
             cbar.set_label('Vorticity (s$^{-1}$)')
-            plt.title('Day ' + str(t))
+            plt.title('Day ' + str((self.time[time_index]/86400).astype(int)))
             plt.show()
 
     def plot_T(self,times):
@@ -158,13 +163,17 @@ class Data:
 
 #%%       
 #iters = np.linspace(72,21600,300).astype(int).tolist()
-iters = np.linspace(16,480,30).astype(int)
-baro_wind_mount = Data(dataDir='./run',iter_list=iters,geom='cartesian',dt=1200,dumpFreq=86400,f0=10**(-4),beta=10**(-11))
+iters = np.linspace(160,58400,365).astype(int)
+baro_wind_mount = Data(dataDir='./run',iter_list=iters,geom='cartesian',dt=5400,dumpFreq=864000,f0=0.7*10**(-4),beta=2*10**(-11))
 
 #%%
 
-t = np.linspace(5,30,6).astype(int) 
+#t = np.linspace(5,30,6).astype(int) 
+t = np.linspace(300,3000,10).astype(int) 
 baro_wind_mount.plot_streamfunction(times=t)
+
+#%%
+baro_wind_mount.plot_f()
 
 
 # %%
