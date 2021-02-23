@@ -58,6 +58,25 @@ class Data:
             plt.title('Day ' + str((self.time[time_index]/86400).astype(int)))
             plt.show()
 
+    def plot_stream(self,times):
+
+        x_noBoundaries = self.x[1:self.Nx-1]
+        y_noBoundaries = self.y[1:self.Ny-1]
+
+        U_noBoundaries = np.delete(np.delete(np.delete(np.delete(self.U.values,self.Nx-1,1),0,1),self.Ny-1,2),0,2)
+        V_noBoundaries = np.delete(np.delete(np.delete(np.delete(self.V.values,self.Nx-1,1),0,1),self.Ny-1,2),0,2)
+        h_noBoundaries = np.delete(np.delete(np.delete(np.delete(self.Depth.values,self.Nx-1,0),0,0),self.Ny-1,1),0,1)
+
+        for t in times:
+            time_index = ((t*86400)/self.dumpFreq - 1).astype(int)
+
+            streamfunc = self.dx*V_noBoundaries[time_index] - self.dy*U_noBoundaries[time_index]
+
+            X_noBoundaries,Y_noBoundaries = np.meshgrid(x_noBoundaries,y_noBoundaries)
+            plt.contour(X_noBoundaries,Y_noBoundaries,streamfunc)
+            plt.colorbar()
+            plt.show()
+
     def plot_bathymetry(self):
         
         X,Y = np.meshgrid(self.x,self.y)
@@ -158,6 +177,18 @@ class Data:
             plt.colorbar()
             plt.show()
 
+    def plot_U(self,times):
+
+        X,Y = np.meshgrid(self.x,self.y)
+        U = self.U.values
+
+        for t in times:
+            time_index = ((t*86400)/self.dumpFreq - 1).astype(int)
+            plt.contourf(X,Y,U[time_index])
+            plt.colorbar()
+            plt.show()
+
+
         
 
 
@@ -170,10 +201,10 @@ baro_wind_mount = Data(dataDir='./run',iter_list=iters,geom='cartesian',dt=5400,
 
 #t = np.linspace(5,30,6).astype(int) 
 t = np.linspace(300,3000,10).astype(int) 
-baro_wind_mount.plot_streamfunction(times=t)
+baro_wind_mount.plot_stream(times=t)
 
 #%%
-baro_wind_mount.plot_f()
+baro_wind_mount.plot_U(t)
 
 
 # %%
@@ -190,4 +221,10 @@ baro_wind_mount.plot_vorticity(times=t)
 t = np.linspace(3,30,10).astype(int)
 baro_wind_mount.plot_T(t)
 
+# %%
+
+baro_wind_mount.plot_bathymetry()
+
+# %%
+print(baro_wind_mount.U.values[0])
 # %%
