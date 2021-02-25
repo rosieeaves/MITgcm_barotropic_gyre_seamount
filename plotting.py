@@ -20,8 +20,8 @@ class Data:
         self.Ny = len(self.data.YC)
         self.dx = self.data.dxG.values[0][0] # works if the spacing is constant
         self.dy = self.data.dyG.values[0][0] # works if the spacing is constant
-        self.x = np.linspace(1,self.Nx,self.Nx)*self.dx/1000
-        self.y = np.linspace(1,self.Ny,self.Ny)*self.dy/1000
+        self.x = self.data.XC.values
+        self.y = self.data.YC.values
 
         self.volume = np.mean(self.data.hFacC * self.data.drF * self.data.rA,2)
         self.t = self.data.time
@@ -35,27 +35,32 @@ class Data:
         self.W = self.data.W
         self.T = self.data.T
 
-    def plot_streamfunction(self,times):
-        x_noBoundaries = self.x[1:self.Nx-1]
-        y_noBoundaries = self.y[1:self.Ny-1]
-        f_noBoundaries = np.delete(np.delete(np.delete(np.delete(self.f,self.Nx-1,0),0,0),self.Ny-1,1),0,1)
-
-        PH_noBoundaries = np.delete(np.delete(np.delete(np.delete(self.PH.values,self.Nx-1,1),0,1),self.Ny-1,2),0,2)
-
-        X_noBoundaries,Y_noBoundaries = np.meshgrid(x_noBoundaries,y_noBoundaries)
+    def plot_streamU(self,times):
+        
+        h = self.Depth.values 
+        U = self.U.values 
 
         for t in times:
             time_index = ((t*86400)/self.dumpFreq - 1).astype(int)
-            print(time_index)
-            #streamfunc = np.divide(PH_noBoundaries[time_index],f_noBoundaries) 
-            streamfunc = PH_noBoundaries[time_index]
+            streamU = self.dy*(np.multiply(h,U[time_index]))
 
-            plt.contour(X_noBoundaries,Y_noBoundaries,streamfunc)
-            plt.xlabel('x (km)')
-            plt.ylabel('y (km)')
-            cbar = plt.colorbar()
-            cbar.set_label('Streamfunction')
-            plt.title('Day ' + str((self.time[time_index]/86400).astype(int)))
+            X,Y = np.meshgrid(self.x,self.y)
+            plt.contour(X,Y,streamU)
+            plt.colorbar()
+            plt.show()
+
+    def plot_streamV(self,times):
+        
+        h = self.Depth.values 
+        V = self.V.values 
+
+        for t in times:
+            time_index = ((t*86400)/self.dumpFreq - 1).astype(int)
+            streamV = self.dy*(np.multiply(h,V[time_index]))
+
+            X,Y = np.meshgrid(self.x,self.y)
+            plt.contour(X,Y,streamV)
+            plt.colorbar()
             plt.show()
 
     def plot_bathymetry(self):
@@ -66,16 +71,6 @@ class Data:
         plt.ylabel('y (km)')
         cbar = plt.colorbar()
         cbar.set_label('Depth (m)')
-        plt.show()
-
-    def plot_volume(self):
-
-        X,Y = np.meshgrid(self.x,self.y)
-        plt.contourf(X,Y,self.volume.values)
-        plt.xlabel('x (km)')
-        plt.ylabel('y (km)')
-        cbar = plt.colorbar()
-        cbar.set_label('Volume (m$^2$)')
         plt.show()
 
     def plot_KE_volAvg(self):
@@ -130,7 +125,6 @@ class Data:
 
                     relVort[i][j] = dvdx - dudy
 
-            h = self.Depth.values
             vorticity = relVort
 
             # plot
@@ -167,27 +161,16 @@ iters = np.linspace(160,58400,365).astype(int)
 baro_wind_mount = Data(dataDir='./run',iter_list=iters,geom='cartesian',dt=5400,dumpFreq=864000,f0=0.7*10**(-4),beta=2*10**(-11))
 
 #%%
-
-#t = np.linspace(5,30,6).astype(int) 
 t = np.linspace(300,3000,10).astype(int) 
-baro_wind_mount.plot_streamfunction(times=t)
+baro_wind_mount.plot_streamU(times=t)
 
 #%%
-baro_wind_mount.plot_f()
 
-
-# %%
-
-baro_wind_mount.plot_KE_volAvg()
+print(baro_wind_mount.x)
 
 # %%
 
 #t = np.linspace(30,300,10).astype(int) 
 baro_wind_mount.plot_vorticity(times=t)
-
-# %%
-
-t = np.linspace(3,30,10).astype(int)
-baro_wind_mount.plot_T(t)
 
 # %%
