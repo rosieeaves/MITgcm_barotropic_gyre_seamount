@@ -1,0 +1,1891 @@
+(PID.TID 0002.0001) 
+(PID.TID 0002.0001) // ======================================================
+(PID.TID 0002.0001) //                      MITgcm UV
+(PID.TID 0002.0001) //                      =========
+(PID.TID 0002.0001) // ======================================================
+(PID.TID 0002.0001) // execution environment starting up...
+(PID.TID 0002.0001) 
+(PID.TID 0002.0001) // MITgcmUV version:  checkpoint67v
+(PID.TID 0002.0001) // Build user:        eavesr
+(PID.TID 0002.0001) // Build host:        atmlxint3
+(PID.TID 0002.0001) // Build date:        Thu 25 Feb 14:25:42 GMT 2021
+(PID.TID 0002.0001) 
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) // Execution Environment parameter file "eedata"
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) ># Example "eedata" file
+(PID.TID 0002.0001) ># Lines beginning "#" are comments
+(PID.TID 0002.0001) >#  nTx      :: No. threads per process in X
+(PID.TID 0002.0001) >#  nTy      :: No. threads per process in Y
+(PID.TID 0002.0001) ># debugMode :: print debug msg (sequence of S/R calls)
+(PID.TID 0002.0001) > &EEPARMS
+(PID.TID 0002.0001) > nTx=1,
+(PID.TID 0002.0001) > nTy=1,
+(PID.TID 0002.0001) > &
+(PID.TID 0002.0001) ># Note: Some systems use & as the namelist terminator (as shown here).
+(PID.TID 0002.0001) >#       Other systems use a / character.
+(PID.TID 0002.0001) 
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) // Computational Grid Specification ( see files "SIZE.h" )
+(PID.TID 0002.0001) //                                  ( and "eedata"       )
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001)      nPx =    2 ; /* No. processes in X */
+(PID.TID 0002.0001)      nPy =    2 ; /* No. processes in Y */
+(PID.TID 0002.0001)      nSx =    1 ; /* No. tiles in X per process */
+(PID.TID 0002.0001)      nSy =    1 ; /* No. tiles in Y per process */
+(PID.TID 0002.0001)      sNx =  124 ; /* Tile size in X */
+(PID.TID 0002.0001)      sNy =  124 ; /* Tile size in Y */
+(PID.TID 0002.0001)      OLx =    2 ; /* Tile overlap distance in X */
+(PID.TID 0002.0001)      OLy =    2 ; /* Tile overlap distance in Y */
+(PID.TID 0002.0001)      nTx =    1 ; /* No. threads in X per process */
+(PID.TID 0002.0001)      nTy =    1 ; /* No. threads in Y per process */
+(PID.TID 0002.0001)       Nr =    1 ; /* No. levels in the vertical   */
+(PID.TID 0002.0001)       Nx =  248 ; /* Total domain size in X ( = nPx*nSx*sNx ) */
+(PID.TID 0002.0001)       Ny =  248 ; /* Total domain size in Y ( = nPy*nSy*sNy ) */
+(PID.TID 0002.0001)   nTiles =    1 ; /* Total no. tiles per process ( = nSx*nSy ) */
+(PID.TID 0002.0001)   nProcs =    4 ; /* Total no. processes ( = nPx*nPy ) */
+(PID.TID 0002.0001) nThreads =    1 ; /* Total no. threads per process ( = nTx*nTy ) */
+(PID.TID 0002.0001) usingMPI =    T ; /* Flag used to control whether MPI is in use */
+(PID.TID 0002.0001)                   /*  note: To execute a program with MPI calls */
+(PID.TID 0002.0001)                   /*  it must be launched appropriately e.g     */
+(PID.TID 0002.0001)                   /*  "mpirun -np 64 ......"                    */
+(PID.TID 0002.0001) useCoupler=   F ; /* Flag used to control communications with   */
+(PID.TID 0002.0001)                   /*  other model components, through a coupler */
+(PID.TID 0002.0001) useNest2W_parent =    F ;/* Control 2-W Nesting comm */
+(PID.TID 0002.0001) useNest2W_child  =    F ;/* Control 2-W Nesting comm */
+(PID.TID 0002.0001) debugMode =    F ; /* print debug msg. (sequence of S/R calls)  */
+(PID.TID 0002.0001) printMapIncludesZeros=    F ; /* print zeros in Std.Output maps */
+(PID.TID 0002.0001) maxLengthPrt1D=   65 /* maxLength of 1D array printed to StdOut */
+(PID.TID 0002.0001) 
+(PID.TID 0002.0001) ======= Starting MPI parallel Run =========
+(PID.TID 0002.0001)  My Processor Name (len:  9 ) = atmlxint3
+(PID.TID 0002.0001)  Located at (  1,  0) on processor grid (0:  1,0:  1)
+(PID.TID 0002.0001)  Origin at  (   125,     1) on global grid (1:   248,1:   248)
+(PID.TID 0002.0001)  North neighbor = processor 0003
+(PID.TID 0002.0001)  South neighbor = processor 0003
+(PID.TID 0002.0001)   East neighbor = processor 0000
+(PID.TID 0002.0001)   West neighbor = processor 0000
+(PID.TID 0002.0001) // ======================================================
+(PID.TID 0002.0001) // Mapping of tiles to threads
+(PID.TID 0002.0001) // ======================================================
+(PID.TID 0002.0001) // -o- Thread   1, tiles (   1:   1,   1:   1)
+(PID.TID 0002.0001) 
+(PID.TID 0002.0001) // ======================================================
+(PID.TID 0002.0001) // Tile <-> Tile connectvity table
+(PID.TID 0002.0001) // ======================================================
+(PID.TID 0002.0001) // Tile number: 000002 (process no. = 000002)
+(PID.TID 0002.0001) //        WEST: Tile = 000001, Process = 000000, Comm = messages
+(PID.TID 0002.0001) //                bi = 000001, bj = 000001
+(PID.TID 0002.0001) //        EAST: Tile = 000001, Process = 000000, Comm = messages
+(PID.TID 0002.0001) //                bi = 000001, bj = 000001
+(PID.TID 0002.0001) //       SOUTH: Tile = 000004, Process = 000003, Comm = messages
+(PID.TID 0002.0001) //                bi = 000001, bj = 000001
+(PID.TID 0002.0001) //       NORTH: Tile = 000004, Process = 000003, Comm = messages
+(PID.TID 0002.0001) //                bi = 000001, bj = 000001
+(PID.TID 0002.0001) 
+(PID.TID 0002.0001)  INI_PARMS: opening model parameter file "data"
+(PID.TID 0002.0001)  OPEN_COPY_DATA_FILE: opening file data
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) // Parameter file "data"
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) ># Model parameters
+(PID.TID 0002.0001) ># Continuous equation parameters
+(PID.TID 0002.0001) > &PARM01
+(PID.TID 0002.0001) > viscAh=4.E2,
+(PID.TID 0002.0001) > f0=0.7E-4,
+(PID.TID 0002.0001) > beta=2.E-11,
+(PID.TID 0002.0001) > rhoConst=1027.,
+(PID.TID 0002.0001) > gBaro=9.81,
+(PID.TID 0002.0001) > rigidLid=.FALSE.,
+(PID.TID 0002.0001) > implicitFreeSurface=.TRUE.,
+(PID.TID 0002.0001) ># momAdvection=.FALSE.,
+(PID.TID 0002.0001) > tempStepping=.FALSE.,
+(PID.TID 0002.0001) > saltStepping=.FALSE.,
+(PID.TID 0002.0001) > useSingleCpuIO=.TRUE.,
+(PID.TID 0002.0001) > hFacMin=0.1,
+(PID.TID 0002.0001) > &
+(PID.TID 0002.0001) >
+(PID.TID 0002.0001) ># Elliptic solver parameters
+(PID.TID 0002.0001) > &PARM02
+(PID.TID 0002.0001) > cg2dTargetResidual=1.E-7,
+(PID.TID 0002.0001) > cg2dMaxIters=1000,
+(PID.TID 0002.0001) > &
+(PID.TID 0002.0001) >
+(PID.TID 0002.0001) ># Time stepping parameters
+(PID.TID 0002.0001) > &PARM03
+(PID.TID 0002.0001) > nIter0=0,
+(PID.TID 0002.0001) > nTimeSteps=100,
+(PID.TID 0002.0001) > deltaT=5400.0,
+(PID.TID 0002.0001) > pChkptFreq=31104000.0,
+(PID.TID 0002.0001) > chkptFreq=25920000.0,
+(PID.TID 0002.0001) > dumpFreq=864000.0,
+(PID.TID 0002.0001) > monitorFreq=86400.,
+(PID.TID 0002.0001) > monitorSelect=2,
+(PID.TID 0002.0001) >#-for longer run (3.0 yr):
+(PID.TID 0002.0001) ># nTimeSteps=77760,
+(PID.TID 0002.0001) ># monitorFreq=864000.,
+(PID.TID 0002.0001) > &
+(PID.TID 0002.0001) >
+(PID.TID 0002.0001) ># Gridding parameters
+(PID.TID 0002.0001) > &PARM04
+(PID.TID 0002.0001) > usingCartesianGrid=.TRUE.,
+(PID.TID 0002.0001) > delX=248*5.E3,
+(PID.TID 0002.0001) > delY=248*5.E3,
+(PID.TID 0002.0001) > xgOrigin=-5.E3,
+(PID.TID 0002.0001) > ygOrigin=-5.E3,
+(PID.TID 0002.0001) > delR=5000.,
+(PID.TID 0002.0001) > &
+(PID.TID 0002.0001) >
+(PID.TID 0002.0001) ># Input datasets
+(PID.TID 0002.0001) > &PARM05
+(PID.TID 0002.0001) > bathyFile='bathy.bin'
+(PID.TID 0002.0001) > zonalWindFile='wind.bin',
+(PID.TID 0002.0001) >#zonalWindFile='windx_siny.bin',
+(PID.TID 0002.0001) > meridWindFile=,
+(PID.TID 0002.0001) > &
+(PID.TID 0002.0001) 
+(PID.TID 0002.0001)  INI_PARMS ; starts to read PARM01
+(PID.TID 0002.0001)  INI_PARMS ; read PARM01 : OK
+(PID.TID 0002.0001)  INI_PARMS ; starts to read PARM02
+(PID.TID 0002.0001)  INI_PARMS ; read PARM02 : OK
+(PID.TID 0002.0001)  INI_PARMS ; starts to read PARM03
+(PID.TID 0002.0001)  INI_PARMS ; read PARM03 : OK
+(PID.TID 0002.0001)  INI_PARMS ; starts to read PARM04
+(PID.TID 0002.0001)  INI_PARMS ; read PARM04 : OK
+(PID.TID 0002.0001)  INI_PARMS ; starts to read PARM05
+(PID.TID 0002.0001)  INI_PARMS ; read PARM05 : OK
+(PID.TID 0002.0001)  INI_PARMS: finished reading file "data"
+(PID.TID 0002.0001)  PACKAGES_BOOT: opening data.pkg
+(PID.TID 0002.0001)  OPEN_COPY_DATA_FILE: opening file data.pkg
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) // Parameter file "data.pkg"
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) ># Packages
+(PID.TID 0002.0001) > &PACKAGES
+(PID.TID 0002.0001) > &
+(PID.TID 0002.0001) 
+(PID.TID 0002.0001)  PACKAGES_BOOT: finished reading data.pkg
+(PID.TID 0002.0001)  PACKAGES_BOOT: On/Off package Summary
+ --------  pkgs with a standard "usePKG" On/Off switch in "data.pkg":  --------
+ -------- pkgs without standard "usePKG" On/Off switch in "data.pkg":  --------
+ pkg/generic_advdiff      compiled but not used ( useGAD                   = F )
+ pkg/mom_common           compiled   and   used ( momStepping              = T )
+ pkg/mom_vecinv           compiled but not used ( +vectorInvariantMomentum = F )
+ pkg/mom_fluxform         compiled   and   used ( & not vectorInvariantMom = T )
+ pkg/monitor              compiled   and   used ( monitorFreq > 0.         = T )
+ pkg/debug                compiled but not used ( debugMode                = F )
+ pkg/rw                   compiled   and   used
+ pkg/mdsio                compiled   and   used
+(PID.TID 0002.0001)  PACKAGES_BOOT: End of package Summary
+(PID.TID 0002.0001) 
+(PID.TID 0002.0001) SET_PARMS: done
+(PID.TID 0002.0001) Enter INI_VERTICAL_GRID: setInterFDr=    T ; setCenterDr=    F
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) // Field Model R_low (ini_masks_etc)
+(PID.TID 0002.0001) // CMIN =         -4.999819335937500E+03
+(PID.TID 0002.0001) // CMAX =         -4.500020019531250E+03
+(PID.TID 0002.0001) // CINT =          1.851108579282407E+01
+(PID.TID 0002.0001) // SYMBOLS (CMIN->CMAX): -abcdefghijklmnopqrstuvwxyz+
+(PID.TID 0002.0001) //                  0.0: .
+(PID.TID 0002.0001) // RANGE I (Lo:Hi:Step):(   123:   250:     1)
+(PID.TID 0002.0001) // RANGE J (Lo:Hi:Step):(   126:    -1:    -1)
+(PID.TID 0002.0001) // RANGE K (Lo:Hi:Step):(   1:   1:   1)
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) K =   1
+(PID.TID 0002.0001) //                I=132     I=142     I=152     I=162     I=172     I=182     I=192     I=202     I=212     I=222     I=232     I=242
+(PID.TID 0002.0001) // |--J--|345678901|345678901|345678901|345678901|345678901|345678901|345678901|345678901|345678901|345678901|345678901|345678901|34567890
+(PID.TID 0002.0001) //    126 +++++++++++++++++zzzzzzzzzzzyyyyyyyyxxxxxxxwwwwwvvvvvuuuuuttttssssrrrrqqqqppppooonnnnmmmlllkkkjjjjiiihhhgggfffeeedddcccbbbaaa..a
+(PID.TID 0002.0001) //    125 +++++++++++++++++zzzzzzzzzzzyyyyyyyyxxxxxxxwwwwwvvvvvuuuuuttttssssrrrrqqqqppppooonnnnmmmlllkkkjjjjiiihhhgggfffeeedddcccbbbaaa..a
+(PID.TID 0002.0001) //    124 +++++++++++++++++zzzzzzzzzzzyyyyyyyyxxxxxxxwwwwwvvvvvuuuuuttttssssrrrrqqqqppppooonnnnmmmlllkkkjjjjiiihhhgggfffeeedddcccbbbaaa..a
+(PID.TID 0002.0001) //    123 +++++++++++++++++zzzzzzzzzzzyyyyyyyyxxxxxxxwwwwwvvvvvuuuuuttttssssrrrrqqqqppppooonnnnmmmlllkkkjjjjiiihhhgggfffeeedddcccbbbaaa..a
+(PID.TID 0002.0001) //    122 +++++++++++++++++zzzzzzzzzzzyyyyyyyyxxxxxxxwwwwwvvvvvuuuuuttttssssrrrrqqqqppppooonnnnmmmlllkkkjjjjiiihhhgggfffeeedddcccbbbaaa..a
+(PID.TID 0002.0001) //    121 +++++++++++++++++zzzzzzzzzzzyyyyyyyyxxxxxxxwwwwwvvvvvuuuuuttttssssrrrrqqqqppppooonnnnmmmlllkkkjjjjiiihhhgggfffeeedddcccbbbaaa..a
+(PID.TID 0002.0001) //    120 +++++++++++++++++zzzzzzzzzzzyyyyyyyyxxxxxxwwwwwwvvvvvuuuuuttttssssrrrrqqqqppppooonnnnmmmlllkkkjjjjiiihhhgggfffeeedddcccbbbaaa..a
+(PID.TID 0002.0001) //    119 ++++++++++++++++zzzzzzzzzzzzyyyyyyyyxxxxxxwwwwwwvvvvvuuuuuttttssssrrrrqqqqppppooonnnnmmmlllkkkjjjjiiihhhgggfffeeedddcccbbbaaa..a
+(PID.TID 0002.0001) //    118 ++++++++++++++++zzzzzzzzzzzzyyyyyyyyxxxxxxwwwwwwvvvvvuuuuuttttssssrrrrqqqqppppooonnnmmmmlllkkkjjjiiiihhhgggfffeeedddcccbbbaaa..a
+(PID.TID 0002.0001) //    117 +++++++++++++++zzzzzzzzzzzzyyyyyyyyxxxxxxxwwwwwwvvvvvuuuuuttttssssrrrrqqqqpppoooonnnmmmmlllkkkjjjiiiihhhgggfffeeedddcccbbbaaa..a
+(PID.TID 0002.0001) //    116 +++++++++++++++zzzzzzzzzzzzyyyyyyyyxxxxxxxwwwwwwvvvvvuuuutttttssssrrrrqqqqpppoooonnnmmmmlllkkkjjjiiiihhhgggfffeeedddcccbbbaaa..a
+(PID.TID 0002.0001) //    115 ++++++++++++++zzzzzzzzzzzzzyyyyyyyyxxxxxxxwwwwwvvvvvvuuuutttttssssrrrrqqqqpppoooonnnmmmmlllkkkjjjiiiihhhgggfffeeedddcccbbbaa-..-
+(PID.TID 0002.0001) //    114 +++++++++++++zzzzzzzzzzzzzyyyyyyyyyxxxxxxwwwwwwvvvvvuuuuutttttssssrrrrqqqqpppoooonnnmmmmlllkkkjjjiiihhhhgggfffeeedddcccbbbaa-..-
+(PID.TID 0002.0001) //    113 ++++++++++++zzzzzzzzzzzzzzyyyyyyyyxxxxxxxwwwwwwvvvvvuuuuuttttsssssrrrrqqqppppoooonnnmmmmlllkkkjjjiiihhhhgggfffeeedddcccbbbaa-..-
+(PID.TID 0002.0001) //    112 +++++++++++zzzzzzzzzzzzzzyyyyyyyyyxxxxxxxwwwwwwvvvvvuuuuuttttssssrrrrqqqqppppoooonnnmmmllllkkkjjjiiihhhggggfffeeedddcccbbbaa-..-
+(PID.TID 0002.0001) //    111 +++++++++zzzzzzzzzzzzzzzzyyyyyyyyyxxxxxxxwwwwwvvvvvvuuuuuttttssssrrrrqqqqppppooonnnnmmmllllkkkjjjiiihhhgggffffeeedddcccbbbaa-..-
+(PID.TID 0002.0001) //    110 +++++++zzzzzzzzzzzzzzzzzyyyyyyyyyxxxxxxxwwwwwwvvvvvuuuuutttttssssrrrrqqqqppppooonnnnmmmllllkkkjjjiiihhhgggffffeeedddcccbbbaa-..-
+(PID.TID 0002.0001) //    109 zzzzzzzzzzzzzzzzzzzzzzzzyyyyyyyyyxxxxxxxwwwwwwvvvvvuuuuutttttssssrrrrqqqqppppooonnnnmmmllllkkkjjjiiihhhgggfffeeeddddcccbbaaa-..-
+(PID.TID 0002.0001) //    108 zzzzzzzzzzzzzzzzzzzzzzzyyyyyyyyyxxxxxxxwwwwwwwvvvvvuuuuuttttsssssrrrrqqqqpppoooonnnnmmmlllkkkkjjjiiihhhgggfffeeedddcccbbbaaa-..-
+(PID.TID 0002.0001) //    107 zzzzzzzzzzzzzzzzzzzzzzyyyyyyyyyyxxxxxxxwwwwwwvvvvvvuuuuuttttsssssrrrrqqqqpppoooonnnnmmmlllkkkkjjjiiihhhgggfffeeedddcccbbbaaa-..-
+(PID.TID 0002.0001) //    106 zzzzzzzzzzzzzzzzzzzzzyyyyyyyyyyxxxxxxxxwwwwwwvvvvvuuuuutttttssssrrrrqqqqppppoooonnnmmmmlllkkkkjjjiiihhhgggfffeeedddcccbbbaaa-..-
+(PID.TID 0002.0001) //    105 zzzzzzzzzzzzzzzzzzzzyyyyyyyyyyxxxxxxxxwwwwwwvvvvvvuuuuutttttssssrrrrqqqqppppoooonnnmmmmlllkkkjjjjiiihhhgggfffeeedddcccbbbaaa-..-
+(PID.TID 0002.0001) //    104 zzzzzzzzzzzzzzzzzzzyyyyyyyyyyyxxxxxxxwwwwwwwvvvvvvuuuuuttttsssssrrrrqqqqppppooonnnnmmmmlllkkkjjjjiiihhhgggfffeeedddcccbbbaaa-..-
+(PID.TID 0002.0001) //    103 zzzzzzzzzzzzzzzzzzyyyyyyyyyyyxxxxxxxxwwwwwwvvvvvvuuuuutttttsssssrrrrqqqqppppooonnnnmmmllllkkkjjjiiiihhhgggfffeeedddcccbbbaaa-..-
+(PID.TID 0002.0001) //    102 zzzzzzzzzzzzzzzzyyyyyyyyyyyyxxxxxxxxwwwwwwwvvvvvvuuuuutttttssssrrrrqqqqppppoooonnnnmmmllllkkkjjjiiiihhhgggfffeeedddcccbbbaaa-..-
+(PID.TID 0002.0001) //    101 zzzzzzzzzzzzzzyyyyyyyyyyyyyxxxxxxxxxwwwwwwvvvvvvuuuuuuttttsssssrrrrqqqqppppoooonnnnmmmllllkkkjjjiiihhhhgggfffeeedddcccbbbaaa-..-
+(PID.TID 0002.0001) //    100 zzzzzzzzzzzzyyyyyyyyyyyyyyxxxxxxxxxwwwwwwwvvvvvvuuuuutttttsssssrrrrqqqqppppoooonnnmmmmlllkkkkjjjiiihhhhgggfffeeedddcccbbbaaa-..-
+(PID.TID 0002.0001) //     99 zzzzzzzzzyyyyyyyyyyyyyyyyxxxxxxxxxwwwwwwwvvvvvvuuuuuutttttssssrrrrrqqqqppppooonnnnmmmmlllkkkkjjjiiihhhhgggfffeeedddcccbbbaaa-..-
+(PID.TID 0002.0001) //     98 yyyyyyyyyyyyyyyyyyyyyyyyxxxxxxxxxwwwwwwwwvvvvvvuuuuutttttsssssrrrrqqqqppppoooonnnnmmmmlllkkkjjjjiiihhhggggfffeeedddcccbbbaaa-..-
+(PID.TID 0002.0001) //     97 yyyyyyyyyyyyyyyyyyyyyyyxxxxxxxxxxwwwwwwwvvvvvvuuuuuutttttsssssrrrrqqqqppppoooonnnnmmmllllkkkjjjjiiihhhggggfffeeedddcccbbbaaa-..-
+(PID.TID 0002.0001) //     96 yyyyyyyyyyyyyyyyyyyyyxxxxxxxxxxxwwwwwwwvvvvvvvuuuuutttttsssssrrrrrqqqqppppoooonnnmmmmllllkkkjjjjiiihhhgggffffeeedddcccbbbaaa-..-
+(PID.TID 0002.0001) //     95 yyyyyyyyyyyyyyyyyyyyxxxxxxxxxxxwwwwwwwvvvvvvvuuuuuutttttsssssrrrrqqqqpppppooonnnnmmmmlllkkkkjjjiiiihhhgggffffeeedddcccbbbaaa-..-
+(PID.TID 0002.0001) //     94 yyyyyyyyyyyyyyyyyyxxxxxxxxxxxxwwwwwwwwvvvvvvuuuuuutttttsssssrrrrrqqqqppppoooonnnnmmmmlllkkkkjjjiiiihhhgggfffeeeedddcccbbbaaa-..-
+(PID.TID 0002.0001) //     93 yyyyyyyyyyyyyyyyxxxxxxxxxxxxwwwwwwwwwvvvvvvvuuuuuutttttsssssrrrrqqqqqppppoooonnnnmmmllllkkkkjjjiiihhhhgggfffeeeedddcccbbbaaa-..-
+(PID.TID 0002.0001) //     92 yyyyyyyyyyyyyxxxxxxxxxxxxxxwwwwwwwwwvvvvvvvuuuuuutttttsssssrrrrrqqqqpppppoooonnnmmmmllllkkkjjjjiiihhhhgggfffeeeedddcccbbbaaa-..-
+(PID.TID 0002.0001) //     91 yyyyyyyyyxxxxxxxxxxxxxxxxxwwwwwwwwwvvvvvvvuuuuuuttttttsssssrrrrrqqqqppppoooonnnnmmmmllllkkkjjjjiiihhhhgggfffeeeddddcccbbbaaa-..-
+(PID.TID 0002.0001) //     90 xxxxxxxxxxxxxxxxxxxxxxxxwwwwwwwwwwvvvvvvvuuuuuuutttttsssssrrrrrqqqqqppppoooonnnnmmmmlllkkkkjjjiiiihhhggggfffeeeddddcccbbbaaa-..-
+(PID.TID 0002.0001) //     89 xxxxxxxxxxxxxxxxxxxxxxwwwwwwwwwwwvvvvvvvuuuuuuuttttttsssssrrrrrqqqqppppooooonnnnmmmllllkkkkjjjiiiihhhggggfffeeeddddcccbbbaaa-..-
+(PID.TID 0002.0001) //     88 xxxxxxxxxxxxxxxxxxxxxwwwwwwwwwwvvvvvvvvuuuuuuuttttttsssssrrrrrqqqqqppppoooonnnnmmmmllllkkkjjjjiiiihhhgggffffeeedddccccbbbaaa-..-
+(PID.TID 0002.0001) //     87 xxxxxxxxxxxxxxxxxxwwwwwwwwwwwwvvvvvvvvuuuuuuuttttttssssssrrrrrqqqqpppppoooonnnnmmmmllllkkkjjjjiiihhhhgggffffeeedddccccbbbaaa-..-
+(PID.TID 0002.0001) //     86 xxxxxxxxxxxxxxxxwwwwwwwwwwwwwvvvvvvvvuuuuuuuttttttssssssrrrrrqqqqqppppoooonnnnmmmmllllkkkkjjjjiiihhhhgggffffeeedddccccbbbaaa-..-
+(PID.TID 0002.0001) //     85 xxxxxxxxxxxxwwwwwwwwwwwwwwwvvvvvvvvvuuuuuuutttttttsssssrrrrrqqqqqpppppoooonnnnmmmmllllkkkkjjjiiiihhhhgggfffeeeedddccccbbbaaa-..-
+(PID.TID 0002.0001) //     84 xxxxxxwwwwwwwwwwwwwwwwwwwvvvvvvvvvvuuuuuuutttttttssssssrrrrrqqqqqppppooooonnnnmmmmllllkkkjjjjiiiihhhggggfffeeeedddccccbbbaaa-..-
+(PID.TID 0002.0001) //     83 wwwwwwwwwwwwwwwwwwwwwwwvvvvvvvvvvvuuuuuuutttttttssssssrrrrrqqqqqpppppoooonnnnmmmmllllkkkkjjjjiiiihhhggggfffeeeedddccccbbbaaa-..-
+(PID.TID 0002.0001) //     82 wwwwwwwwwwwwwwwwwwwwwvvvvvvvvvvvuuuuuuuutttttttssssssrrrrrqqqqqpppppooooonnnnmmmmllllkkkkjjjjiiihhhhggggfffeeeedddcccbbbbaaa-..-
+(PID.TID 0002.0001) //     81 wwwwwwwwwwwwwwwwwwwvvvvvvvvvvvvuuuuuuuutttttttssssssrrrrrrqqqqqpppppoooonnnnmmmmmllllkkkkjjjiiiihhhhgggffffeeeddddcccbbbbaaa-..-
+(PID.TID 0002.0001) //     80 wwwwwwwwwwwwwwwvvvvvvvvvvvvvvuuuuuuuuutttttttssssssrrrrrrqqqqqpppppooooonnnnmmmmllllkkkkjjjjiiiihhhhgggffffeeeddddcccbbbbaaa-..-
+(PID.TID 0002.0001) //     79 wwwwwwwwwwwvvvvvvvvvvvvvvvvuuuuuuuuuutttttttssssssrrrrrrqqqqqqppppooooonnnnnmmmmllllkkkkjjjjiiiihhhggggffffeeeddddcccbbbbaaa-..-
+(PID.TID 0002.0001) //     78 vvvvvvvvvvvvvvvvvvvvvvvvvuuuuuuuuuuttttttttsssssssrrrrrqqqqqqpppppooooonnnnmmmmlllllkkkkjjjiiiihhhhggggfffeeeeddddcccbbbbaaa-..-
+(PID.TID 0002.0001) //     77 vvvvvvvvvvvvvvvvvvvvvvvuuuuuuuuuuuttttttttsssssssrrrrrrqqqqqpppppooooonnnnnmmmmllllkkkkjjjjiiiihhhhggggfffeeeeddddcccbbbbaaa-..-
+(PID.TID 0002.0001) //     76 vvvvvvvvvvvvvvvvvvvvuuuuuuuuuuuuttttttttsssssssrrrrrrrqqqqqpppppooooonnnnnmmmmlllllkkkkjjjjiiiihhhhgggffffeeeedddccccbbbbaaa-..-
+(PID.TID 0002.0001) //     75 vvvvvvvvvvvvvvvvuuuuuuuuuuuuuutttttttttsssssssrrrrrrrqqqqqppppppooooonnnnmmmmmllllkkkkjjjjiiiihhhhggggffffeeeedddccccbbbbaaa-..-
+(PID.TID 0002.0001) //     74 vvvvvvvvvvvvuuuuuuuuuuuuuuuuttttttttttsssssssrrrrrrrqqqqqqpppppooooonnnnnmmmmlllllkkkkjjjjiiiihhhhggggffffeeeddddccccbbbaaaa-..-
+(PID.TID 0002.0001) //     73 uuuuuuuuuuuuuuuuuuuuuuuuuuttttttttttssssssssrrrrrrrqqqqqqpppppooooonnnnnmmmmmllllkkkkkjjjjiiiihhhhggggffffeeeddddccccbbbaaaa-..-
+(PID.TID 0002.0001) //     72 uuuuuuuuuuuuuuuuuuuuuuutttttttttttsssssssssrrrrrrrqqqqqqpppppoooooonnnnnmmmmlllllkkkkjjjjiiiihhhhggggffffeeeeddddccccbbbaaaa-..-
+(PID.TID 0002.0001) //     71 uuuuuuuuuuuuuuuuuuuuttttttttttttsssssssssrrrrrrrqqqqqqqppppppooooonnnnnmmmmmllllkkkkkjjjjiiiihhhhggggffffeeeeddddccccbbbaaaa-..-
+(PID.TID 0002.0001) //     70 uuuuuuuuuuuuuuuuttttttttttttttssssssssssrrrrrrrqqqqqqqppppppooooonnnnnmmmmmlllllkkkkjjjjjiiiihhhhggggffffeeeeddddcccbbbbaaaa-..-
+(PID.TID 0002.0001) //     69 uuuuuuuuuuttttttttttttttttttssssssssssrrrrrrrrqqqqqqqppppppooooonnnnnnmmmmlllllkkkkkjjjjiiiihhhhhggggffffeeeedddccccbbbbaaaa-..-
+(PID.TID 0002.0001) //     68 tttttttttttttttttttttttttsssssssssssrrrrrrrrqqqqqqqpppppppooooonnnnnnmmmmmlllllkkkkjjjjjiiiihhhhggggffffeeeeddddccccbbbbaaaa-..-
+(PID.TID 0002.0001) //     67 ttttttttttttttttttttttssssssssssssrrrrrrrrrqqqqqqqpppppppoooooonnnnnmmmmmlllllkkkkkjjjjiiiiihhhhggggffffeeeeddddccccbbbbaaaa-..-
+(PID.TID 0002.0001) //     66 ttttttttttttttttttssssssssssssssrrrrrrrrrqqqqqqqqpppppppoooooonnnnnmmmmmlllllkkkkkjjjjjiiiihhhhgggggffffeeeeddddccccbbbbaaaa-..-
+(PID.TID 0002.0001) //     65 tttttttttttttsssssssssssssssssrrrrrrrrrrqqqqqqqqppppppooooooonnnnnmmmmmmlllllkkkkkjjjjiiiiihhhhggggfffffeeeeddddccccbbbbaaaa-..-
+(PID.TID 0002.0001) //     64 sssssssssssssssssssssssssssrrrrrrrrrrrqqqqqqqqpppppppooooooonnnnnmmmmmmlllllkkkkkjjjjjiiiihhhhhggggffffeeeeeddddccccbbbbaaaa-..-
+(PID.TID 0002.0001) //     63 ssssssssssssssssssssssssrrrrrrrrrrrrqqqqqqqqppppppppoooooonnnnnnmmmmmmlllllkkkkkjjjjjiiiiihhhhgggggffffeeeedddddccccbbbbaaaa-..-
+(PID.TID 0002.0001) //     62 ssssssssssssssssssssrrrrrrrrrrrrrqqqqqqqqqqpppppppooooooonnnnnnmmmmmmllllllkkkkkjjjjjiiiihhhhhggggfffffeeeeddddcccccbbbbaaaa-..-
+(PID.TID 0002.0001) //     61 ssssssssssssssrrrrrrrrrrrrrrrrrqqqqqqqqqqppppppppooooooonnnnnnmmmmmmllllllkkkkkjjjjjiiiiihhhhgggggffffeeeeeddddccccbbbbbaaaa-..-
+(PID.TID 0002.0001) //     60 rrrrrrrrrrrrrrrrrrrrrrrrrrrrqqqqqqqqqqqppppppppoooooooonnnnnnmmmmmmllllllkkkkkjjjjjiiiiihhhhhgggggffffeeeeeddddccccbbbbbaaaa-..-
+(PID.TID 0002.0001) //     59 rrrrrrrrrrrrrrrrrrrrrrrrqqqqqqqqqqqqqpppppppppooooooonnnnnnnmmmmmmllllllkkkkkkjjjjjiiiiihhhhgggggfffffeeeedddddccccbbbbaaaaa-..-
+(PID.TID 0002.0001) //     58 rrrrrrrrrrrrrrrrrrrrqqqqqqqqqqqqqqppppppppppoooooooonnnnnnnmmmmmmllllllkkkkkkjjjjjiiiiihhhhhgggggffffeeeeeddddcccccbbbbaaaaa-..-
+(PID.TID 0002.0001) //     57 rrrrrrrrrrrrrrqqqqqqqqqqqqqqqqqpppppppppppoooooooonnnnnnnnmmmmmmllllllkkkkkkjjjjjiiiiihhhhhgggggfffffeeeeeddddcccccbbbbaaaaa-..-
+(PID.TID 0002.0001) //     56 qqqqqqqqqqqqqqqqqqqqqqqqqqqqppppppppppppooooooooonnnnnnnmmmmmmmllllllkkkkkkjjjjjjiiiiihhhhhgggggfffffeeeedddddcccccbbbbaaaaa-..-
+(PID.TID 0002.0001) //     55 qqqqqqqqqqqqqqqqqqqqqqqqpppppppppppppoooooooooonnnnnnnnmmmmmmmllllllkkkkkkjjjjjjiiiiihhhhhgggggfffffeeeeedddddccccbbbbbaaaaa-..-
+(PID.TID 0002.0001) //     54 qqqqqqqqqqqqqqqqqqqqpppppppppppppppoooooooooonnnnnnnnmmmmmmmlllllllkkkkkkjjjjjjiiiiihhhhhhgggggfffffeeeeedddddccccbbbbbaaaaa-..-
+(PID.TID 0002.0001) //     53 qqqqqqqqqqqqqpppppppppppppppppppooooooooooonnnnnnnnmmmmmmmmlllllllkkkkkkjjjjjjiiiiiihhhhhgggggfffffeeeeedddddcccccbbbbbaaaaa-..-
+(PID.TID 0002.0001) //     52 ppppppppppppppppppppppppppppoooooooooooonnnnnnnnnnmmmmmmmllllllllkkkkkkjjjjjjiiiiiihhhhhggggggfffffeeeeedddddcccccbbbbbaaaaa-..-
+(PID.TID 0002.0001) //     51 ppppppppppppppppppppppppoooooooooooooonnnnnnnnnnmmmmmmmmlllllllkkkkkkkjjjjjjiiiiiihhhhhhgggggfffffeeeeeedddddcccccbbbbbaaaaa-..-
+(PID.TID 0002.0001) //     50 ppppppppppppppppppooooooooooooooooonnnnnnnnnnmmmmmmmmmllllllllkkkkkkkjjjjjjiiiiiihhhhhhggggggfffffeeeeedddddcccccbbbbbaaaaa--..-
+(PID.TID 0002.0001) //     49 pppppppppoooooooooooooooooooooonnnnnnnnnnnnmmmmmmmmmllllllllkkkkkkkkjjjjjjiiiiiihhhhhhggggggfffffeeeeeedddddcccccbbbbbaaaaa--..-
+(PID.TID 0002.0001) //     48 ooooooooooooooooooooooooooonnnnnnnnnnnnnmmmmmmmmmmlllllllllkkkkkkkjjjjjjjiiiiiihhhhhhggggggffffffeeeeeddddddcccccbbbbbaaaaa--..-
+(PID.TID 0002.0001) //     47 oooooooooooooooooooooonnnnnnnnnnnnnnnnmmmmmmmmmmlllllllllkkkkkkkkjjjjjjjiiiiiihhhhhhhggggggfffffeeeeeedddddccccccbbbbbaaaaa--..-
+(PID.TID 0002.0001) //     46 ooooooooooooooonnnnnnnnnnnnnnnnnnnmmmmmmmmmmmmlllllllllkkkkkkkkjjjjjjjjiiiiiihhhhhhhggggggffffffeeeeeddddddcccccbbbbbbaaaaa--..-
+(PID.TID 0002.0001) //     45 nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnmmmmmmmmmmmmmllllllllllkkkkkkkkkjjjjjjjiiiiiiihhhhhhhggggggffffffeeeeeeddddddcccccbbbbbbaaaaa--..-
+(PID.TID 0002.0001) //     44 nnnnnnnnnnnnnnnnnnnnnnnnnnmmmmmmmmmmmmmmlllllllllllkkkkkkkkkjjjjjjjjiiiiiiihhhhhhhggggggffffffeeeeeeddddddccccccbbbbbbaaaaa--..-
+(PID.TID 0002.0001) //     43 nnnnnnnnnnnnnnnnnnnnmmmmmmmmmmmmmmmmmllllllllllllkkkkkkkkkjjjjjjjjiiiiiiiihhhhhhhggggggfffffffeeeeeeddddddccccccbbbbbaaaaaa--..-
+(PID.TID 0002.0001) //     42 nnnnnnnnmmmmmmmmmmmmmmmmmmmmmmmmmlllllllllllllkkkkkkkkkkjjjjjjjjjiiiiiiihhhhhhhhggggggfffffffeeeeeeddddddccccccbbbbbbaaaaaa--..-
+(PID.TID 0002.0001) //     41 mmmmmmmmmmmmmmmmmmmmmmmmmmmmmllllllllllllllkkkkkkkkkkkjjjjjjjjjiiiiiiiihhhhhhhgggggggfffffffeeeeeeeddddddccccccbbbbbbaaaaaa--..-
+(PID.TID 0002.0001) //     40 mmmmmmmmmmmmmmmmmmmmmmmlllllllllllllllllkkkkkkkkkkkjjjjjjjjjjiiiiiiiihhhhhhhhgggggggfffffffeeeeeeeddddddcccccccbbbbbbaaaaaa--..-
+(PID.TID 0002.0001) //     39 mmmmmmmmmmmmmmllllllllllllllllllllllkkkkkkkkkkkkkjjjjjjjjjjiiiiiiiiihhhhhhhhgggggggfffffffeeeeeeedddddddccccccbbbbbbbaaaaaa--..-
+(PID.TID 0002.0001) //     38 lllllllllllllllllllllllllllllllkkkkkkkkkkkkkkkjjjjjjjjjjjiiiiiiiiihhhhhhhhggggggggffffffffeeeeeeeddddddcccccccbbbbbbaaaaaaa--..-
+(PID.TID 0002.0001) //     37 llllllllllllllllllllllllllkkkkkkkkkkkkkkkkjjjjjjjjjjjjiiiiiiiiiihhhhhhhhhggggggggffffffffeeeeeeedddddddccccccbbbbbbbaaaaaaa--..-
+(PID.TID 0002.0001) //     36 llllllllllllllllllkkkkkkkkkkkkkkkkkkkkjjjjjjjjjjjjjiiiiiiiiiiihhhhhhhhhgggggggggfffffffeeeeeeeedddddddcccccccbbbbbbbaaaaaaa--..-
+(PID.TID 0002.0001) //     35 kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkjjjjjjjjjjjjjjiiiiiiiiiiiihhhhhhhhhgggggggggffffffffeeeeeeeedddddddccccccccbbbbbbbaaaaaa---..-
+(PID.TID 0002.0001) //     34 kkkkkkkkkkkkkkkkkkkkkkkkkkkkjjjjjjjjjjjjjjjjjiiiiiiiiiiiihhhhhhhhhhggggggggggffffffffeeeeeeeeddddddddcccccccbbbbbbbaaaaaaa---..-
+(PID.TID 0002.0001) //     33 kkkkkkkkkkkkkkkkkkkkkjjjjjjjjjjjjjjjjjjjjiiiiiiiiiiiiihhhhhhhhhhhggggggggggfffffffffeeeeeeeeddddddddccccccccbbbbbbbaaaaaaa---..-
+(PID.TID 0002.0001) //     32 jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjiiiiiiiiiiiiiiihhhhhhhhhhhhggggggggggfffffffffeeeeeeeeeddddddddccccccccbbbbbbbbaaaaaaa---..-
+(PID.TID 0002.0001) //     31 jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjiiiiiiiiiiiiiiiiihhhhhhhhhhhhgggggggggggffffffffffeeeeeeeeeddddddddccccccccbbbbbbbbaaaaaaaa---..-
+(PID.TID 0002.0001) //     30 jjjjjjjjjjjjjjjjjjjjjjjiiiiiiiiiiiiiiiiiiiiihhhhhhhhhhhhhhgggggggggggffffffffffeeeeeeeeeeddddddddcccccccccbbbbbbbbaaaaaaaa---..-
+(PID.TID 0002.0001) //     29 jjjjjjjjiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiihhhhhhhhhhhhhhhgggggggggggggffffffffffeeeeeeeeeedddddddddcccccccccbbbbbbbbaaaaaaaaa---..-
+(PID.TID 0002.0001) //     28 iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiihhhhhhhhhhhhhhhhhhgggggggggggggfffffffffffeeeeeeeeeeedddddddddcccccccccbbbbbbbbbaaaaaaaaa---..-
+(PID.TID 0002.0001) //     27 iiiiiiiiiiiiiiiiiiiiiiiiihhhhhhhhhhhhhhhhhhhhhhggggggggggggggffffffffffffeeeeeeeeeeeddddddddddcccccccccbbbbbbbbbbaaaaaaaa----..-
+(PID.TID 0002.0001) //     26 iiiiiiiiiiiihhhhhhhhhhhhhhhhhhhhhhhhhhhhhhggggggggggggggggfffffffffffffeeeeeeeeeeedddddddddddccccccccccbbbbbbbbbaaaaaaaaa----..-
+(PID.TID 0002.0001) //     25 hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhggggggggggggggggggffffffffffffffeeeeeeeeeeeedddddddddddcccccccccccbbbbbbbbbaaaaaaaaaa----..-
+(PID.TID 0002.0001) //     24 hhhhhhhhhhhhhhhhhhhhhhhhhhhhggggggggggggggggggggggfffffffffffffffeeeeeeeeeeeeeddddddddddddcccccccccccbbbbbbbbbbaaaaaaaaaa----..-
+(PID.TID 0002.0001) //     23 hhhhhhhhhhhhhhgggggggggggggggggggggggggggggggfffffffffffffffffeeeeeeeeeeeeeeddddddddddddcccccccccccbbbbbbbbbbbaaaaaaaaaaa----..-
+(PID.TID 0002.0001) //     22 ggggggggggggggggggggggggggggggggggggggffffffffffffffffffffeeeeeeeeeeeeeeedddddddddddddccccccccccccbbbbbbbbbbbaaaaaaaaaaa-----..-
+(PID.TID 0002.0001) //     21 ggggggggggggggggggggggggggggggffffffffffffffffffffffffeeeeeeeeeeeeeeeeddddddddddddddcccccccccccccbbbbbbbbbbbbaaaaaaaaaaa-----..-
+(PID.TID 0002.0001) //     20 gggggggggggggggfffffffffffffffffffffffffffffffffeeeeeeeeeeeeeeeeeeedddddddddddddddcccccccccccccbbbbbbbbbbbbbaaaaaaaaaaaa-----..-
+(PID.TID 0002.0001) //     19 fffffffffffffffffffffffffffffffffffffffffeeeeeeeeeeeeeeeeeeeeeeddddddddddddddddcccccccccccccccbbbbbbbbbbbbbaaaaaaaaaaaaa-----..-
+(PID.TID 0002.0001) //     18 ffffffffffffffffffffffffffffffffeeeeeeeeeeeeeeeeeeeeeeeeeeddddddddddddddddddccccccccccccccccbbbbbbbbbbbbbbaaaaaaaaaaaaa------..-
+(PID.TID 0002.0001) //     17 fffffffffffffffffeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeedddddddddddddddddddddccccccccccccccccbbbbbbbbbbbbbbbaaaaaaaaaaaaaaa------..-
+(PID.TID 0002.0001) //     16 eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeedddddddddddddddddddddddcccccccccccccccccccbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaa-------..-
+(PID.TID 0002.0001) //     15 eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeedddddddddddddddddddddddddddddccccccccccccccccccccbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaa-------..-
+(PID.TID 0002.0001) //     14 eeeeeeeeeeeeeeeeeddddddddddddddddddddddddddddddddddddddddcccccccccccccccccccccccbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaa--------..-
+(PID.TID 0002.0001) //     13 ddddddddddddddddddddddddddddddddddddddddddddddddddccccccccccccccccccccccccccbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaa--------..-
+(PID.TID 0002.0001) //     12 ddddddddddddddddddddddddddddddddddddddcccccccccccccccccccccccccccccccccbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaa---------..-
+(PID.TID 0002.0001) //     11 ddddddddddddddddddcccccccccccccccccccccccccccccccccccccccccccccccbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaa----------..-
+(PID.TID 0002.0001) //     10 ccccccccccccccccccccccccccccccccccccccccccccccccccccccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaa-----------..-
+(PID.TID 0002.0001) //      9 ccccccccccccccccccccccccccccccccccccccccccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-------------..-
+(PID.TID 0002.0001) //      8 ccccccccccccccccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa---------------..-
+(PID.TID 0002.0001) //      7 bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-----------------..-
+(PID.TID 0002.0001) //      6 bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa---------------------..-
+(PID.TID 0002.0001) //      5 bbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa--------------------------..-
+(PID.TID 0002.0001) //      4 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa----------------------------------..-
+(PID.TID 0002.0001) //      3 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-------------------------------------------------..-
+(PID.TID 0002.0001) //      2 aaaaaaaaaaa------------------------------------------------------------------------------------------------------------------..-
+(PID.TID 0002.0001) //      1 ................................................................................................................................
+(PID.TID 0002.0001) //      0 ................................................................................................................................
+(PID.TID 0002.0001) //     -1 aaaaaaaaaaa------------------------------------------------------------------------------------------------------------------..-
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) // END OF FIELD                                          =
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) 
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) // Field Model Ro_surf (ini_masks_etc)
+(PID.TID 0002.0001) // CMIN =          1.000000000000000E+32
+(PID.TID 0002.0001) // CMAX =         -1.000000000000000E+32
+(PID.TID 0002.0001) // CINT =          0.000000000000000E+00
+(PID.TID 0002.0001) // SYMBOLS (CMIN->CMAX): -abcdefghijklmnopqrstuvwxyz+
+(PID.TID 0002.0001) //                  0.0: .
+(PID.TID 0002.0001) // RANGE I (Lo:Hi:Step):(   123:   250:     1)
+(PID.TID 0002.0001) // RANGE J (Lo:Hi:Step):(   126:    -1:    -1)
+(PID.TID 0002.0001) // RANGE K (Lo:Hi:Step):(   1:   1:   1)
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) // END OF FIELD                                          =
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) 
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) // Field hFacC at iteration          0
+(PID.TID 0002.0001) // CMIN =          9.000040039062500E-01
+(PID.TID 0002.0001) // CMAX =          9.999638671875001E-01
+(PID.TID 0002.0001) // CINT =          3.702217158564817E-03
+(PID.TID 0002.0001) // SYMBOLS (CMIN->CMAX): -abcdefghijklmnopqrstuvwxyz+
+(PID.TID 0002.0001) //                  0.0: .
+(PID.TID 0002.0001) // RANGE I (Lo:Hi:Step):(   123:   250:     1)
+(PID.TID 0002.0001) // RANGE J (Lo:Hi:Step):(   126:    -1:    -1)
+(PID.TID 0002.0001) // RANGE K (Lo:Hi:Step):(   1:   1:   1)
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) K =   1
+(PID.TID 0002.0001) //                I=132     I=142     I=152     I=162     I=172     I=182     I=192     I=202     I=212     I=222     I=232     I=242
+(PID.TID 0002.0001) // |--J--|345678901|345678901|345678901|345678901|345678901|345678901|345678901|345678901|345678901|345678901|345678901|345678901|34567890
+(PID.TID 0002.0001) //    126 -----------------aaaaaaaaaaabbbbbbbbcccccccdddddeeeeefffffgggghhhhiiiijjjjkkkklllmmmmnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzzz..z
+(PID.TID 0002.0001) //    125 -----------------aaaaaaaaaaabbbbbbbbcccccccdddddeeeeefffffgggghhhhiiiijjjjkkkklllmmmmnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzzz..z
+(PID.TID 0002.0001) //    124 -----------------aaaaaaaaaaabbbbbbbbcccccccdddddeeeeefffffgggghhhhiiiijjjjkkkklllmmmmnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzzz..z
+(PID.TID 0002.0001) //    123 -----------------aaaaaaaaaaabbbbbbbbcccccccdddddeeeeefffffgggghhhhiiiijjjjkkkklllmmmmnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzzz..z
+(PID.TID 0002.0001) //    122 -----------------aaaaaaaaaaabbbbbbbbcccccccdddddeeeeefffffgggghhhhiiiijjjjkkkklllmmmmnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzzz..z
+(PID.TID 0002.0001) //    121 -----------------aaaaaaaaaaabbbbbbbbcccccccdddddeeeeefffffgggghhhhiiiijjjjkkkklllmmmmnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzzz..z
+(PID.TID 0002.0001) //    120 -----------------aaaaaaaaaaabbbbbbbbccccccddddddeeeeefffffgggghhhhiiiijjjjkkkklllmmmmnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzzz..z
+(PID.TID 0002.0001) //    119 ----------------aaaaaaaaaaaabbbbbbbbccccccddddddeeeeefffffgggghhhhiiiijjjjkkkklllmmmmnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzzz..z
+(PID.TID 0002.0001) //    118 ----------------aaaaaaaaaaaabbbbbbbbccccccddddddeeeeefffffgggghhhhiiiijjjjkkkklllmmmnnnnooopppqqqrrrrssstttuuuvvvwwwxxxyyyzzz..z
+(PID.TID 0002.0001) //    117 ---------------aaaaaaaaaaaabbbbbbbbcccccccddddddeeeeefffffgggghhhhiiiijjjjkkkllllmmmnnnnooopppqqqrrrrssstttuuuvvvwwwxxxyyyzzz..z
+(PID.TID 0002.0001) //    116 ---------------aaaaaaaaaaaabbbbbbbbcccccccddddddeeeeeffffggggghhhhiiiijjjjkkkllllmmmnnnnooopppqqqrrrrssstttuuuvvvwwwxxxyyyzzz..z
+(PID.TID 0002.0001) //    115 --------------aaaaaaaaaaaaabbbbbbbbcccccccdddddeeeeeeffffggggghhhhiiiijjjjkkkllllmmmnnnnooopppqqqrrrrssstttuuuvvvwwwxxxyyyzz+..+
+(PID.TID 0002.0001) //    114 -------------aaaaaaaaaaaaabbbbbbbbbccccccddddddeeeeefffffggggghhhhiiiijjjjkkkllllmmmnnnnooopppqqqrrrsssstttuuuvvvwwwxxxyyyzz+..+
+(PID.TID 0002.0001) //    113 ------------aaaaaaaaaaaaaabbbbbbbbcccccccddddddeeeeefffffgggghhhhhiiiijjjkkkkllllmmmnnnnooopppqqqrrrsssstttuuuvvvwwwxxxyyyzz+..+
+(PID.TID 0002.0001) //    112 -----------aaaaaaaaaaaaaabbbbbbbbbcccccccddddddeeeeefffffgggghhhhiiiijjjjkkkkllllmmmnnnoooopppqqqrrrsssttttuuuvvvwwwxxxyyyzz+..+
+(PID.TID 0002.0001) //    111 ---------aaaaaaaaaaaaaaaabbbbbbbbbcccccccdddddeeeeeefffffgggghhhhiiiijjjjkkkklllmmmmnnnoooopppqqqrrrssstttuuuuvvvwwwxxxyyyzz+..+
+(PID.TID 0002.0001) //    110 -------aaaaaaaaaaaaaaaaabbbbbbbbbcccccccddddddeeeeefffffggggghhhhiiiijjjjkkkklllmmmmnnnoooopppqqqrrrssstttuuuuvvvwwwxxxyyyzz+..+
+(PID.TID 0002.0001) //    109 aaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbcccccccddddddeeeeefffffggggghhhhiiiijjjjkkkklllmmmmnnnoooopppqqqrrrssstttuuuvvvwwwwxxxyyzzz+..+
+(PID.TID 0002.0001) //    108 aaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbcccccccdddddddeeeeefffffgggghhhhhiiiijjjjkkkllllmmmmnnnoooppppqqqrrrssstttuuuvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //    107 aaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbcccccccddddddeeeeeefffffgggghhhhhiiiijjjjkkkllllmmmmnnnoooppppqqqrrrssstttuuuvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //    106 aaaaaaaaaaaaaaaaaaaaabbbbbbbbbbccccccccddddddeeeeefffffggggghhhhiiiijjjjkkkkllllmmmnnnnoooppppqqqrrrssstttuuuvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //    105 aaaaaaaaaaaaaaaaaaaabbbbbbbbbbccccccccddddddeeeeeefffffggggghhhhiiiijjjjkkkkllllmmmnnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //    104 aaaaaaaaaaaaaaaaaaabbbbbbbbbbbcccccccdddddddeeeeeefffffgggghhhhhiiiijjjjkkkklllmmmmnnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //    103 aaaaaaaaaaaaaaaaaabbbbbbbbbbbccccccccddddddeeeeeefffffggggghhhhhiiiijjjjkkkklllmmmmnnnoooopppqqqrrrrssstttuuuvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //    102 aaaaaaaaaaaaaaaabbbbbbbbbbbbccccccccdddddddeeeeeefffffggggghhhhiiiijjjjkkkkllllmmmmnnnoooopppqqqrrrrssstttuuuvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //    101 aaaaaaaaaaaaaabbbbbbbbbbbbbcccccccccddddddeeeeeeffffffgggghhhhhiiiijjjjkkkkllllmmmmnnnoooopppqqqrrrsssstttuuuvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //    100 aaaaaaaaaaaabbbbbbbbbbbbbbcccccccccdddddddeeeeeefffffggggghhhhhiiiijjjjkkkkllllmmmnnnnoooppppqqqrrrsssstttuuuvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //     99 aaaaaaaaabbbbbbbbbbbbbbbbcccccccccdddddddeeeeeeffffffggggghhhhiiiiijjjjkkkklllmmmmnnnnoooppppqqqrrrsssstttuuuvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //     98 bbbbbbbbbbbbbbbbbbbbbbbbcccccccccddddddddeeeeeefffffggggghhhhhiiiijjjjkkkkllllmmmmnnnnooopppqqqqrrrsssttttuuuvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //     97 bbbbbbbbbbbbbbbbbbbbbbbccccccccccdddddddeeeeeeffffffggggghhhhhiiiijjjjkkkkllllmmmmnnnoooopppqqqqrrrsssttttuuuvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //     96 bbbbbbbbbbbbbbbbbbbbbcccccccccccdddddddeeeeeeefffffggggghhhhhiiiiijjjjkkkkllllmmmnnnnoooopppqqqqrrrssstttuuuuvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //     95 bbbbbbbbbbbbbbbbbbbbcccccccccccdddddddeeeeeeeffffffggggghhhhhiiiijjjjkkkkklllmmmmnnnnoooppppqqqrrrrssstttuuuuvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //     94 bbbbbbbbbbbbbbbbbbccccccccccccddddddddeeeeeeffffffggggghhhhhiiiiijjjjkkkkllllmmmmnnnnoooppppqqqrrrrssstttuuuvvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //     93 bbbbbbbbbbbbbbbbccccccccccccdddddddddeeeeeeeffffffggggghhhhhiiiijjjjjkkkkllllmmmmnnnooooppppqqqrrrsssstttuuuvvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //     92 bbbbbbbbbbbbbccccccccccccccdddddddddeeeeeeeffffffggggghhhhhiiiiijjjjkkkkkllllmmmnnnnoooopppqqqqrrrsssstttuuuvvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //     91 bbbbbbbbbcccccccccccccccccdddddddddeeeeeeeffffffgggggghhhhhiiiiijjjjkkkkllllmmmmnnnnoooopppqqqqrrrsssstttuuuvvvwwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //     90 ccccccccccccccccccccccccddddddddddeeeeeeefffffffggggghhhhhiiiiijjjjjkkkkllllmmmmnnnnoooppppqqqrrrrsssttttuuuvvvwwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //     89 ccccccccccccccccccccccdddddddddddeeeeeeefffffffgggggghhhhhiiiiijjjjkkkklllllmmmmnnnooooppppqqqrrrrsssttttuuuvvvwwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //     88 cccccccccccccccccccccddddddddddeeeeeeeefffffffgggggghhhhhiiiiijjjjjkkkkllllmmmmnnnnoooopppqqqqrrrrssstttuuuuvvvwwwxxxxyyyzzz+..+
+(PID.TID 0002.0001) //     87 ccccccccccccccccccddddddddddddeeeeeeeefffffffgggggghhhhhhiiiiijjjjkkkkkllllmmmmnnnnoooopppqqqqrrrsssstttuuuuvvvwwwxxxxyyyzzz+..+
+(PID.TID 0002.0001) //     86 ccccccccccccccccdddddddddddddeeeeeeeefffffffgggggghhhhhhiiiiijjjjjkkkkllllmmmmnnnnooooppppqqqqrrrsssstttuuuuvvvwwwxxxxyyyzzz+..+
+(PID.TID 0002.0001) //     85 ccccccccccccdddddddddddddddeeeeeeeeefffffffggggggghhhhhiiiiijjjjjkkkkkllllmmmmnnnnooooppppqqqrrrrsssstttuuuvvvvwwwxxxxyyyzzz+..+
+(PID.TID 0002.0001) //     84 ccccccdddddddddddddddddddeeeeeeeeeefffffffggggggghhhhhhiiiiijjjjjkkkklllllmmmmnnnnoooopppqqqqrrrrsssttttuuuvvvvwwwxxxxyyyzzz+..+
+(PID.TID 0002.0001) //     83 dddddddddddddddddddddddeeeeeeeeeeefffffffggggggghhhhhhiiiiijjjjjkkkkkllllmmmmnnnnooooppppqqqqrrrrsssttttuuuvvvvwwwxxxxyyyzzz+..+
+(PID.TID 0002.0001) //     82 dddddddddddddddddddddeeeeeeeeeeeffffffffggggggghhhhhhiiiiijjjjjkkkkklllllmmmmnnnnooooppppqqqqrrrssssttttuuuvvvvwwwxxxyyyyzzz+..+
+(PID.TID 0002.0001) //     81 dddddddddddddddddddeeeeeeeeeeeeffffffffggggggghhhhhhiiiiiijjjjjkkkkkllllmmmmnnnnnooooppppqqqrrrrsssstttuuuuvvvwwwwxxxyyyyzzz+..+
+(PID.TID 0002.0001) //     80 dddddddddddddddeeeeeeeeeeeeeefffffffffggggggghhhhhhiiiiiijjjjjkkkkklllllmmmmnnnnooooppppqqqqrrrrsssstttuuuuvvvwwwwxxxyyyyzzz+..+
+(PID.TID 0002.0001) //     79 dddddddddddeeeeeeeeeeeeeeeeffffffffffggggggghhhhhhiiiiiijjjjjjkkkklllllmmmmmnnnnooooppppqqqqrrrrsssttttuuuuvvvwwwwxxxyyyyzzz+..+
+(PID.TID 0002.0001) //     78 eeeeeeeeeeeeeeeeeeeeeeeeeffffffffffgggggggghhhhhhhiiiiijjjjjjkkkkklllllmmmmnnnnoooooppppqqqrrrrssssttttuuuvvvvwwwwxxxyyyyzzz+..+
+(PID.TID 0002.0001) //     77 eeeeeeeeeeeeeeeeeeeeeeefffffffffffgggggggghhhhhhhiiiiiijjjjjkkkkklllllmmmmmnnnnooooppppqqqqrrrrssssttttuuuvvvvwwwwxxxyyyyzzz+..+
+(PID.TID 0002.0001) //     76 eeeeeeeeeeeeeeeeeeeeffffffffffffgggggggghhhhhhhiiiiiiijjjjjkkkkklllllmmmmmnnnnoooooppppqqqqrrrrsssstttuuuuvvvvwwwxxxxyyyyzzz+..+
+(PID.TID 0002.0001) //     75 eeeeeeeeeeeeeeeeffffffffffffffggggggggghhhhhhhiiiiiiijjjjjkkkkkklllllmmmmnnnnnooooppppqqqqrrrrssssttttuuuuvvvvwwwxxxxyyyyzzz+..+
+(PID.TID 0002.0001) //     74 eeeeeeeeeeeeffffffffffffffffgggggggggghhhhhhhiiiiiiijjjjjjkkkkklllllmmmmmnnnnoooooppppqqqqrrrrssssttttuuuuvvvwwwwxxxxyyyzzzz+..+
+(PID.TID 0002.0001) //     73 ffffffffffffffffffffffffffgggggggggghhhhhhhhiiiiiiijjjjjjkkkkklllllmmmmmnnnnnoooopppppqqqqrrrrssssttttuuuuvvvwwwwxxxxyyyzzzz+..+
+(PID.TID 0002.0001) //     72 fffffffffffffffffffffffggggggggggghhhhhhhhhiiiiiiijjjjjjkkkkkllllllmmmmmnnnnoooooppppqqqqrrrrssssttttuuuuvvvvwwwwxxxxyyyzzzz+..+
+(PID.TID 0002.0001) //     71 ffffffffffffffffffffgggggggggggghhhhhhhhhiiiiiiijjjjjjjkkkkkklllllmmmmmnnnnnoooopppppqqqqrrrrssssttttuuuuvvvvwwwwxxxxyyyzzzz+..+
+(PID.TID 0002.0001) //     70 ffffffffffffffffgggggggggggggghhhhhhhhhhiiiiiiijjjjjjjkkkkkklllllmmmmmnnnnnoooooppppqqqqqrrrrssssttttuuuuvvvvwwwwxxxyyyyzzzz+..+
+(PID.TID 0002.0001) //     69 ffffffffffgggggggggggggggggghhhhhhhhhhiiiiiiiijjjjjjjkkkkkklllllmmmmmmnnnnooooopppppqqqqrrrrsssssttttuuuuvvvvwwwxxxxyyyyzzzz+..+
+(PID.TID 0002.0001) //     68 ggggggggggggggggggggggggghhhhhhhhhhhiiiiiiiijjjjjjjkkkkkkklllllmmmmmmnnnnnoooooppppqqqqqrrrrssssttttuuuuvvvvwwwwxxxxyyyyzzzz+..+
+(PID.TID 0002.0001) //     67 gggggggggggggggggggggghhhhhhhhhhhhiiiiiiiiijjjjjjjkkkkkkkllllllmmmmmnnnnnooooopppppqqqqrrrrrssssttttuuuuvvvvwwwwxxxxyyyyzzzz+..+
+(PID.TID 0002.0001) //     66 gggggggggggggggggghhhhhhhhhhhhhhiiiiiiiiijjjjjjjjkkkkkkkllllllmmmmmnnnnnooooopppppqqqqqrrrrsssstttttuuuuvvvvwwwwxxxxyyyyzzzz+..+
+(PID.TID 0002.0001) //     65 ggggggggggggghhhhhhhhhhhhhhhhhiiiiiiiiiijjjjjjjjkkkkkklllllllmmmmmnnnnnnooooopppppqqqqrrrrrssssttttuuuuuvvvvwwwwxxxxyyyyzzzz+..+
+(PID.TID 0002.0001) //     64 hhhhhhhhhhhhhhhhhhhhhhhhhhhiiiiiiiiiiijjjjjjjjkkkkkkklllllllmmmmmnnnnnnooooopppppqqqqqrrrrsssssttttuuuuvvvvvwwwwxxxxyyyyzzzz+..+
+(PID.TID 0002.0001) //     63 hhhhhhhhhhhhhhhhhhhhhhhhiiiiiiiiiiiijjjjjjjjkkkkkkkkllllllmmmmmmnnnnnnooooopppppqqqqqrrrrrsssstttttuuuuvvvvwwwwwxxxxyyyyzzzz+..+
+(PID.TID 0002.0001) //     62 hhhhhhhhhhhhhhhhhhhhiiiiiiiiiiiiijjjjjjjjjjkkkkkkklllllllmmmmmmnnnnnnoooooopppppqqqqqrrrrsssssttttuuuuuvvvvwwwwxxxxxyyyyzzzz+..+
+(PID.TID 0002.0001) //     61 hhhhhhhhhhhhhhiiiiiiiiiiiiiiiiijjjjjjjjjjkkkkkkkklllllllmmmmmmnnnnnnoooooopppppqqqqqrrrrrsssstttttuuuuvvvvvwwwwxxxxyyyyyzzzz+..+
+(PID.TID 0002.0001) //     60 iiiiiiiiiiiiiiiiiiiiiiiiiiiijjjjjjjjjjjkkkkkkkkllllllllmmmmmmnnnnnnoooooopppppqqqqqrrrrrssssstttttuuuuvvvvvwwwwxxxxyyyyyzzzz+..+
+(PID.TID 0002.0001) //     59 iiiiiiiiiiiiiiiiiiiiiiiijjjjjjjjjjjjjkkkkkkkkklllllllmmmmmmmnnnnnnooooooppppppqqqqqrrrrrsssstttttuuuuuvvvvwwwwwxxxxyyyyzzzzz+..+
+(PID.TID 0002.0001) //     58 iiiiiiiiiiiiiiiiiiiijjjjjjjjjjjjjjkkkkkkkkkkllllllllmmmmmmmnnnnnnooooooppppppqqqqqrrrrrssssstttttuuuuvvvvvwwwwxxxxxyyyyzzzzz+..+
+(PID.TID 0002.0001) //     57 iiiiiiiiiiiiiijjjjjjjjjjjjjjjjjkkkkkkkkkkkllllllllmmmmmmmmnnnnnnooooooppppppqqqqqrrrrrssssstttttuuuuuvvvvvwwwwxxxxxyyyyzzzzz+..+
+(PID.TID 0002.0001) //     56 jjjjjjjjjjjjjjjjjjjjjjjjjjjjkkkkkkkkkkkklllllllllmmmmmmmnnnnnnnooooooppppppqqqqqqrrrrrssssstttttuuuuuvvvvwwwwwxxxxxyyyyzzzzz+..+
+(PID.TID 0002.0001) //     55 jjjjjjjjjjjjjjjjjjjjjjjjkkkkkkkkkkkkkllllllllllmmmmmmmmnnnnnnnooooooppppppqqqqqqrrrrrssssstttttuuuuuvvvvvwwwwwxxxxyyyyyzzzzz+..+
+(PID.TID 0002.0001) //     54 jjjjjjjjjjjjjjjjjjjjkkkkkkkkkkkkkkkllllllllllmmmmmmmmnnnnnnnoooooooppppppqqqqqqrrrrrsssssstttttuuuuuvvvvvwwwwwxxxxyyyyyzzzzz+..+
+(PID.TID 0002.0001) //     53 jjjjjjjjjjjjjkkkkkkkkkkkkkkkkkkklllllllllllmmmmmmmmnnnnnnnnoooooooppppppqqqqqqrrrrrrssssstttttuuuuuvvvvvwwwwwxxxxxyyyyyzzzzz+..+
+(PID.TID 0002.0001) //     52 kkkkkkkkkkkkkkkkkkkkkkkkkkkkllllllllllllmmmmmmmmmmnnnnnnnooooooooppppppqqqqqqrrrrrrsssssttttttuuuuuvvvvvwwwwwxxxxxyyyyyzzzzz+..+
+(PID.TID 0002.0001) //     51 kkkkkkkkkkkkkkkkkkkkkkkkllllllllllllllmmmmmmmmmmnnnnnnnnooooooopppppppqqqqqqrrrrrrsssssstttttuuuuuvvvvvvwwwwwxxxxxyyyyyzzzzz+..+
+(PID.TID 0002.0001) //     50 kkkkkkkkkkkkkkkkkklllllllllllllllllmmmmmmmmmmnnnnnnnnnoooooooopppppppqqqqqqrrrrrrssssssttttttuuuuuvvvvvwwwwwxxxxxyyyyyzzzzz++..+
+(PID.TID 0002.0001) //     49 kkkkkkkkkllllllllllllllllllllllmmmmmmmmmmmmnnnnnnnnnooooooooppppppppqqqqqqrrrrrrssssssttttttuuuuuvvvvvvwwwwwxxxxxyyyyyzzzzz++..+
+(PID.TID 0002.0001) //     48 lllllllllllllllllllllllllllmmmmmmmmmmmmmnnnnnnnnnnooooooooopppppppqqqqqqqrrrrrrssssssttttttuuuuuuvvvvvwwwwwwxxxxxyyyyyzzzzz++..+
+(PID.TID 0002.0001) //     47 llllllllllllllllllllllmmmmmmmmmmmmmmmmnnnnnnnnnnoooooooooppppppppqqqqqqqrrrrrrsssssssttttttuuuuuvvvvvvwwwwwxxxxxxyyyyyzzzzz++..+
+(PID.TID 0002.0001) //     46 lllllllllllllllmmmmmmmmmmmmmmmmmmmnnnnnnnnnnnnoooooooooppppppppqqqqqqqqrrrrrrsssssssttttttuuuuuuvvvvvwwwwwwxxxxxyyyyyyzzzzz++..+
+(PID.TID 0002.0001) //     45 mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmnnnnnnnnnnnnnoooooooooopppppppppqqqqqqqrrrrrrrsssssssttttttuuuuuuvvvvvvwwwwwwxxxxxyyyyyyzzzzz++..+
+(PID.TID 0002.0001) //     44 mmmmmmmmmmmmmmmmmmmmmmmmmmnnnnnnnnnnnnnnooooooooooopppppppppqqqqqqqqrrrrrrrsssssssttttttuuuuuuvvvvvvwwwwwwxxxxxxyyyyyyzzzzz++..+
+(PID.TID 0002.0001) //     43 mmmmmmmmmmmmmmmmmmmmnnnnnnnnnnnnnnnnnoooooooooooopppppppppqqqqqqqqrrrrrrrrsssssssttttttuuuuuuuvvvvvvwwwwwwxxxxxxyyyyyzzzzzz++..+
+(PID.TID 0002.0001) //     42 mmmmmmmmnnnnnnnnnnnnnnnnnnnnnnnnnoooooooooooooppppppppppqqqqqqqqqrrrrrrrssssssssttttttuuuuuuuvvvvvvwwwwwwxxxxxxyyyyyyzzzzzz++..+
+(PID.TID 0002.0001) //     41 nnnnnnnnnnnnnnnnnnnnnnnnnnnnnoooooooooooooopppppppppppqqqqqqqqqrrrrrrrrssssssstttttttuuuuuuuvvvvvvvwwwwwwxxxxxxyyyyyyzzzzzz++..+
+(PID.TID 0002.0001) //     40 nnnnnnnnnnnnnnnnnnnnnnnooooooooooooooooopppppppppppqqqqqqqqqqrrrrrrrrsssssssstttttttuuuuuuuvvvvvvvwwwwwwxxxxxxxyyyyyyzzzzzz++..+
+(PID.TID 0002.0001) //     39 nnnnnnnnnnnnnnoooooooooooooooooooooopppppppppppppqqqqqqqqqqrrrrrrrrrsssssssstttttttuuuuuuuvvvvvvvwwwwwwwxxxxxxyyyyyyyzzzzzz++..+
+(PID.TID 0002.0001) //     38 ooooooooooooooooooooooooooooooopppppppppppppppqqqqqqqqqqqrrrrrrrrrssssssssttttttttuuuuuuuuvvvvvvvwwwwwwxxxxxxxyyyyyyzzzzzzz++..+
+(PID.TID 0002.0001) //     37 ooooooooooooooooooooooooooppppppppppppppppqqqqqqqqqqqqrrrrrrrrrrsssssssssttttttttuuuuuuuuvvvvvvvwwwwwwwxxxxxxyyyyyyyzzzzzzz++..+
+(PID.TID 0002.0001) //     36 ooooooooooooooooooppppppppppppppppppppqqqqqqqqqqqqqrrrrrrrrrrrssssssssstttttttttuuuuuuuvvvvvvvvwwwwwwwxxxxxxxyyyyyyyzzzzzzz++..+
+(PID.TID 0002.0001) //     35 ppppppppppppppppppppppppppppppppppqqqqqqqqqqqqqqrrrrrrrrrrrrssssssssstttttttttuuuuuuuuvvvvvvvvwwwwwwwxxxxxxxxyyyyyyyzzzzzz+++..+
+(PID.TID 0002.0001) //     34 ppppppppppppppppppppppppppppqqqqqqqqqqqqqqqqqrrrrrrrrrrrrssssssssssttttttttttuuuuuuuuvvvvvvvvwwwwwwwwxxxxxxxyyyyyyyzzzzzzz+++..+
+(PID.TID 0002.0001) //     33 pppppppppppppppppppppqqqqqqqqqqqqqqqqqqqqrrrrrrrrrrrrrsssssssssssttttttttttuuuuuuuuuvvvvvvvvwwwwwwwwxxxxxxxxyyyyyyyzzzzzzz+++..+
+(PID.TID 0002.0001) //     32 qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqrrrrrrrrrrrrrrrssssssssssssttttttttttuuuuuuuuuvvvvvvvvvwwwwwwwwxxxxxxxxyyyyyyyyzzzzzzz+++..+
+(PID.TID 0002.0001) //     31 qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqrrrrrrrrrrrrrrrrrsssssssssssstttttttttttuuuuuuuuuuvvvvvvvvvwwwwwwwwxxxxxxxxyyyyyyyyzzzzzzzz+++..+
+(PID.TID 0002.0001) //     30 qqqqqqqqqqqqqqqqqqqqqqqrrrrrrrrrrrrrrrrrrrrrsssssssssssssstttttttttttuuuuuuuuuuvvvvvvvvvvwwwwwwwwxxxxxxxxxyyyyyyyyzzzzzzzz+++..+
+(PID.TID 0002.0001) //     29 qqqqqqqqrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrssssssssssssssstttttttttttttuuuuuuuuuuvvvvvvvvvvwwwwwwwwwxxxxxxxxxyyyyyyyyzzzzzzzzz+++..+
+(PID.TID 0002.0001) //     28 rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrsssssssssssssssssstttttttttttttuuuuuuuuuuuvvvvvvvvvvvwwwwwwwwwxxxxxxxxxyyyyyyyyyzzzzzzzzz+++..+
+(PID.TID 0002.0001) //     27 rrrrrrrrrrrrrrrrrrrrrrrrrssssssssssssssssssssssttttttttttttttuuuuuuuuuuuuvvvvvvvvvvvwwwwwwwwwwxxxxxxxxxyyyyyyyyyyzzzzzzzz++++..+
+(PID.TID 0002.0001) //     26 rrrrrrrrrrrrssssssssssssssssssssssssssssssttttttttttttttttuuuuuuuuuuuuuvvvvvvvvvvvwwwwwwwwwwwxxxxxxxxxxyyyyyyyyyzzzzzzzzz++++..+
+(PID.TID 0002.0001) //     25 ssssssssssssssssssssssssssssssssssssttttttttttttttttttuuuuuuuuuuuuuuvvvvvvvvvvvvwwwwwwwwwwwxxxxxxxxxxxyyyyyyyyyzzzzzzzzzz++++..+
+(PID.TID 0002.0001) //     24 ssssssssssssssssssssssssssssttttttttttttttttttttttuuuuuuuuuuuuuuuvvvvvvvvvvvvvwwwwwwwwwwwwxxxxxxxxxxxyyyyyyyyyyzzzzzzzzzz++++..+
+(PID.TID 0002.0001) //     23 sssssssssssssstttttttttttttttttttttttttttttttuuuuuuuuuuuuuuuuuvvvvvvvvvvvvvvwwwwwwwwwwwwxxxxxxxxxxxyyyyyyyyyyyzzzzzzzzzzz++++..+
+(PID.TID 0002.0001) //     22 ttttttttttttttttttttttttttttttttttttttuuuuuuuuuuuuuuuuuuuuvvvvvvvvvvvvvvvwwwwwwwwwwwwwxxxxxxxxxxxxyyyyyyyyyyyzzzzzzzzzzz+++++..+
+(PID.TID 0002.0001) //     21 ttttttttttttttttttttttttttttttuuuuuuuuuuuuuuuuuuuuuuuuvvvvvvvvvvvvvvvvwwwwwwwwwwwwwwxxxxxxxxxxxxxyyyyyyyyyyyyzzzzzzzzzzz+++++..+
+(PID.TID 0002.0001) //     20 tttttttttttttttuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuvvvvvvvvvvvvvvvvvvvwwwwwwwwwwwwwwwxxxxxxxxxxxxxyyyyyyyyyyyyyzzzzzzzzzzzz+++++..+
+(PID.TID 0002.0001) //     19 uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuvvvvvvvvvvvvvvvvvvvvvvwwwwwwwwwwwwwwwwxxxxxxxxxxxxxxxyyyyyyyyyyyyyzzzzzzzzzzzzz+++++..+
+(PID.TID 0002.0001) //     18 uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuvvvvvvvvvvvvvvvvvvvvvvvvvvwwwwwwwwwwwwwwwwwwxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyzzzzzzzzzzzzz++++++..+
+(PID.TID 0002.0001) //     17 uuuuuuuuuuuuuuuuuvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvwwwwwwwwwwwwwwwwwwwwwxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyzzzzzzzzzzzzzzz++++++..+
+(PID.TID 0002.0001) //     16 vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvwwwwwwwwwwwwwwwwwwwwwwwxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzz+++++++..+
+(PID.TID 0002.0001) //     15 vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzz+++++++..+
+(PID.TID 0002.0001) //     14 vvvvvvvvvvvvvvvvvwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxxxxxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzz++++++++..+
+(PID.TID 0002.0001) //     13 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxxxxxxxxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzzzzz++++++++..+
+(PID.TID 0002.0001) //     12 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzzzzzz+++++++++..+
+(PID.TID 0002.0001) //     11 wwwwwwwwwwwwwwwwwwxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzzzzzzzz++++++++++..+
+(PID.TID 0002.0001) //     10 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzzzzzzzzzzz+++++++++++..+
+(PID.TID 0002.0001) //      9 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzzzzzzzzzzzzzz+++++++++++++..+
+(PID.TID 0002.0001) //      8 xxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz+++++++++++++++..+
+(PID.TID 0002.0001) //      7 yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz+++++++++++++++++..+
+(PID.TID 0002.0001) //      6 yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz+++++++++++++++++++++..+
+(PID.TID 0002.0001) //      5 yyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz++++++++++++++++++++++++++..+
+(PID.TID 0002.0001) //      4 zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz++++++++++++++++++++++++++++++++++..+
+(PID.TID 0002.0001) //      3 zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz+++++++++++++++++++++++++++++++++++++++++++++++++..+
+(PID.TID 0002.0001) //      2 zzzzzzzzzzz++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++..+
+(PID.TID 0002.0001) //      1 ................................................................................................................................
+(PID.TID 0002.0001) //      0 ................................................................................................................................
+(PID.TID 0002.0001) //     -1 zzzzzzzzzzz++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++..+
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) // END OF FIELD                                          =
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) 
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) // Field hFacW at iteration          0
+(PID.TID 0002.0001) // CMIN =          9.000040039062500E-01
+(PID.TID 0002.0001) // CMAX =          9.999398437500000E-01
+(PID.TID 0002.0001) // CINT =          3.701327401620370E-03
+(PID.TID 0002.0001) // SYMBOLS (CMIN->CMAX): -abcdefghijklmnopqrstuvwxyz+
+(PID.TID 0002.0001) //                  0.0: .
+(PID.TID 0002.0001) // RANGE I (Lo:Hi:Step):(   123:   250:     1)
+(PID.TID 0002.0001) // RANGE J (Lo:Hi:Step):(   126:    -1:    -1)
+(PID.TID 0002.0001) // RANGE K (Lo:Hi:Step):(   1:   1:   1)
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) K =   1
+(PID.TID 0002.0001) //                I=132     I=142     I=152     I=162     I=172     I=182     I=192     I=202     I=212     I=222     I=232     I=242
+(PID.TID 0002.0001) // |--J--|345678901|345678901|345678901|345678901|345678901|345678901|345678901|345678901|345678901|345678901|345678901|345678901|34567890
+(PID.TID 0002.0001) //    126 ------------------aaaaaaaaaaabbbbbbbbcccccccdddddeeeeefffffgggghhhhiiiijjjjkkkklllmmmmnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzz...
+(PID.TID 0002.0001) //    125 ------------------aaaaaaaaaaabbbbbbbbcccccccdddddeeeeefffffgggghhhhiiiijjjjkkkklllmmmmnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzz...
+(PID.TID 0002.0001) //    124 ------------------aaaaaaaaaaabbbbbbbbcccccccdddddeeeeefffffgggghhhhiiiijjjjkkkklllmmmmnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzz...
+(PID.TID 0002.0001) //    123 ------------------aaaaaaaaaaabbbbbbbbcccccccdddddeeeeefffffgggghhhhiiiijjjjkkkklllmmmmnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzz...
+(PID.TID 0002.0001) //    122 ------------------aaaaaaaaaaabbbbbbbbcccccccdddddeeeeefffffgggghhhhiiiijjjjkkkklllmmmmnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzz...
+(PID.TID 0002.0001) //    121 ------------------aaaaaaaaaaabbbbbbbbccccccddddddeeeeefffffgggghhhhiiiijjjjkkkklllmmmmnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzz...
+(PID.TID 0002.0001) //    120 ------------------aaaaaaaaaaabbbbbbbbccccccddddddeeeeefffffgggghhhhiiiijjjjkkkklllmmmmnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzz...
+(PID.TID 0002.0001) //    119 -----------------aaaaaaaaaaaabbbbbbbbccccccddddddeeeeefffffgggghhhhiiiijjjjkkkklllmmmmnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzz...
+(PID.TID 0002.0001) //    118 -----------------aaaaaaaaaaaabbbbbbbbccccccddddddeeeeefffffgggghhhhiiiijjjjkkkklllmmmnnnnooopppqqqrrrrssstttuuuvvvwwwxxxyyyzz...
+(PID.TID 0002.0001) //    117 ----------------aaaaaaaaaaaabbbbbbbbcccccccddddddeeeeefffffgggghhhhiiiijjjjkkkllllmmmnnnnooopppqqqrrrrssstttuuuvvvwwwxxxyyyzz...
+(PID.TID 0002.0001) //    116 ----------------aaaaaaaaaaaabbbbbbbbcccccccddddddeeeeeffffggggghhhhiiiijjjjkkkllllmmmnnnnooopppqqqrrrrssstttuuuvvvwwwxxxyyyzz...
+(PID.TID 0002.0001) //    115 ---------------aaaaaaaaaaaaabbbbbbbbcccccccdddddeeeeeeffffggggghhhhiiiijjjjkkkllllmmmnnnnooopppqqqrrrsssstttuuuvvvwwwxxxyyyzz...
+(PID.TID 0002.0001) //    114 --------------aaaaaaaaaaaaabbbbbbbbbccccccddddddeeeeefffffggggghhhhiiiijjjjkkkllllmmmnnnnooopppqqqrrrsssstttuuuvvvwwwxxxyyyzz...
+(PID.TID 0002.0001) //    113 -------------aaaaaaaaaaaaaabbbbbbbbcccccccddddddeeeeefffffgggghhhhhiiiijjjkkkkllllmmmnnnnooopppqqqrrrsssstttuuuvvvwwwxxxyyyzz...
+(PID.TID 0002.0001) //    112 ------------aaaaaaaaaaaaaabbbbbbbbbcccccccddddddeeeeefffffgggghhhhiiiijjjjkkkkllllmmmnnnoooopppqqqrrrsssttttuuuvvvwwwxxxyyyzz...
+(PID.TID 0002.0001) //    111 ----------aaaaaaaaaaaaaaaabbbbbbbbbcccccccdddddeeeeeefffffgggghhhhiiiijjjjkkkklllmmmmnnnoooopppqqqrrrssstttuuuuvvvwwwxxxyyyzz...
+(PID.TID 0002.0001) //    110 --------aaaaaaaaaaaaaaaaabbbbbbbbbcccccccddddddeeeeefffffggggghhhhiiiijjjjkkkklllmmmmnnnoooopppqqqrrrssstttuuuvvvvwwwxxxyyzzz...
+(PID.TID 0002.0001) //    109 aaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbcccccccddddddeeeeefffffggggghhhhiiiijjjjkkkklllmmmmnnnoooopppqqqrrrssstttuuuvvvwwwxxxyyyzzz...
+(PID.TID 0002.0001) //    108 aaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbcccccccdddddddeeeeefffffgggghhhhhiiiijjjjkkkllllmmmmnnnoooppppqqqrrrssstttuuuvvvwwwxxxyyyzzz...
+(PID.TID 0002.0001) //    107 aaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbcccccccddddddeeeeeefffffgggghhhhhiiiijjjjkkkllllmmmnnnnoooppppqqqrrrssstttuuuvvvwwwxxxyyyzzz...
+(PID.TID 0002.0001) //    106 aaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbccccccccddddddeeeeefffffggggghhhhiiiijjjjkkkkllllmmmnnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzzz...
+(PID.TID 0002.0001) //    105 aaaaaaaaaaaaaaaaaaaaabbbbbbbbbbccccccccddddddeeeeeefffffggggghhhhiiiijjjjkkkkllllmmmnnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzzz...
+(PID.TID 0002.0001) //    104 aaaaaaaaaaaaaaaaaaaabbbbbbbbbbbcccccccdddddddeeeeeefffffgggghhhhhiiiijjjjkkkklllmmmmnnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzzz...
+(PID.TID 0002.0001) //    103 aaaaaaaaaaaaaaaaaaabbbbbbbbbbbccccccccddddddeeeeeefffffggggghhhhiiiiijjjjkkkklllmmmmnnnoooopppqqqrrrrssstttuuuvvvwwwxxxyyyzzz...
+(PID.TID 0002.0001) //    102 aaaaaaaaaaaaaaaaabbbbbbbbbbbbccccccccdddddddeeeeeefffffggggghhhhiiiijjjjkkkkllllmmmmnnnoooopppqqqrrrrssstttuuuvvvwwwxxxyyyzzz...
+(PID.TID 0002.0001) //    101 aaaaaaaaaaaaaaabbbbbbbbbbbbbcccccccccddddddeeeeeeffffffgggghhhhhiiiijjjjkkkkllllmmmmnnnoooopppqqqrrrsssstttuuuvvvwwwxxxyyyzzz...
+(PID.TID 0002.0001) //    100 aaaaaaaaaaaaabbbbbbbbbbbbbbcccccccccdddddddeeeeeefffffggggghhhhhiiiijjjjkkkkllllmmmnnnnoooppppqqqrrrsssstttuuuvvvwwwxxxyyyzzz...
+(PID.TID 0002.0001) //     99 aaaaaaaaaabbbbbbbbbbbbbbbbcccccccccdddddddeeeeeeffffffggggghhhhiiiiijjjjkkkklllmmmmnnnnoooppppqqqrrrsssttttuuuvvvwwwxxxyyyzzz...
+(PID.TID 0002.0001) //     98 bbbbbbbbbbbbbbbbbbbbbbbbbcccccccccddddddddeeeeeefffffggggghhhhhiiiijjjjkkkkllllmmmmnnnnooopppqqqqrrrsssttttuuuvvvwwwxxxyyyzzz...
+(PID.TID 0002.0001) //     97 bbbbbbbbbbbbbbbbbbbbbbbbccccccccccdddddddeeeeeeffffffggggghhhhiiiiijjjjkkkkllllmmmmnnnoooopppqqqqrrrsssttttuuuvvvwwwxxxyyyzzz...
+(PID.TID 0002.0001) //     96 bbbbbbbbbbbbbbbbbbbbbbcccccccccccdddddddeeeeeeefffffggggghhhhhiiiiijjjjkkkkllllmmmnnnnoooopppqqqqrrrssstttuuuuvvvwwwxxxyyyzzz...
+(PID.TID 0002.0001) //     95 bbbbbbbbbbbbbbbbbbbbbcccccccccccdddddddeeeeeeeffffffggggghhhhhiiiijjjjkkkkklllmmmmnnnnoooppppqqqrrrrssstttuuuuvvvwwwxxxyyyzzz...
+(PID.TID 0002.0001) //     94 bbbbbbbbbbbbbbbbbbbccccccccccccddddddddeeeeeeffffffggggghhhhhiiiiijjjjkkkkllllmmmmnnnnoooppppqqqrrrrssstttuuuvvvvwwwxxxyyyzzz...
+(PID.TID 0002.0001) //     93 bbbbbbbbbbbbbbbbbccccccccccccdddddddddeeeeeeeffffffggggghhhhhiiiijjjjjkkkkllllmmmmnnnooooppppqqqrrrsssstttuuuvvvvwwwxxxyyyzzz...
+(PID.TID 0002.0001) //     92 bbbbbbbbbbbbbbccccccccccccccdddddddddeeeeeeeffffffggggghhhhhiiiiijjjjkkkkkllllmmmnnnnoooopppqqqqrrrsssstttuuuvvvvwwwxxxyyyzzz...
+(PID.TID 0002.0001) //     91 bbbbbbbbbbcccccccccccccccccdddddddddeeeeeeeffffffgggggghhhhhiiiiijjjjkkkkllllmmmmnnnnoooopppqqqqrrrsssstttuuuvvvwwwwxxxyyyzzz...
+(PID.TID 0002.0001) //     90 cccccccccccccccccccccccccddddddddddeeeeeeefffffffggggghhhhhiiiiijjjjjkkkkllllmmmmnnnnoooppppqqqrrrrsssttttuuuvvvwwwwxxxyyyzzz...
+(PID.TID 0002.0001) //     89 cccccccccccccccccccccccdddddddddddeeeeeeefffffffgggggghhhhhiiiiijjjjkkkklllllmmmmnnnooooppppqqqrrrrsssttttuuuvvvwwwwxxxyyyzzz...
+(PID.TID 0002.0001) //     88 ccccccccccccccccccccccddddddddddeeeeeeeefffffffgggggghhhhhiiiiijjjjjkkkkllllmmmmnnnnoooopppqqqqrrrrssstttuuuuvvvwwwxxxxyyyzzz...
+(PID.TID 0002.0001) //     87 cccccccccccccccccccddddddddddddeeeeeeeefffffffgggggghhhhhhiiiiijjjjkkkkkllllmmmmnnnnoooopppqqqqrrrsssstttuuuuvvvwwwxxxxyyyzzz...
+(PID.TID 0002.0001) //     86 cccccccccccccccccdddddddddddddeeeeeeeefffffffgggggghhhhhhiiiiijjjjjkkkkllllmmmmnnnnooooppppqqqqrrrsssstttuuuuvvvwwwxxxxyyyzzz...
+(PID.TID 0002.0001) //     85 cccccccccccccdddddddddddddddeeeeeeeeefffffffggggggghhhhhiiiiijjjjjkkkkkllllmmmmnnnnooooppppqqqrrrrsssstttuuuvvvvwwwxxxxyyyzzz...
+(PID.TID 0002.0001) //     84 ccccccddddddddddddddddddddeeeeeeeeeefffffffggggggghhhhhhiiiiijjjjjkkkklllllmmmmnnnnoooopppqqqqrrrrsssttttuuuvvvvwwwxxxxyyyzzz...
+(PID.TID 0002.0001) //     83 ddddddddddddddddddddddddeeeeeeeeeeefffffffggggggghhhhhhiiiiijjjjjkkkkkllllmmmmnnnnooooppppqqqqrrrrsssttttuuuvvvvwwwxxxyyyyzzz...
+(PID.TID 0002.0001) //     82 ddddddddddddddddddddddeeeeeeeeeeeffffffffggggggghhhhhhiiiiijjjjjkkkkklllllmmmmnnnnooooppppqqqqrrrssssttttuuuvvvvwwwxxxyyyyzzz...
+(PID.TID 0002.0001) //     81 ddddddddddddddddddddeeeeeeeeeeeeffffffffggggggghhhhhhiiiiiijjjjjkkkkkllllmmmmnnnnnooooppppqqqrrrrsssstttuuuuvvvwwwwxxxyyyyzzz...
+(PID.TID 0002.0001) //     80 ddddddddddddddddeeeeeeeeeeeeeefffffffffggggggghhhhhhiiiiiijjjjjkkkkklllllmmmmnnnnooooppppqqqqrrrrsssstttuuuuvvvwwwwxxxyyyyzzz...
+(PID.TID 0002.0001) //     79 ddddddddddddeeeeeeeeeeeeeeeeffffffffffggggggghhhhhhiiiiiijjjjjjkkkklllllmmmmmnnnnooooppppqqqqrrrrsssttttuuuuvvvwwwwxxxyyyyzzz...
+(PID.TID 0002.0001) //     78 eeeeeeeeeeeeeeeeeeeeeeeeeeffffffffffgggggggghhhhhhhiiiiijjjjjjkkkkklllllmmmmnnnnoooooppppqqqrrrrssssttttuuuvvvvwwwwxxxyyyyzzz...
+(PID.TID 0002.0001) //     77 eeeeeeeeeeeeeeeeeeeeeeeefffffffffffgggggggghhhhhhhiiiiiijjjjjkkkkklllllmmmmmnnnnooooppppqqqqrrrrssssttttuuuvvvvwwwxxxxyyyyzzz...
+(PID.TID 0002.0001) //     76 eeeeeeeeeeeeeeeeeeeeeffffffffffffgggggggghhhhhhhiiiiiiijjjjjkkkkklllllmmmmmnnnnoooooppppqqqqrrrrsssstttuuuuvvvvwwwxxxxyyyyzzz...
+(PID.TID 0002.0001) //     75 eeeeeeeeeeeeeeeeeffffffffffffffggggggggghhhhhhhiiiiiiijjjjjkkkkkklllllmmmmnnnnnooooppppqqqqrrrrssssttttuuuuvvvvwwwxxxxyyyyzzz...
+(PID.TID 0002.0001) //     74 eeeeeeeeeeeeeffffffffffffffffgggggggggghhhhhhhiiiiiiijjjjjjkkkkklllllmmmmmnnnnoooooppppqqqqrrrrssssttttuuuuvvvwwwwxxxxyyyzzzz...
+(PID.TID 0002.0001) //     73 fffffffffffffffffffffffffffgggggggggghhhhhhhhiiiiiiijjjjjjkkkkklllllmmmmmnnnnnoooopppppqqqqrrrrssssttttuuuvvvvwwwwxxxxyyyzzzz...
+(PID.TID 0002.0001) //     72 ffffffffffffffffffffffffggggggggggghhhhhhhhhiiiiiiijjjjjjkkkkkllllllmmmmmnnnnoooooppppqqqqrrrrssssttttuuuuvvvvwwwwxxxxyyyzzzz...
+(PID.TID 0002.0001) //     71 fffffffffffffffffffffgggggggggggghhhhhhhhhiiiiiiijjjjjjjkkkkkklllllmmmmmnnnnnoooopppppqqqqrrrrssssttttuuuuvvvvwwwwxxxxyyyzzzz...
+(PID.TID 0002.0001) //     70 fffffffffffffffffgggggggggggggghhhhhhhhhhiiiiiiijjjjjjjkkkkkklllllmmmmmnnnnnoooooppppqqqqqrrrrssssttttuuuuvvvvwwwwxxxyyyyzzzz...
+(PID.TID 0002.0001) //     69 fffffffffffgggggggggggggggggghhhhhhhhhhiiiiiiiijjjjjjjkkkkkklllllmmmmmmnnnnooooopppppqqqqrrrrsssssttttuuuuvvvvwwwxxxxyyyyzzzz...
+(PID.TID 0002.0001) //     68 gggggggggggggggggggggggggghhhhhhhhhhhiiiiiiiijjjjjjjkkkkkkklllllmmmmmmnnnnnoooooppppqqqqqrrrrssssttttuuuuvvvvwwwwxxxxyyyyzzzz...
+(PID.TID 0002.0001) //     67 ggggggggggggggggggggggghhhhhhhhhhhhiiiiiiiiijjjjjjjkkkkkkkllllllmmmmmnnnnnooooopppppqqqqrrrrrssssttttuuuuvvvvwwwwxxxxyyyyzzzz...
+(PID.TID 0002.0001) //     66 ggggggggggggggggggghhhhhhhhhhhhhhiiiiiiiiijjjjjjjjkkkkkkkllllllmmmmmnnnnnooooopppppqqqqqrrrrsssstttttuuuuvvvvwwwwxxxxyyyyzzzz...
+(PID.TID 0002.0001) //     65 gggggggggggggghhhhhhhhhhhhhhhhiiiiiiiiiiijjjjjjjjkkkkkklllllllmmmmmnnnnnnooooopppppqqqqrrrrrssssttttuuuuuvvvvwwwwxxxxyyyyzzzz...
+(PID.TID 0002.0001) //     64 hhhhhhhhhhhhhhhhhhhhhhhhhhhhiiiiiiiiiiijjjjjjjjkkkkkkklllllllmmmmmnnnnnnooooopppppqqqqqrrrrsssssttttuuuuvvvvvwwwwxxxxyyyyzzzz...
+(PID.TID 0002.0001) //     63 hhhhhhhhhhhhhhhhhhhhhhhhiiiiiiiiiiiiijjjjjjjjkkkkkkkkllllllmmmmmmnnnnnnooooopppppqqqqqrrrrrsssstttttuuuuvvvvwwwwxxxxxyyyyzzzz...
+(PID.TID 0002.0001) //     62 hhhhhhhhhhhhhhhhhhhhhiiiiiiiiiiiiijjjjjjjjjjkkkkkkklllllllmmmmmmnnnnnnoooooopppppqqqqqrrrrsssssttttuuuuuvvvvwwwwxxxxxyyyyzzzz...
+(PID.TID 0002.0001) //     61 hhhhhhhhhhhhhhhiiiiiiiiiiiiiiiiijjjjjjjjjjkkkkkkkklllllllmmmmmmnnnnnnoooooopppppqqqqqrrrrrsssstttttuuuuvvvvvwwwwxxxxyyyyyzzzz...
+(PID.TID 0002.0001) //     60 iiiiiiiiiiiiiiiiiiiiiiiiiiiiijjjjjjjjjjjkkkkkkkkllllllllmmmmmmnnnnnnoooooopppppqqqqqrrrrrssssstttttuuuuvvvvvwwwwxxxxyyyyyzzzz...
+(PID.TID 0002.0001) //     59 iiiiiiiiiiiiiiiiiiiiiiiiijjjjjjjjjjjjjkkkkkkkkklllllllmmmmmmmnnnnnnoooooopppppqqqqqqrrrrrsssstttttuuuuuvvvvwwwwwxxxxyyyyzzzzz...
+(PID.TID 0002.0001) //     58 iiiiiiiiiiiiiiiiiiiiijjjjjjjjjjjjjjkkkkkkkkkkllllllllmmmmmmmnnnnnnooooooppppppqqqqqrrrrrssssstttttuuuuvvvvvwwwwxxxxxyyyyzzzzz...
+(PID.TID 0002.0001) //     57 iiiiiiiiiiiiiiijjjjjjjjjjjjjjjjjkkkkkkkkkkkllllllllmmmmmmmmnnnnnnooooooppppppqqqqqrrrrrssssstttttuuuuuvvvvvwwwwxxxxxyyyyzzzzz...
+(PID.TID 0002.0001) //     56 jjjjjjjjjjjjjjjjjjjjjjjjjjjjjkkkkkkkkkkkklllllllllmmmmmmmnnnnnnnooooooppppppqqqqqqrrrrrssssstttttuuuuuvvvvwwwwwxxxxxyyyyzzzzz...
+(PID.TID 0002.0001) //     55 jjjjjjjjjjjjjjjjjjjjjjjjjkkkkkkkkkkkkkllllllllllmmmmmmmmnnnnnnnooooooppppppqqqqqqrrrrrssssstttttuuuuuvvvvvwwwwwxxxxyyyyyzzzzz...
+(PID.TID 0002.0001) //     54 jjjjjjjjjjjjjjjjjjjjjkkkkkkkkkkkkkkkllllllllllmmmmmmmmnnnnnnnoooooooppppppqqqqqqrrrrrsssssstttttuuuuuvvvvvwwwwxxxxxyyyyyzzzzz...
+(PID.TID 0002.0001) //     53 jjjjjjjjjjjjjjkkkkkkkkkkkkkkkkkkklllllllllllmmmmmmmmnnnnnnnnoooooooppppppqqqqqqrrrrrrssssstttttuuuuuvvvvvwwwwwxxxxxyyyyyzzzzz...
+(PID.TID 0002.0001) //     52 kkkkkkkkkkkkkkkkkkkkkkkkkkkkkllllllllllllmmmmmmmmmmnnnnnnnooooooooppppppqqqqqqrrrrrrsssssttttttuuuuuvvvvvwwwwwxxxxxyyyyyzzzzz...
+(PID.TID 0002.0001) //     51 kkkkkkkkkkkkkkkkkkkkkkkkkllllllllllllllmmmmmmmmmmnnnnnnnnooooooopppppppqqqqqqrrrrrrsssssstttttuuuuuvvvvvvwwwwwxxxxxyyyyyzzzz+...
+(PID.TID 0002.0001) //     50 kkkkkkkkkkkkkkkkkkklllllllllllllllllmmmmmmmmmmnnnnnnnnnoooooooopppppppqqqqqqrrrrrrssssssttttttuuuuuvvvvvwwwwwxxxxxyyyyyzzzzz+...
+(PID.TID 0002.0001) //     49 kkkkkkkkkkllllllllllllllllllllllmmmmmmmmmmmmnnnnnnnnnoooooooopppppppqqqqqqqrrrrrrssssssttttttuuuuuvvvvvvwwwwwxxxxxyyyyyzzzzz+...
+(PID.TID 0002.0001) //     48 llllllllllllllllllllllllllllmmmmmmmmmmmmmnnnnnnnnnnooooooooopppppppqqqqqqqrrrrrrssssssttttttuuuuuuvvvvvwwwwwwxxxxxyyyyyzzzzz+...
+(PID.TID 0002.0001) //     47 lllllllllllllllllllllllmmmmmmmmmmmmmmmmnnnnnnnnnnoooooooooppppppppqqqqqqqrrrrrrsssssssttttttuuuuuvvvvvvwwwwwxxxxxxyyyyyzzzzz+...
+(PID.TID 0002.0001) //     46 llllllllllllllllmmmmmmmmmmmmmmmmmmmnnnnnnnnnnnnoooooooooppppppppqqqqqqqqrrrrrrsssssssttttttuuuuuuvvvvvwwwwwwxxxxxyyyyyyzzzzz+...
+(PID.TID 0002.0001) //     45 mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmnnnnnnnnnnnnnoooooooooopppppppppqqqqqqqrrrrrrrsssssssttttttuuuuuuvvvvvvwwwwwwxxxxxyyyyyyzzzzz+...
+(PID.TID 0002.0001) //     44 mmmmmmmmmmmmmmmmmmmmmmmmmmmnnnnnnnnnnnnnnooooooooooopppppppppqqqqqqqqrrrrrrrsssssssttttttuuuuuuvvvvvvwwwwwwxxxxxxyyyyyyzzzzz+...
+(PID.TID 0002.0001) //     43 mmmmmmmmmmmmmmmmmmmmnnnnnnnnnnnnnnnnnnoooooooooooopppppppppqqqqqqqqrrrrrrrrsssssssttttttuuuuuuuvvvvvvwwwwwwxxxxxxyyyyyzzzzzz+...
+(PID.TID 0002.0001) //     42 mmmmmmmmmnnnnnnnnnnnnnnnnnnnnnnnnnoooooooooooooppppppppppqqqqqqqqqrrrrrrrssssssssttttttuuuuuuuvvvvvvwwwwwwxxxxxxyyyyyyzzzzzz+...
+(PID.TID 0002.0001) //     41 nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnoooooooooooooopppppppppppqqqqqqqqqrrrrrrrrssssssstttttttuuuuuuuvvvvvvvwwwwwwxxxxxxyyyyyyzzzzzz+...
+(PID.TID 0002.0001) //     40 nnnnnnnnnnnnnnnnnnnnnnnnooooooooooooooooopppppppppppqqqqqqqqqqrrrrrrrrsssssssstttttttuuuuuuuvvvvvvvwwwwwwxxxxxxxyyyyyyzzzzzz+...
+(PID.TID 0002.0001) //     39 nnnnnnnnnnnnnnnoooooooooooooooooooooopppppppppppppqqqqqqqqqqrrrrrrrrrsssssssstttttttuuuuuuuvvvvvvvwwwwwwwxxxxxxyyyyyyyzzzzzz+...
+(PID.TID 0002.0001) //     38 oooooooooooooooooooooooooooooooopppppppppppppppqqqqqqqqqqqrrrrrrrrrssssssssttttttttuuuuuuuvvvvvvvwwwwwwwxxxxxxxyyyyyyzzzzzzz+...
+(PID.TID 0002.0001) //     37 oooooooooooooooooooooooooooppppppppppppppppqqqqqqqqqqqqrrrrrrrrrrsssssssssttttttttuuuuuuuvvvvvvvvwwwwwwwxxxxxxyyyyyyyzzzzzzz+...
+(PID.TID 0002.0001) //     36 oooooooooooooooooooppppppppppppppppppppqqqqqqqqqqqqqrrrrrrrrrrrssssssssstttttttttuuuuuuuvvvvvvvvwwwwwwwxxxxxxxyyyyyyyzzzzzzz+...
+(PID.TID 0002.0001) //     35 pppppppppppppppppppppppppppppppppppqqqqqqqqqqqqqqrrrrrrrrrrrrssssssssstttttttttuuuuuuuuvvvvvvvvwwwwwwwxxxxxxxyyyyyyyyzzzzzz++...
+(PID.TID 0002.0001) //     34 pppppppppppppppppppppppppppppqqqqqqqqqqqqqqqqqrrrrrrrrrrrrssssssssssttttttttttuuuuuuuuvvvvvvvvwwwwwwwwxxxxxxxyyyyyyyzzzzzzz++...
+(PID.TID 0002.0001) //     33 pppppppppppppppppppppqqqqqqqqqqqqqqqqqqqqqrrrrrrrrrrrrrsssssssssssttttttttttuuuuuuuuuvvvvvvvvwwwwwwwwxxxxxxxyyyyyyyyzzzzzzz++...
+(PID.TID 0002.0001) //     32 qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqrrrrrrrrrrrrrrrssssssssssssttttttttttuuuuuuuuuvvvvvvvvvwwwwwwwwxxxxxxxxyyyyyyyyzzzzzzz++...
+(PID.TID 0002.0001) //     31 qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqrrrrrrrrrrrrrrrrrsssssssssssstttttttttttuuuuuuuuuuvvvvvvvvvwwwwwwwwxxxxxxxxyyyyyyyyzzzzzzzz++...
+(PID.TID 0002.0001) //     30 qqqqqqqqqqqqqqqqqqqqqqqqrrrrrrrrrrrrrrrrrrrrrsssssssssssssstttttttttttuuuuuuuuuuvvvvvvvvvwwwwwwwwwxxxxxxxxxyyyyyyyyzzzzzzzz++...
+(PID.TID 0002.0001) //     29 qqqqqqqqqrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrssssssssssssssstttttttttttttuuuuuuuuuuvvvvvvvvvvwwwwwwwwwxxxxxxxxxyyyyyyyyzzzzzzzzz++...
+(PID.TID 0002.0001) //     28 rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrsssssssssssssssssstttttttttttttuuuuuuuuuuuvvvvvvvvvvvwwwwwwwwwxxxxxxxxxyyyyyyyyyzzzzzzzzz++...
+(PID.TID 0002.0001) //     27 rrrrrrrrrrrrrrrrrrrrrrrrrrssssssssssssssssssssssttttttttttttttuuuuuuuuuuuuvvvvvvvvvvvwwwwwwwwwwxxxxxxxxxyyyyyyyyyzzzzzzzzz+++...
+(PID.TID 0002.0001) //     26 rrrrrrrrrrrrsssssssssssssssssssssssssssssssttttttttttttttttuuuuuuuuuuuuuvvvvvvvvvvvwwwwwwwwwwwxxxxxxxxxyyyyyyyyyyzzzzzzzzz+++...
+(PID.TID 0002.0001) //     25 sssssssssssssssssssssssssssssssssssssttttttttttttttttttuuuuuuuuuuuuuuvvvvvvvvvvvvwwwwwwwwwwwxxxxxxxxxxxyyyyyyyyyzzzzzzzzzz+++...
+(PID.TID 0002.0001) //     24 sssssssssssssssssssssssssssstttttttttttttttttttttttuuuuuuuuuuuuuuuvvvvvvvvvvvvvwwwwwwwwwwwwxxxxxxxxxxyyyyyyyyyyyzzzzzzzzzz+++...
+(PID.TID 0002.0001) //     23 ssssssssssssssstttttttttttttttttttttttttttttttuuuuuuuuuuuuuuuuuvvvvvvvvvvvvvvwwwwwwwwwwwwxxxxxxxxxxxyyyyyyyyyyyzzzzzzzzzzz+++...
+(PID.TID 0002.0001) //     22 tttttttttttttttttttttttttttttttttttttttuuuuuuuuuuuuuuuuuuuuvvvvvvvvvvvvvvvwwwwwwwwwwwwwxxxxxxxxxxxxyyyyyyyyyyyzzzzzzzzzzz++++...
+(PID.TID 0002.0001) //     21 tttttttttttttttttttttttttttttttuuuuuuuuuuuuuuuuuuuuuuuvvvvvvvvvvvvvvvvvwwwwwwwwwwwwwwxxxxxxxxxxxxxyyyyyyyyyyyyzzzzzzzzzzz++++...
+(PID.TID 0002.0001) //     20 ttttttttttttttttuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuvvvvvvvvvvvvvvvvvvvwwwwwwwwwwwwwwwxxxxxxxxxxxxxyyyyyyyyyyyyyzzzzzzzzzzzz++++...
+(PID.TID 0002.0001) //     19 uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuvvvvvvvvvvvvvvvvvvvvvvwwwwwwwwwwwwwwwwxxxxxxxxxxxxxxyyyyyyyyyyyyyyzzzzzzzzzzzz+++++...
+(PID.TID 0002.0001) //     18 uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuvvvvvvvvvvvvvvvvvvvvvvvvvvwwwwwwwwwwwwwwwwwwxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyzzzzzzzzzzzzz+++++...
+(PID.TID 0002.0001) //     17 uuuuuuuuuuuuuuuuuvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvwwwwwwwwwwwwwwwwwwwwxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyzzzzzzzzzzzzzzz+++++...
+(PID.TID 0002.0001) //     16 vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvwwwwwwwwwwwwwwwwwwwwwwwxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzz++++++...
+(PID.TID 0002.0001) //     15 vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvwwwwwwwwwwwwwwwwwwwwwwwwwwwwxxxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzz++++++...
+(PID.TID 0002.0001) //     14 vvvvvvvvvvvvvvvvvvwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxxxxxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzzz+++++++...
+(PID.TID 0002.0001) //     13 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxxxxxxxxxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzzzz++++++++...
+(PID.TID 0002.0001) //     12 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzzzzzz++++++++...
+(PID.TID 0002.0001) //     11 wwwwwwwwwwwwwwwwwwxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzzzzzzzz+++++++++...
+(PID.TID 0002.0001) //     10 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzzzzzzzzzz+++++++++++...
+(PID.TID 0002.0001) //      9 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzzzzzzzzzzzzzz++++++++++++...
+(PID.TID 0002.0001) //      8 xxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz++++++++++++++...
+(PID.TID 0002.0001) //      7 yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz+++++++++++++++++...
+(PID.TID 0002.0001) //      6 yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz++++++++++++++++++++...
+(PID.TID 0002.0001) //      5 yyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz+++++++++++++++++++++++++...
+(PID.TID 0002.0001) //      4 zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz+++++++++++++++++++++++++++++++++...
+(PID.TID 0002.0001) //      3 zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz+++++++++++++++++++++++++++++++++++++++++++++++++...
+(PID.TID 0002.0001) //      2 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++...
+(PID.TID 0002.0001) //      1 ................................................................................................................................
+(PID.TID 0002.0001) //      0 ................................................................................................................................
+(PID.TID 0002.0001) //     -1 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++...
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) // END OF FIELD                                          =
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) 
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) // Field hFacS at iteration          0
+(PID.TID 0002.0001) // CMIN =          9.000040039062500E-01
+(PID.TID 0002.0001) // CMAX =          9.999398437500000E-01
+(PID.TID 0002.0001) // CINT =          3.701327401620370E-03
+(PID.TID 0002.0001) // SYMBOLS (CMIN->CMAX): -abcdefghijklmnopqrstuvwxyz+
+(PID.TID 0002.0001) //                  0.0: .
+(PID.TID 0002.0001) // RANGE I (Lo:Hi:Step):(   123:   250:     1)
+(PID.TID 0002.0001) // RANGE J (Lo:Hi:Step):(   126:    -1:    -1)
+(PID.TID 0002.0001) // RANGE K (Lo:Hi:Step):(   1:   1:   1)
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) K =   1
+(PID.TID 0002.0001) //                I=132     I=142     I=152     I=162     I=172     I=182     I=192     I=202     I=212     I=222     I=232     I=242
+(PID.TID 0002.0001) // |--J--|345678901|345678901|345678901|345678901|345678901|345678901|345678901|345678901|345678901|345678901|345678901|345678901|34567890
+(PID.TID 0002.0001) //    126 -----------------aaaaaaaaaaabbbbbbbbcccccccdddddeeeeefffffgggghhhhiiiijjjjkkkklllmmmmnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzz+..+
+(PID.TID 0002.0001) //    125 -----------------aaaaaaaaaaabbbbbbbbcccccccdddddeeeeefffffgggghhhhiiiijjjjkkkklllmmmmnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzz+..+
+(PID.TID 0002.0001) //    124 -----------------aaaaaaaaaaabbbbbbbbcccccccdddddeeeeefffffgggghhhhiiiijjjjkkkklllmmmmnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzz+..+
+(PID.TID 0002.0001) //    123 -----------------aaaaaaaaaaabbbbbbbbcccccccdddddeeeeefffffgggghhhhiiiijjjjkkkklllmmmmnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzz+..+
+(PID.TID 0002.0001) //    122 -----------------aaaaaaaaaaabbbbbbbbcccccccdddddeeeeefffffgggghhhhiiiijjjjkkkklllmmmmnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzz+..+
+(PID.TID 0002.0001) //    121 -----------------aaaaaaaaaaabbbbbbbbccccccddddddeeeeefffffgggghhhhiiiijjjjkkkklllmmmmnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzz+..+
+(PID.TID 0002.0001) //    120 -----------------aaaaaaaaaaabbbbbbbbccccccddddddeeeeefffffgggghhhhiiiijjjjkkkklllmmmmnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzz+..+
+(PID.TID 0002.0001) //    119 ----------------aaaaaaaaaaaabbbbbbbbccccccddddddeeeeefffffgggghhhhiiiijjjjkkkklllmmmmnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzz+..+
+(PID.TID 0002.0001) //    118 ----------------aaaaaaaaaaaabbbbbbbbccccccddddddeeeeefffffgggghhhhiiiijjjjkkkklllmmmnnnnooopppqqqrrrrssstttuuuvvvwwwxxxyyyzz+..+
+(PID.TID 0002.0001) //    117 ---------------aaaaaaaaaaaabbbbbbbbcccccccddddddeeeeefffffgggghhhhiiiijjjjkkkllllmmmnnnnooopppqqqrrrrssstttuuuvvvwwwxxxyyyzz+..+
+(PID.TID 0002.0001) //    116 ---------------aaaaaaaaaaaabbbbbbbbcccccccddddddeeeeeffffggggghhhhiiiijjjjkkkllllmmmnnnnooopppqqqrrrrssstttuuuvvvwwwxxxyyyzz+..+
+(PID.TID 0002.0001) //    115 --------------aaaaaaaaaaaaabbbbbbbbcccccccdddddeeeeeeffffggggghhhhiiiijjjjkkkllllmmmnnnnooopppqqqrrrsssstttuuuvvvwwwxxxyyyzz+..+
+(PID.TID 0002.0001) //    114 -------------aaaaaaaaaaaaabbbbbbbbbccccccddddddeeeeefffffggggghhhhiiiijjjjkkkllllmmmnnnnooopppqqqrrrsssstttuuuvvvwwwxxxyyyzz+..+
+(PID.TID 0002.0001) //    113 ------------aaaaaaaaaaaaaabbbbbbbbcccccccddddddeeeeefffffgggghhhhhiiiijjjkkkkllllmmmnnnnooopppqqqrrrsssstttuuuvvvwwwxxxyyyzz+..+
+(PID.TID 0002.0001) //    112 -----------aaaaaaaaaaaaaabbbbbbbbbcccccccddddddeeeeefffffgggghhhhiiiijjjjkkkkllllmmmnnnoooopppqqqrrrsssttttuuuvvvwwwxxxyyyzz+..+
+(PID.TID 0002.0001) //    111 ---------aaaaaaaaaaaaaaaabbbbbbbbbcccccccdddddeeeeeefffffgggghhhhiiiijjjjkkkklllmmmmnnnoooopppqqqrrrssstttuuuuvvvwwwxxxyyyzz+..+
+(PID.TID 0002.0001) //    110 -------aaaaaaaaaaaaaaaaabbbbbbbbbcccccccddddddeeeeefffffggggghhhhiiiijjjjkkkklllmmmmnnnoooopppqqqrrrssstttuuuvvvvwwwxxxyyzzz+..+
+(PID.TID 0002.0001) //    109 aaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbcccccccddddddeeeeefffffggggghhhhiiiijjjjkkkklllmmmmnnnoooopppqqqrrrssstttuuuvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //    108 aaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbcccccccdddddddeeeeefffffgggghhhhhiiiijjjjkkkllllmmmmnnnoooppppqqqrrrssstttuuuvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //    107 aaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbcccccccddddddeeeeeefffffgggghhhhhiiiijjjjkkkllllmmmnnnnoooppppqqqrrrssstttuuuvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //    106 aaaaaaaaaaaaaaaaaaaaabbbbbbbbbbccccccccddddddeeeeefffffggggghhhhiiiijjjjkkkkllllmmmnnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //    105 aaaaaaaaaaaaaaaaaaaabbbbbbbbbbccccccccddddddeeeeeefffffggggghhhhiiiijjjjkkkkllllmmmnnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //    104 aaaaaaaaaaaaaaaaaaabbbbbbbbbbbcccccccdddddddeeeeeefffffgggghhhhhiiiijjjjkkkklllmmmmnnnnooopppqqqqrrrssstttuuuvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //    103 aaaaaaaaaaaaaaaaaabbbbbbbbbbbccccccccddddddeeeeeefffffggggghhhhiiiiijjjjkkkklllmmmmnnnoooopppqqqrrrrssstttuuuvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //    102 aaaaaaaaaaaaaaaabbbbbbbbbbbbccccccccdddddddeeeeeefffffggggghhhhiiiijjjjkkkkllllmmmmnnnoooopppqqqrrrrssstttuuuvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //    101 aaaaaaaaaaaaaabbbbbbbbbbbbbcccccccccddddddeeeeeeffffffgggghhhhhiiiijjjjkkkkllllmmmmnnnoooopppqqqrrrsssstttuuuvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //    100 aaaaaaaaaaaabbbbbbbbbbbbbbcccccccccdddddddeeeeeefffffggggghhhhhiiiijjjjkkkkllllmmmnnnnoooppppqqqrrrsssstttuuuvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //     99 aaaaaaaaabbbbbbbbbbbbbbbbcccccccccdddddddeeeeeeffffffggggghhhhiiiiijjjjkkkklllmmmmnnnnoooppppqqqrrrsssttttuuuvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //     98 bbbbbbbbbbbbbbbbbbbbbbbbcccccccccddddddddeeeeeefffffggggghhhhhiiiijjjjkkkkllllmmmmnnnnooopppqqqqrrrsssttttuuuvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //     97 bbbbbbbbbbbbbbbbbbbbbbbccccccccccdddddddeeeeeeffffffggggghhhhiiiiijjjjkkkkllllmmmmnnnoooopppqqqqrrrsssttttuuuvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //     96 bbbbbbbbbbbbbbbbbbbbbcccccccccccdddddddeeeeeeefffffggggghhhhhiiiiijjjjkkkkllllmmmnnnnoooopppqqqqrrrssstttuuuuvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //     95 bbbbbbbbbbbbbbbbbbbbcccccccccccdddddddeeeeeeeffffffggggghhhhhiiiijjjjkkkkklllmmmmnnnnoooppppqqqrrrrssstttuuuuvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //     94 bbbbbbbbbbbbbbbbbbccccccccccccddddddddeeeeeeffffffggggghhhhhiiiiijjjjkkkkllllmmmmnnnnoooppppqqqrrrrssstttuuuvvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //     93 bbbbbbbbbbbbbbbbccccccccccccdddddddddeeeeeeeffffffggggghhhhhiiiijjjjjkkkkllllmmmmnnnooooppppqqqrrrsssstttuuuvvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //     92 bbbbbbbbbbbbbccccccccccccccdddddddddeeeeeeeffffffggggghhhhhiiiiijjjjkkkkkllllmmmnnnnoooopppqqqqrrrsssstttuuuvvvvwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //     91 bbbbbbbbbcccccccccccccccccdddddddddeeeeeeeffffffgggggghhhhhiiiiijjjjkkkkllllmmmmnnnnoooopppqqqqrrrsssstttuuuvvvwwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //     90 ccccccccccccccccccccccccddddddddddeeeeeeefffffffggggghhhhhiiiiijjjjjkkkkllllmmmmnnnnoooppppqqqrrrrsssttttuuuvvvwwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //     89 ccccccccccccccccccccccdddddddddddeeeeeeefffffffgggggghhhhhiiiiijjjjkkkklllllmmmmnnnooooppppqqqrrrrsssttttuuuvvvwwwwxxxyyyzzz+..+
+(PID.TID 0002.0001) //     88 cccccccccccccccccccccddddddddddeeeeeeeefffffffgggggghhhhhiiiiijjjjjkkkkllllmmmmnnnnoooopppqqqqrrrrssstttuuuuvvvwwwxxxxyyyzzz+..+
+(PID.TID 0002.0001) //     87 ccccccccccccccccccddddddddddddeeeeeeeefffffffgggggghhhhhhiiiiijjjjkkkkkllllmmmmnnnnoooopppqqqqrrrsssstttuuuuvvvwwwxxxxyyyzzz+..+
+(PID.TID 0002.0001) //     86 ccccccccccccccccdddddddddddddeeeeeeeefffffffgggggghhhhhhiiiiijjjjjkkkkllllmmmmnnnnooooppppqqqqrrrsssstttuuuuvvvwwwxxxxyyyzzz+..+
+(PID.TID 0002.0001) //     85 ccccccccccccdddddddddddddddeeeeeeeeefffffffggggggghhhhhiiiiijjjjjkkkkkllllmmmmnnnnooooppppqqqrrrrsssstttuuuvvvvwwwxxxxyyyzzz+..+
+(PID.TID 0002.0001) //     84 cccccddddddddddddddddddddeeeeeeeeeefffffffggggggghhhhhhiiiiijjjjjkkkklllllmmmmnnnnoooopppqqqqrrrrsssttttuuuvvvvwwwxxxxyyyzzz+..+
+(PID.TID 0002.0001) //     83 dddddddddddddddddddddddeeeeeeeeeeefffffffggggggghhhhhhiiiiijjjjjkkkkkllllmmmmnnnnooooppppqqqqrrrrsssttttuuuvvvvwwwxxxyyyyzzz+..+
+(PID.TID 0002.0001) //     82 dddddddddddddddddddddeeeeeeeeeeeffffffffggggggghhhhhhiiiiijjjjjkkkkklllllmmmmnnnnooooppppqqqqrrrssssttttuuuvvvvwwwxxxyyyyzzz+..+
+(PID.TID 0002.0001) //     81 dddddddddddddddddddeeeeeeeeeeeeffffffffggggggghhhhhhiiiiiijjjjjkkkkkllllmmmmnnnnnooooppppqqqrrrrsssstttuuuuvvvwwwwxxxyyyyzzz+..+
+(PID.TID 0002.0001) //     80 dddddddddddddddeeeeeeeeeeeeeefffffffffggggggghhhhhhiiiiiijjjjjkkkkklllllmmmmnnnnooooppppqqqqrrrrsssstttuuuuvvvwwwwxxxyyyyzzz+..+
+(PID.TID 0002.0001) //     79 dddddddddddeeeeeeeeeeeeeeeeffffffffffggggggghhhhhhiiiiiijjjjjjkkkklllllmmmmmnnnnooooppppqqqqrrrrsssttttuuuuvvvwwwwxxxyyyyzzz+..+
+(PID.TID 0002.0001) //     78 eeeeeeeeeeeeeeeeeeeeeeeeeffffffffffgggggggghhhhhhhiiiiijjjjjjkkkkklllllmmmmnnnnoooooppppqqqrrrrssssttttuuuvvvvwwwwxxxyyyyzzz+..+
+(PID.TID 0002.0001) //     77 eeeeeeeeeeeeeeeeeeeeeeefffffffffffgggggggghhhhhhhiiiiiijjjjjkkkkklllllmmmmmnnnnooooppppqqqqrrrrssssttttuuuvvvvwwwxxxxyyyyzzz+..+
+(PID.TID 0002.0001) //     76 eeeeeeeeeeeeeeeeeeeeffffffffffffgggggggghhhhhhhiiiiiiijjjjjkkkkklllllmmmmmnnnnoooooppppqqqqrrrrsssstttuuuuvvvvwwwxxxxyyyyzzz+..+
+(PID.TID 0002.0001) //     75 eeeeeeeeeeeeeeeeffffffffffffffggggggggghhhhhhhiiiiiiijjjjjkkkkkklllllmmmmnnnnnooooppppqqqqrrrrssssttttuuuuvvvvwwwxxxxyyyyzzz+..+
+(PID.TID 0002.0001) //     74 eeeeeeeeeeeeffffffffffffffffgggggggggghhhhhhhiiiiiiijjjjjjkkkkklllllmmmmmnnnnoooooppppqqqqrrrrssssttttuuuuvvvwwwwxxxxyyyzzzz+..+
+(PID.TID 0002.0001) //     73 ffffffffffffffffffffffffffgggggggggghhhhhhhhiiiiiiijjjjjjkkkkklllllmmmmmnnnnnoooopppppqqqqrrrrssssttttuuuvvvvwwwwxxxxyyyzzzz+..+
+(PID.TID 0002.0001) //     72 fffffffffffffffffffffffggggggggggghhhhhhhhhiiiiiiijjjjjjkkkkkllllllmmmmmnnnnoooooppppqqqqrrrrssssttttuuuuvvvvwwwwxxxxyyyzzzz+..+
+(PID.TID 0002.0001) //     71 ffffffffffffffffffffgggggggggggghhhhhhhhhiiiiiiijjjjjjjkkkkkklllllmmmmmnnnnnoooopppppqqqqrrrrssssttttuuuuvvvvwwwwxxxxyyyzzzz+..+
+(PID.TID 0002.0001) //     70 ffffffffffffffffgggggggggggggghhhhhhhhhhiiiiiiijjjjjjjkkkkkklllllmmmmmnnnnnoooooppppqqqqqrrrrssssttttuuuuvvvvwwwwxxxyyyyzzzz+..+
+(PID.TID 0002.0001) //     69 ffffffffffgggggggggggggggggghhhhhhhhhhiiiiiiiijjjjjjjkkkkkklllllmmmmmmnnnnooooopppppqqqqrrrrsssssttttuuuuvvvvwwwxxxxyyyyzzzz+..+
+(PID.TID 0002.0001) //     68 ggggggggggggggggggggggggghhhhhhhhhhhiiiiiiiijjjjjjjkkkkkkklllllmmmmmmnnnnnoooooppppqqqqqrrrrssssttttuuuuvvvvwwwwxxxxyyyyzzzz+..+
+(PID.TID 0002.0001) //     67 gggggggggggggggggggggghhhhhhhhhhhhiiiiiiiiijjjjjjjkkkkkkkllllllmmmmmnnnnnooooopppppqqqqrrrrrssssttttuuuuvvvvwwwwxxxxyyyyzzzz+..+
+(PID.TID 0002.0001) //     66 gggggggggggggggggghhhhhhhhhhhhhhiiiiiiiiijjjjjjjjkkkkkkkllllllmmmmmnnnnnooooopppppqqqqqrrrrsssstttttuuuuvvvvwwwwxxxxyyyyzzzz+..+
+(PID.TID 0002.0001) //     65 ggggggggggggghhhhhhhhhhhhhhhhiiiiiiiiiiijjjjjjjjkkkkkklllllllmmmmmnnnnnnooooopppppqqqqrrrrrssssttttuuuuuvvvvwwwwxxxxyyyyzzzz+..+
+(PID.TID 0002.0001) //     64 hhhhhhhhhhhhhhhhhhhhhhhhhhhiiiiiiiiiiijjjjjjjjkkkkkkklllllllmmmmmnnnnnnooooopppppqqqqqrrrrsssssttttuuuuvvvvvwwwwxxxxyyyyzzzz+..+
+(PID.TID 0002.0001) //     63 hhhhhhhhhhhhhhhhhhhhhhhiiiiiiiiiiiiijjjjjjjjkkkkkkkkllllllmmmmmmnnnnnnooooopppppqqqqqrrrrrsssstttttuuuuvvvvwwwwxxxxxyyyyzzzz+..+
+(PID.TID 0002.0001) //     62 hhhhhhhhhhhhhhhhhhhhiiiiiiiiiiiiijjjjjjjjjjkkkkkkklllllllmmmmmmnnnnnnoooooopppppqqqqqrrrrsssssttttuuuuuvvvvwwwwxxxxxyyyyzzzz+..+
+(PID.TID 0002.0001) //     61 hhhhhhhhhhhhhhiiiiiiiiiiiiiiiiijjjjjjjjjjkkkkkkkklllllllmmmmmmnnnnnnoooooopppppqqqqqrrrrrsssstttttuuuuvvvvvwwwwxxxxyyyyyzzzz+..+
+(PID.TID 0002.0001) //     60 iiiiiiiiiiiiiiiiiiiiiiiiiiiijjjjjjjjjjjkkkkkkkkllllllllmmmmmmnnnnnnoooooopppppqqqqqrrrrrssssstttttuuuuvvvvvwwwwxxxxyyyyyzzzz+..+
+(PID.TID 0002.0001) //     59 iiiiiiiiiiiiiiiiiiiiiiiijjjjjjjjjjjjjkkkkkkkkklllllllmmmmmmmnnnnnnoooooopppppqqqqqqrrrrrsssstttttuuuuuvvvvwwwwwxxxxyyyyzzzzz+..+
+(PID.TID 0002.0001) //     58 iiiiiiiiiiiiiiiiiiiijjjjjjjjjjjjjjkkkkkkkkkkllllllllmmmmmmmnnnnnnooooooppppppqqqqqrrrrrssssstttttuuuuvvvvvwwwwxxxxxyyyyzzzzz+..+
+(PID.TID 0002.0001) //     57 iiiiiiiiiiiiiijjjjjjjjjjjjjjjjjkkkkkkkkkkkllllllllmmmmmmmmnnnnnnooooooppppppqqqqqrrrrrssssstttttuuuuuvvvvvwwwwxxxxxyyyyzzzzz+..+
+(PID.TID 0002.0001) //     56 jjjjjjjjjjjjjjjjjjjjjjjjjjjjkkkkkkkkkkkklllllllllmmmmmmmnnnnnnnooooooppppppqqqqqqrrrrrssssstttttuuuuuvvvvwwwwwxxxxxyyyyzzzzz+..+
+(PID.TID 0002.0001) //     55 jjjjjjjjjjjjjjjjjjjjjjjjkkkkkkkkkkkkkllllllllllmmmmmmmmnnnnnnnooooooppppppqqqqqqrrrrrssssstttttuuuuuvvvvvwwwwwxxxxyyyyyzzzzz+..+
+(PID.TID 0002.0001) //     54 jjjjjjjjjjjjjjjjjjjjkkkkkkkkkkkkkkkllllllllllmmmmmmmmnnnnnnnoooooooppppppqqqqqqrrrrrsssssstttttuuuuuvvvvvwwwwxxxxxyyyyyzzzzz+..+
+(PID.TID 0002.0001) //     53 jjjjjjjjjjjjjkkkkkkkkkkkkkkkkkkklllllllllllmmmmmmmmnnnnnnnnoooooooppppppqqqqqqrrrrrrssssstttttuuuuuvvvvvwwwwwxxxxxyyyyyzzzzz+..+
+(PID.TID 0002.0001) //     52 kkkkkkkkkkkkkkkkkkkkkkkkkkkkllllllllllllmmmmmmmmmmnnnnnnnooooooooppppppqqqqqqrrrrrrsssssttttttuuuuuvvvvvwwwwwxxxxxyyyyyzzzzz+..+
+(PID.TID 0002.0001) //     51 kkkkkkkkkkkkkkkkkkkkkkkkllllllllllllllmmmmmmmmmmnnnnnnnnooooooopppppppqqqqqqrrrrrrsssssstttttuuuuuvvvvvvwwwwwxxxxxyyyyyzzzz++..+
+(PID.TID 0002.0001) //     50 kkkkkkkkkkkkkkkkkklllllllllllllllllmmmmmmmmmmnnnnnnnnnoooooooopppppppqqqqqqrrrrrrssssssttttttuuuuuvvvvvwwwwwxxxxxyyyyyzzzzz++..+
+(PID.TID 0002.0001) //     49 kkkkkkkkkllllllllllllllllllllllmmmmmmmmmmmmnnnnnnnnnoooooooopppppppqqqqqqqrrrrrrssssssttttttuuuuuvvvvvvwwwwwxxxxxyyyyyzzzzz++..+
+(PID.TID 0002.0001) //     48 lllllllllllllllllllllllllllmmmmmmmmmmmmmnnnnnnnnnnooooooooopppppppqqqqqqqrrrrrrssssssttttttuuuuuuvvvvvwwwwwwxxxxxyyyyyzzzzz++..+
+(PID.TID 0002.0001) //     47 llllllllllllllllllllllmmmmmmmmmmmmmmmmnnnnnnnnnnoooooooooppppppppqqqqqqqrrrrrrsssssssttttttuuuuuvvvvvvwwwwwxxxxxxyyyyyzzzzz++..+
+(PID.TID 0002.0001) //     46 lllllllllllllllmmmmmmmmmmmmmmmmmmmnnnnnnnnnnnnoooooooooppppppppqqqqqqqqrrrrrrsssssssttttttuuuuuuvvvvvwwwwwwxxxxxyyyyyyzzzzz++..+
+(PID.TID 0002.0001) //     45 mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmnnnnnnnnnnnnnoooooooooopppppppppqqqqqqqrrrrrrrsssssssttttttuuuuuuvvvvvvwwwwwwxxxxxyyyyyyzzzzz++..+
+(PID.TID 0002.0001) //     44 mmmmmmmmmmmmmmmmmmmmmmmmmmnnnnnnnnnnnnnnooooooooooopppppppppqqqqqqqqrrrrrrrsssssssttttttuuuuuuvvvvvvwwwwwwxxxxxxyyyyyyzzzzz++..+
+(PID.TID 0002.0001) //     43 mmmmmmmmmmmmmmmmmmmnnnnnnnnnnnnnnnnnnoooooooooooopppppppppqqqqqqqqrrrrrrrrsssssssttttttuuuuuuuvvvvvvwwwwwwxxxxxxyyyyyzzzzzz++..+
+(PID.TID 0002.0001) //     42 mmmmmmmmnnnnnnnnnnnnnnnnnnnnnnnnnoooooooooooooppppppppppqqqqqqqqqrrrrrrrssssssssttttttuuuuuuuvvvvvvwwwwwwxxxxxxyyyyyyzzzzzz++..+
+(PID.TID 0002.0001) //     41 nnnnnnnnnnnnnnnnnnnnnnnnnnnnnoooooooooooooopppppppppppqqqqqqqqqrrrrrrrrssssssstttttttuuuuuuuvvvvvvvwwwwwwxxxxxxyyyyyyzzzzzz++..+
+(PID.TID 0002.0001) //     40 nnnnnnnnnnnnnnnnnnnnnnnooooooooooooooooopppppppppppqqqqqqqqqqrrrrrrrrsssssssstttttttuuuuuuuvvvvvvvwwwwwwxxxxxxxyyyyyyzzzzzz++..+
+(PID.TID 0002.0001) //     39 nnnnnnnnnnnnnnoooooooooooooooooooooopppppppppppppqqqqqqqqqqrrrrrrrrrsssssssstttttttuuuuuuuvvvvvvvwwwwwwwxxxxxxyyyyyyyzzzzzz++..+
+(PID.TID 0002.0001) //     38 ooooooooooooooooooooooooooooooopppppppppppppppqqqqqqqqqqqrrrrrrrrrssssssssttttttttuuuuuuuvvvvvvvwwwwwwwxxxxxxxyyyyyyzzzzzzz++..+
+(PID.TID 0002.0001) //     37 ooooooooooooooooooooooooooppppppppppppppppqqqqqqqqqqqqrrrrrrrrrrsssssssssttttttttuuuuuuuvvvvvvvvwwwwwwwxxxxxxyyyyyyyzzzzzzz++..+
+(PID.TID 0002.0001) //     36 ooooooooooooooooooppppppppppppppppppppqqqqqqqqqqqqqrrrrrrrrrrrssssssssstttttttttuuuuuuuvvvvvvvvwwwwwwwxxxxxxxyyyyyyyzzzzzzz++..+
+(PID.TID 0002.0001) //     35 ppppppppppppppppppppppppppppppppppqqqqqqqqqqqqqqrrrrrrrrrrrrssssssssstttttttttuuuuuuuuvvvvvvvvwwwwwwwxxxxxxxyyyyyyyyzzzzzz+++..+
+(PID.TID 0002.0001) //     34 ppppppppppppppppppppppppppppqqqqqqqqqqqqqqqqqrrrrrrrrrrrrssssssssssttttttttttuuuuuuuuvvvvvvvvwwwwwwwwxxxxxxxyyyyyyyzzzzzzz+++..+
+(PID.TID 0002.0001) //     33 ppppppppppppppppppppqqqqqqqqqqqqqqqqqqqqqrrrrrrrrrrrrrsssssssssssttttttttttuuuuuuuuuvvvvvvvvwwwwwwwwxxxxxxxyyyyyyyyzzzzzzz+++..+
+(PID.TID 0002.0001) //     32 qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqrrrrrrrrrrrrrrrssssssssssssttttttttttuuuuuuuuuvvvvvvvvvwwwwwwwwxxxxxxxxyyyyyyyyzzzzzzz+++..+
+(PID.TID 0002.0001) //     31 qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqrrrrrrrrrrrrrrrrrsssssssssssstttttttttttuuuuuuuuuuvvvvvvvvvwwwwwwwwxxxxxxxxyyyyyyyyzzzzzzzz+++..+
+(PID.TID 0002.0001) //     30 qqqqqqqqqqqqqqqqqqqqqqqrrrrrrrrrrrrrrrrrrrrrsssssssssssssstttttttttttuuuuuuuuuuvvvvvvvvvwwwwwwwwwxxxxxxxxxyyyyyyyyzzzzzzzz+++..+
+(PID.TID 0002.0001) //     29 qqqqqqqqrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrssssssssssssssstttttttttttttuuuuuuuuuuvvvvvvvvvvwwwwwwwwwxxxxxxxxxyyyyyyyyzzzzzzzzz+++..+
+(PID.TID 0002.0001) //     28 rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrsssssssssssssssssstttttttttttttuuuuuuuuuuuvvvvvvvvvvvwwwwwwwwwxxxxxxxxxyyyyyyyyyzzzzzzzzz+++..+
+(PID.TID 0002.0001) //     27 rrrrrrrrrrrrrrrrrrrrrrrrrssssssssssssssssssssssttttttttttttttuuuuuuuuuuuuvvvvvvvvvvvwwwwwwwwwwxxxxxxxxxyyyyyyyyyzzzzzzzzz++++..+
+(PID.TID 0002.0001) //     26 rrrrrrrrrrrsssssssssssssssssssssssssssssssttttttttttttttttuuuuuuuuuuuuuvvvvvvvvvvvwwwwwwwwwwwxxxxxxxxxyyyyyyyyyyzzzzzzzzz++++..+
+(PID.TID 0002.0001) //     25 ssssssssssssssssssssssssssssssssssssttttttttttttttttttuuuuuuuuuuuuuuvvvvvvvvvvvvwwwwwwwwwwwxxxxxxxxxxxyyyyyyyyyzzzzzzzzzz++++..+
+(PID.TID 0002.0001) //     24 ssssssssssssssssssssssssssstttttttttttttttttttttttuuuuuuuuuuuuuuuvvvvvvvvvvvvvwwwwwwwwwwwwxxxxxxxxxxyyyyyyyyyyyzzzzzzzzzz++++..+
+(PID.TID 0002.0001) //     23 sssssssssssssstttttttttttttttttttttttttttttttuuuuuuuuuuuuuuuuuvvvvvvvvvvvvvvwwwwwwwwwwwwxxxxxxxxxxxyyyyyyyyyyyzzzzzzzzzzz++++..+
+(PID.TID 0002.0001) //     22 ttttttttttttttttttttttttttttttttttttttuuuuuuuuuuuuuuuuuuuuvvvvvvvvvvvvvvvwwwwwwwwwwwwwxxxxxxxxxxxxyyyyyyyyyyyzzzzzzzzzzz+++++..+
+(PID.TID 0002.0001) //     21 ttttttttttttttttttttttttttttttuuuuuuuuuuuuuuuuuuuuuuuvvvvvvvvvvvvvvvvvwwwwwwwwwwwwwwxxxxxxxxxxxxxyyyyyyyyyyyyzzzzzzzzzzz+++++..+
+(PID.TID 0002.0001) //     20 tttttttttttttttuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuvvvvvvvvvvvvvvvvvvvwwwwwwwwwwwwwwwxxxxxxxxxxxxxyyyyyyyyyyyyyzzzzzzzzzzzz+++++..+
+(PID.TID 0002.0001) //     19 uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuvvvvvvvvvvvvvvvvvvvvvvwwwwwwwwwwwwwwwwxxxxxxxxxxxxxxyyyyyyyyyyyyyyzzzzzzzzzzzz++++++..+
+(PID.TID 0002.0001) //     18 uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuvvvvvvvvvvvvvvvvvvvvvvvvvvwwwwwwwwwwwwwwwwwwxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyzzzzzzzzzzzzz++++++..+
+(PID.TID 0002.0001) //     17 uuuuuuuuuuuuuuuuvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvwwwwwwwwwwwwwwwwwwwwxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyzzzzzzzzzzzzzzz++++++..+
+(PID.TID 0002.0001) //     16 vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvwwwwwwwwwwwwwwwwwwwwwwwxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzz+++++++..+
+(PID.TID 0002.0001) //     15 vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvwwwwwwwwwwwwwwwwwwwwwwwwwwwwxxxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzz+++++++..+
+(PID.TID 0002.0001) //     14 vvvvvvvvvvvvvvvvvwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxxxxxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzzz++++++++..+
+(PID.TID 0002.0001) //     13 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxxxxxxxxxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzzzz+++++++++..+
+(PID.TID 0002.0001) //     12 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzzzzzz+++++++++..+
+(PID.TID 0002.0001) //     11 wwwwwwwwwwwwwwwwwxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzzzzzzzz++++++++++..+
+(PID.TID 0002.0001) //     10 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzzzzzzzzzz++++++++++++..+
+(PID.TID 0002.0001) //      9 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzzzzzzzzzzzzzz+++++++++++++..+
+(PID.TID 0002.0001) //      8 xxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz+++++++++++++++..+
+(PID.TID 0002.0001) //      7 yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz++++++++++++++++++..+
+(PID.TID 0002.0001) //      6 yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz+++++++++++++++++++++..+
+(PID.TID 0002.0001) //      5 yyyyyyyyyyyyyyyyzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz++++++++++++++++++++++++++..+
+(PID.TID 0002.0001) //      4 zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz++++++++++++++++++++++++++++++++++..+
+(PID.TID 0002.0001) //      3 zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz++++++++++++++++++++++++++++++++++++++++++++++++++..+
+(PID.TID 0002.0001) //      2 ................................................................................................................................
+(PID.TID 0002.0001) //      1 ................................................................................................................................
+(PID.TID 0002.0001) //      0 ................................................................................................................................
+(PID.TID 0002.0001) //     -1 zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz++++++++++++++++++++++++++++++++++++++++++++++++++..+
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) // END OF FIELD                                          =
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) 
+(PID.TID 0002.0001) GAD_INIT_FIXED: GAD_OlMinSize=  0  0  1
+(PID.TID 0002.0001) 
+(PID.TID 0002.0001) // ===================================
+(PID.TID 0002.0001) // GAD parameters :
+(PID.TID 0002.0001) // ===================================
+(PID.TID 0002.0001) tempAdvScheme =   /* Temp. Horiz.Advection scheme selector */
+(PID.TID 0002.0001)                       2
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) tempVertAdvScheme =   /* Temp. Vert. Advection scheme selector */
+(PID.TID 0002.0001)                       2
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) tempMultiDimAdvec =   /* use Muti-Dim Advec method for Temp */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) tempSOM_Advection = /* use 2nd Order Moment Advection for Temp */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) AdamsBashforthGt = /* apply Adams-Bashforth extrapolation on Gt */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) AdamsBashforth_T = /* apply Adams-Bashforth extrapolation on Temp */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) saltAdvScheme =   /* Salt. Horiz.advection scheme selector */
+(PID.TID 0002.0001)                       2
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) saltVertAdvScheme =   /* Salt. Vert. Advection scheme selector */
+(PID.TID 0002.0001)                       2
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) saltMultiDimAdvec =   /* use Muti-Dim Advec method for Salt */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) saltSOM_Advection = /* use 2nd Order Moment Advection for Salt */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) AdamsBashforthGs = /* apply Adams-Bashforth extrapolation on Gs */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) AdamsBashforth_S = /* apply Adams-Bashforth extrapolation on Salt */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) // ===================================
+(PID.TID 0002.0001) INI_CG2D: CG2D normalisation factor =  2.0001203197379843E-04
+(PID.TID 0002.0001) 
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) // Model configuration
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) //
+(PID.TID 0002.0001) // "Physical" paramters ( PARM01 in namelist )
+(PID.TID 0002.0001) //
+(PID.TID 0002.0001) buoyancyRelation = /* Type of relation to get Buoyancy */
+(PID.TID 0002.0001)               'OCEANIC'
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) fluidIsAir   =  /* fluid major constituent is Air */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) fluidIsWater =  /* fluid major constituent is Water */
+(PID.TID 0002.0001)                   T
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) usingPCoords =  /* use p (or p*) vertical coordinate */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) usingZCoords =  /* use z (or z*) vertical coordinate */
+(PID.TID 0002.0001)                   T
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) tRef =   /* Reference temperature profile ( oC or K ) */
+(PID.TID 0002.0001)                 2.000000000000000E+01       /* K =  1 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) sRef =   /* Reference salinity profile ( psu ) */
+(PID.TID 0002.0001)                 3.000000000000000E+01       /* K =  1 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) useStrainTensionVisc= /* Use StrainTension Form of Viscous Operator */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) useVariableVisc = /* Use variable horizontal viscosity */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) useHarmonicVisc = /* Use harmonic horizontal viscosity */
+(PID.TID 0002.0001)                   T
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) useBiharmonicVisc= /* Use biharmonic horiz.  viscosity */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) useSmag3D = /* Use isotropic 3-D Smagorinsky viscosity */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) viscAh  =   /* Lateral harmonic viscosity ( m^2/s ) */
+(PID.TID 0002.0001)                 4.000000000000000E+02
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) viscA4  =   /* Lateral biharmonic viscosity ( m^4/s ) */
+(PID.TID 0002.0001)                 0.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) no_slip_sides =  /* Viscous BCs: No-slip sides */
+(PID.TID 0002.0001)                   T
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) sideDragFactor = /* side-drag scaling factor (non-dim) */
+(PID.TID 0002.0001)                 2.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) viscArNr = /* vertical profile of vertical viscosity ( m^2/s )*/
+(PID.TID 0002.0001)                 0.000000000000000E+00       /* K =  1 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) no_slip_bottom =  /* Viscous BCs: No-slip bottom */
+(PID.TID 0002.0001)                   T
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) bottomVisc_pCell = /* Partial-cell in bottom Visc. BC */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) bottomDragLinear = /* linear bottom-drag coefficient ( m/s ) */
+(PID.TID 0002.0001)                 0.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) bottomDragQuadratic = /* quadratic bottom-drag coefficient (-) */
+(PID.TID 0002.0001)                 0.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) selectBotDragQuadr = /* select quadratic bottom drag options */
+(PID.TID 0002.0001)                      -1
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) diffKhT =   /* Laplacian diffusion of heat laterally ( m^2/s ) */
+(PID.TID 0002.0001)                 0.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) diffK4T =   /* Biharmonic diffusion of heat laterally ( m^4/s ) */
+(PID.TID 0002.0001)                 0.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) diffKhS =   /* Laplacian diffusion of salt laterally ( m^2/s ) */
+(PID.TID 0002.0001)                 0.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) diffK4S =   /* Biharmonic diffusion of salt laterally ( m^4/s ) */
+(PID.TID 0002.0001)                 0.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) diffKrNrT = /* vertical profile of vertical diffusion of Temp ( m^2/s )*/
+(PID.TID 0002.0001)                 0.000000000000000E+00       /* K =  1 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) diffKrNrS = /* vertical profile of vertical diffusion of Salt ( m^2/s )*/
+(PID.TID 0002.0001)                 0.000000000000000E+00       /* K =  1 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) diffKrBL79surf = /* Surface diffusion for Bryan and Lewis 79 ( m^2/s ) */
+(PID.TID 0002.0001)                 0.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) diffKrBL79deep = /* Deep diffusion for Bryan and Lewis 1979 ( m^2/s ) */
+(PID.TID 0002.0001)                 0.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) diffKrBL79scl = /* Depth scale for Bryan and Lewis 1979 ( m ) */
+(PID.TID 0002.0001)                 2.000000000000000E+02
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) diffKrBL79Ho = /* Turning depth for Bryan and Lewis 1979 ( m ) */
+(PID.TID 0002.0001)                -2.000000000000000E+03
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) ivdc_kappa = /* Implicit Vertical Diffusivity for Convection ( m^2/s) */
+(PID.TID 0002.0001)                 0.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) hMixCriteria=  /* Criteria for mixed-layer diagnostic */
+(PID.TID 0002.0001)                -8.000000000000000E-01
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) dRhoSmall =  /* Parameter for mixed-layer diagnostic */
+(PID.TID 0002.0001)                 1.000000000000000E-06
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) hMixSmooth=  /* Smoothing parameter for mixed-layer diagnostic */
+(PID.TID 0002.0001)                 0.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) eosType =  /* Type of Equation of State */
+(PID.TID 0002.0001)               'LINEAR'
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) tAlpha = /* Linear EOS thermal expansion coefficient ( 1/oC ) */
+(PID.TID 0002.0001)                 2.000000000000000E-04
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) sBeta  = /* Linear EOS haline contraction coefficient ( 1/psu ) */
+(PID.TID 0002.0001)                 7.400000000000000E-04
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) rhoNil    = /* Reference density for Linear EOS ( kg/m^3 ) */
+(PID.TID 0002.0001)                 9.998000000000000E+02
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) selectP_inEOS_Zc = /* select pressure to use in EOS (0,1,2,3) */
+(PID.TID 0002.0001)                       0
+(PID.TID 0002.0001)     0= -g*rhoConst*z ; 1= pRef (from tRef,sRef); 2= Hyd P ; 3= Hyd+NH P
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) surf_pRef = /* Surface reference pressure ( Pa ) */
+(PID.TID 0002.0001)                 1.013250000000000E+05
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) HeatCapacity_Cp =  /* Specific heat capacity ( J/kg/K ) */
+(PID.TID 0002.0001)                 3.994000000000000E+03
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) celsius2K = /* 0 degree Celsius converted to Kelvin ( K ) */
+(PID.TID 0002.0001)                 2.731500000000000E+02
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) rhoConst  = /* Reference density (Boussinesq)  ( kg/m^3 ) */
+(PID.TID 0002.0001)                 1.027000000000000E+03
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) rhoFacC = /* normalized Reference density @ cell-Center (-) */
+(PID.TID 0002.0001)                 1.000000000000000E+00       /* K =  1 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) rhoFacF = /* normalized Reference density @ W-Interface (-) */
+(PID.TID 0002.0001)     2 @  1.000000000000000E+00              /* K =  1:  2 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) rhoConstFresh = /* Fresh-water reference density ( kg/m^3 ) */
+(PID.TID 0002.0001)                 1.027000000000000E+03
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) gravity =   /* Gravitational acceleration ( m/s^2 ) */
+(PID.TID 0002.0001)                 9.810000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) gBaro =   /* Barotropic gravity ( m/s^2 ) */
+(PID.TID 0002.0001)                 9.810000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) gravFacC = /* gravity factor (vs surf.) @ cell-Center (-) */
+(PID.TID 0002.0001)                 1.000000000000000E+00       /* K =  1 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) gravFacF = /* gravity factor (vs surf.) @ W-Interface (-) */
+(PID.TID 0002.0001)     2 @  1.000000000000000E+00              /* K =  1:  2 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) rotationPeriod =   /* Rotation Period ( s ) */
+(PID.TID 0002.0001)                 8.616400000000000E+04
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) omega =   /* Angular velocity ( rad/s ) */
+(PID.TID 0002.0001)                 7.292123516990375E-05
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) f0 =   /* Reference coriolis parameter ( 1/s ) */
+(PID.TID 0002.0001)                 6.999999999999999E-05
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) beta =   /* Beta ( 1/(m.s) ) */
+(PID.TID 0002.0001)                 2.000000000000000E-11
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) fPrime =   /* Second coriolis parameter ( 1/s ) */
+(PID.TID 0002.0001)                 0.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) rigidLid =   /* Rigid lid on/off flag */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) implicitFreeSurface =   /* Implicit free surface on/off flag */
+(PID.TID 0002.0001)                   T
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) freeSurfFac =   /* Implicit free surface factor */
+(PID.TID 0002.0001)                 1.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) implicSurfPress =  /* Surface Pressure implicit factor (0-1)*/
+(PID.TID 0002.0001)                 1.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) implicDiv2DFlow =  /* Barot. Flow Div. implicit factor (0-1)*/
+(PID.TID 0002.0001)                 1.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) uniformLin_PhiSurf = /* use uniform Bo_surf on/off flag*/
+(PID.TID 0002.0001)                   T
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) uniformFreeSurfLev = /* free-surface level-index is uniform */
+(PID.TID 0002.0001)                   T
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) hFacMin =   /* minimum partial cell factor (hFac) */
+(PID.TID 0002.0001)                 1.000000000000000E-01
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) hFacMinDr = /* minimum partial cell thickness ( m) */
+(PID.TID 0002.0001)                 0.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) exactConserv =  /* Exact Volume Conservation on/off flag*/
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) linFSConserveTr = /* Tracer correction for Lin Free Surface on/off flag*/
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) nonlinFreeSurf = /* Non-linear Free Surf. options (-1,0,1,2,3)*/
+(PID.TID 0002.0001)                       0
+(PID.TID 0002.0001)      -1,0= Off ; 1,2,3= On, 2=+rescale gU,gV, 3=+update cg2d solv.
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) hFacInf =   /* lower threshold for hFac (nonlinFreeSurf only)*/
+(PID.TID 0002.0001)                 2.000000000000000E-01
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) hFacSup =   /* upper threshold for hFac (nonlinFreeSurf only)*/
+(PID.TID 0002.0001)                 2.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) select_rStar = /* r* Vertical coord. options (=0 r coord.; >0 uses r*)*/
+(PID.TID 0002.0001)                       0
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) useRealFreshWaterFlux = /* Real Fresh Water Flux on/off flag*/
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) temp_EvPrRn = /* Temp. of Evap/Prec/R (UNSET=use local T)(oC)*/
+(PID.TID 0002.0001)                 1.234567000000000E+05
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) salt_EvPrRn = /* Salin. of Evap/Prec/R (UNSET=use local S)(psu)*/
+(PID.TID 0002.0001)                 0.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) selectAddFluid = /* option for mass source/sink of fluid (=0: off) */
+(PID.TID 0002.0001)                       0
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) temp_addMass = /* Temp. of addMass array (UNSET=use local T)(oC)*/
+(PID.TID 0002.0001)                 1.234567000000000E+05
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) salt_addMass = /* Salin. of addMass array (UNSET=use local S)(psu)*/
+(PID.TID 0002.0001)                 0.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) convertFW2Salt = /* convert F.W. Flux to Salt Flux (-1=use local S)(psu)*/
+(PID.TID 0002.0001)                 3.500000000000000E+01
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) use3Dsolver = /* use 3-D pressure solver on/off flag */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) nonHydrostatic =  /* Non-Hydrostatic on/off flag */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) nh_Am2 = /* Non-Hydrostatic terms scaling factor */
+(PID.TID 0002.0001)                 1.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) implicitNHPress = /* Non-Hyd Pressure implicit factor (0-1)*/
+(PID.TID 0002.0001)                 1.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) selectNHfreeSurf = /* Non-Hyd (free-)Surface option */
+(PID.TID 0002.0001)                       0
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) quasiHydrostatic = /* Quasi-Hydrostatic on/off flag */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) calc_wVelocity = /* vertical velocity calculation on/off flag */
+(PID.TID 0002.0001)                   T
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) momStepping =  /* Momentum equation on/off flag */
+(PID.TID 0002.0001)                   T
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) vectorInvariantMomentum= /* Vector-Invariant Momentum on/off */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) momAdvection =  /* Momentum advection on/off flag */
+(PID.TID 0002.0001)                   T
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) momViscosity =  /* Momentum viscosity on/off flag */
+(PID.TID 0002.0001)                   T
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) momImplVertAdv= /* Momentum implicit vert. advection on/off*/
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) implicitViscosity = /* Implicit viscosity on/off flag */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) selectImplicitDrag= /* Implicit bot Drag options (0,1,2)*/
+(PID.TID 0002.0001)                       0
+(PID.TID 0002.0001)     0= Expl. ; 1= Impl. on provis. Vel ; 2= Fully Impl (with surf.P)
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) metricTerms =  /* metric-Terms on/off flag */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) useNHMTerms = /* Non-Hydrostatic Metric-Terms on/off */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) selectCoriMap = /* Coriolis Map options (0,1,2,3)*/
+(PID.TID 0002.0001)                       1
+(PID.TID 0002.0001)     0= f-Plane ; 1= Beta-Plane ; 2= Spherical ; 3= read from file
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) use3dCoriolis = /* 3-D Coriolis on/off flag */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) useCoriolis =  /* Coriolis on/off flag */
+(PID.TID 0002.0001)                   T
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) useCDscheme =  /* CD scheme on/off flag */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) selectCoriScheme= /* Scheme selector for Coriolis-Term */
+(PID.TID 0002.0001)                       0
+(PID.TID 0002.0001)    = 0 : original discretization (simple averaging, no hFac)
+(PID.TID 0002.0001)    = 1 : Wet-point averaging (Jamar & Ozer 1986)
+(PID.TID 0002.0001)    = 2 : energy conserving scheme (no hFac weight)
+(PID.TID 0002.0001)    = 3 : energy conserving scheme using Wet-point averaging
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) momForcing =  /* Momentum forcing on/off flag */
+(PID.TID 0002.0001)                   T
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) momTidalForcing = /* Momentum Tidal forcing on/off flag */
+(PID.TID 0002.0001)                   T
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) momPressureForcing =  /* Momentum pressure term on/off flag */
+(PID.TID 0002.0001)                   T
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) implicitIntGravWave= /* Implicit Internal Gravity Wave flag */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) staggerTimeStep =    /* Stagger time stepping on/off flag */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) doResetHFactors = /* reset thickness factors @ each time-step */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) multiDimAdvection =  /* enable/disable Multi-Dim Advection */
+(PID.TID 0002.0001)                   T
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) useMultiDimAdvec =   /* Multi-Dim Advection is/is-not used */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) implicitDiffusion = /* Implicit Diffusion on/off flag */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) tempStepping =  /* Temperature equation on/off flag */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) tempAdvection = /* Temperature advection on/off flag */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) tempImplVertAdv = /* Temp. implicit vert. advection on/off */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) tempForcing  =  /* Temperature forcing on/off flag */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) doThetaClimRelax = /* apply SST relaxation on/off flag */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) tempIsActiveTr = /* Temp. is a dynamically Active Tracer */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) saltStepping =  /* Salinity equation on/off flag */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) saltAdvection = /* Salinity advection on/off flag */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) saltImplVertAdv = /* Sali. implicit vert. advection on/off */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) saltForcing  =  /* Salinity forcing on/off flag */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) doSaltClimRelax = /* apply SSS relaxation on/off flag */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) saltIsActiveTr = /* Salt  is a dynamically Active Tracer */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001)  readBinaryPrec = /* Precision used for reading binary files */
+(PID.TID 0002.0001)                      32
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) writeBinaryPrec = /* Precision used for writing binary files */
+(PID.TID 0002.0001)                      32
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001)  rwSuffixType =   /* select format of mds file suffix */
+(PID.TID 0002.0001)                       0
+(PID.TID 0002.0001)    = 0 : myIter (I10.10) ;   = 1 : 100*myTime (100th sec) ;
+(PID.TID 0002.0001)    = 2 : myTime (seconds);   = 3 : myTime/360 (10th of hr);
+(PID.TID 0002.0001)    = 4 : myTime/3600 (hours)
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001)  globalFiles = /* write "global" (=not per tile) files */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001)  useSingleCpuIO = /* only master MPI process does I/O */
+(PID.TID 0002.0001)                   T
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001)  useSingleCpuInput = /* only master process reads input */
+(PID.TID 0002.0001)                   T
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) /* debLev[*]  : level of debug & auxiliary message printing */
+(PID.TID 0002.0001) debLevZero =  0 ; /* level of disabled aux. msg printing */
+(PID.TID 0002.0001)    debLevA =  1 ; /* level of minimum  aux. msg printing */
+(PID.TID 0002.0001)    debLevB =  2 ; /* level of low aux. print (report read-file opening)*/
+(PID.TID 0002.0001)    debLevC =  3 ; /* level of moderate debug prt (most pkgs debug msg) */
+(PID.TID 0002.0001)    debLevD =  4 ; /* level of enhanced debug prt (add DEBUG_STATS prt) */
+(PID.TID 0002.0001)    debLevE =  5 ; /* level of extensive debug printing */
+(PID.TID 0002.0001) debugLevel =  /* select debug printing level */
+(PID.TID 0002.0001)                       2
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001)  plotLevel =  /* select PLOT_FIELD printing level */
+(PID.TID 0002.0001)                       2
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) //
+(PID.TID 0002.0001) // Elliptic solver(s) paramters ( PARM02 in namelist )
+(PID.TID 0002.0001) //
+(PID.TID 0002.0001) cg2dMaxIters =   /* Upper limit on 2d con. grad iterations  */
+(PID.TID 0002.0001)                    1000
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) cg2dChkResFreq =   /* 2d con. grad convergence test frequency */
+(PID.TID 0002.0001)                       1
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) cg2dUseMinResSol= /* use cg2d last-iter(=0) / min-resid.(=1) solution */
+(PID.TID 0002.0001)                       0
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) cg2dTargetResidual =   /* 2d con. grad target residual  */
+(PID.TID 0002.0001)                 1.000000000000000E-07
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) cg2dTargetResWunit =   /* CG2d target residual [W units] */
+(PID.TID 0002.0001)                -1.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) cg2dPreCondFreq =   /* Freq. for updating cg2d preconditioner */
+(PID.TID 0002.0001)                       1
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) useSRCGSolver =  /* use single reduction CG solver(s) */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) printResidualFreq = /* Freq. for printing CG residual */
+(PID.TID 0002.0001)                       0
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) //
+(PID.TID 0002.0001) // Time stepping paramters ( PARM03 in namelist )
+(PID.TID 0002.0001) //
+(PID.TID 0002.0001) deltaTMom =   /* Momentum equation timestep ( s ) */
+(PID.TID 0002.0001)                 5.400000000000000E+03
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) deltaTFreeSurf = /* FreeSurface equation timestep ( s ) */
+(PID.TID 0002.0001)                 5.400000000000000E+03
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) dTtracerLev =  /* Tracer equation timestep ( s ) */
+(PID.TID 0002.0001)                 5.400000000000000E+03       /* K =  1 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) deltaTClock  =   /* Model clock timestep ( s ) */
+(PID.TID 0002.0001)                 5.400000000000000E+03
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) cAdjFreq =   /* Convective adjustment interval ( s ) */
+(PID.TID 0002.0001)                 0.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) momForcingOutAB = /* =1: take Momentum Forcing out of Adams-Bash. stepping */
+(PID.TID 0002.0001)                       0
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) tracForcingOutAB = /* =1: take T,S,pTr Forcing out of Adams-Bash. stepping */
+(PID.TID 0002.0001)                       0
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) momDissip_In_AB = /* put Dissipation Tendency in Adams-Bash. stepping */
+(PID.TID 0002.0001)                   T
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) doAB_onGtGs = /* apply AB on Tendencies (rather than on T,S)*/
+(PID.TID 0002.0001)                   T
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) abEps =   /* Adams-Bashforth-2 stabilizing weight */
+(PID.TID 0002.0001)                 1.000000000000000E-02
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) applyExchUV_early = /* Apply EXCH to U,V earlier in time-step */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) pickupStrictlyMatch= /* stop if pickup do not strictly match */
+(PID.TID 0002.0001)                   T
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) nIter0   =   /* Run starting timestep number */
+(PID.TID 0002.0001)                       0
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) nTimeSteps = /* Number of timesteps */
+(PID.TID 0002.0001)                     100
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) nEndIter =   /* Run ending timestep number */
+(PID.TID 0002.0001)                     100
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) baseTime =   /* Model base time ( s ) */
+(PID.TID 0002.0001)                 0.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) startTime =  /* Run start time ( s ) */
+(PID.TID 0002.0001)                 0.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) endTime  =   /* Integration ending time ( s ) */
+(PID.TID 0002.0001)                 5.400000000000000E+05
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) pChkPtFreq = /* Permanent restart/pickup file interval ( s ) */
+(PID.TID 0002.0001)                 3.110400000000000E+07
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) chkPtFreq  = /* Rolling restart/pickup file interval ( s ) */
+(PID.TID 0002.0001)                 2.592000000000000E+07
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) pickup_write_mdsio =   /* Model IO flag. */
+(PID.TID 0002.0001)                   T
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) pickup_read_mdsio =   /* Model IO flag. */
+(PID.TID 0002.0001)                   T
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) writePickupAtEnd =   /* Model IO flag. */
+(PID.TID 0002.0001)                   T
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) dumpFreq =   /* Model state write out interval ( s ). */
+(PID.TID 0002.0001)                 8.640000000000000E+05
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) dumpInitAndLast= /* write out Initial & Last iter. model state */
+(PID.TID 0002.0001)                   T
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) snapshot_mdsio =   /* Model IO flag. */
+(PID.TID 0002.0001)                   T
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) monitorFreq =   /* Monitor output interval ( s ). */
+(PID.TID 0002.0001)                 8.640000000000000E+04
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) monitorSelect = /* select group of variables to monitor */
+(PID.TID 0002.0001)                       2
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) monitor_stdio =   /* Model IO flag. */
+(PID.TID 0002.0001)                   T
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) externForcingPeriod =   /* forcing period (s) */
+(PID.TID 0002.0001)                 0.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) externForcingCycle =   /* period of the cyle (s). */
+(PID.TID 0002.0001)                 0.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) tauThetaClimRelax =   /* relaxation time scale (s) */
+(PID.TID 0002.0001)                 0.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) tauSaltClimRelax =   /* relaxation time scale (s) */
+(PID.TID 0002.0001)                 0.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) latBandClimRelax =   /* max. Lat. where relaxation */
+(PID.TID 0002.0001)                 3.720000000000000E+06
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) //
+(PID.TID 0002.0001) // Gridding paramters ( PARM04 in namelist )
+(PID.TID 0002.0001) //
+(PID.TID 0002.0001) usingCartesianGrid = /* Cartesian coordinates flag ( True/False ) */
+(PID.TID 0002.0001)                   T
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) usingCylindricalGrid = /* Cylindrical coordinates flag ( True/False ) */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) usingSphericalPolarGrid = /* Spherical coordinates flag ( True/False ) */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) usingCurvilinearGrid = /* Curvilinear coordinates flag ( True/False ) */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) useMin4hFacEdges = /* set hFacW,S as minimum of adjacent hFacC factor */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) interViscAr_pCell = /* account for partial-cell in interior vert. viscosity */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) interDiffKr_pCell = /* account for partial-cell in interior vert. diffusion */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) pCellMix_select = /* option to enhance mixing near surface & bottom */
+(PID.TID 0002.0001)                       0
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) selectSigmaCoord = /* Hybrid-Sigma Vert. Coordinate option */
+(PID.TID 0002.0001)                       0
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) rSigmaBnd = /* r/sigma transition ( units of r ==  m ) */
+(PID.TID 0002.0001)                 1.234567000000000E+05
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) rkSign =   /* index orientation relative to vertical coordinate */
+(PID.TID 0002.0001)                -1.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) gravitySign = /* gravity orientation relative to vertical coordinate */
+(PID.TID 0002.0001)                -1.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) seaLev_Z =  /* reference height of sea-level [m] */
+(PID.TID 0002.0001)                 0.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) top_Pres =  /* reference pressure at the top [Pa] */
+(PID.TID 0002.0001)                 0.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) mass2rUnit = /* convert mass per unit area [kg/m2] to r-units [m] */
+(PID.TID 0002.0001)                 9.737098344693282E-04
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) rUnit2mass = /* convert r-units [m] to mass per unit area [kg/m2] */
+(PID.TID 0002.0001)                 1.027000000000000E+03
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) drC =   /* C spacing ( units of r ) */
+(PID.TID 0002.0001)     2 @  2.500000000000000E+03              /* K =  1:  2 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) drF =   /* W spacing ( units of r ) */
+(PID.TID 0002.0001)                 5.000000000000000E+03       /* K =  1 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) delX = /* U spacing ( m - cartesian, degrees - spherical ) */
+(PID.TID 0002.0001)   248 @  5.000000000000000E+03              /* I =  1:248 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) delY = /* V spacing ( m - cartesian, degrees - spherical ) */
+(PID.TID 0002.0001)   248 @  5.000000000000000E+03              /* J =  1:248 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) xgOrigin = /* X-axis origin of West  edge (cartesian: m, lat-lon: deg) */
+(PID.TID 0002.0001)                -5.000000000000000E+03
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) ygOrigin = /* Y-axis origin of South edge (cartesian: m, lat-lon: deg) */
+(PID.TID 0002.0001)                -5.000000000000000E+03
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) rSphere =  /* Radius ( ignored - cartesian, m - spherical ) */
+(PID.TID 0002.0001)                 6.370000000000000E+06
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) deepAtmosphere = /* Deep/Shallow Atmosphere flag (True/False) */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) xC =  /* xC(:,1,:,1) : P-point X coord ( deg. or m if cartesian) */
+(PID.TID 0002.0001)                 6.175000000000000E+05,      /* I =  1 */
+(PID.TID 0002.0001)                 6.225000000000000E+05,      /* I =  2 */
+(PID.TID 0002.0001)                 6.275000000000000E+05,      /* I =  3 */
+(PID.TID 0002.0001)      . . .
+(PID.TID 0002.0001)                 7.575000000000000E+05,      /* I = 29 */
+(PID.TID 0002.0001)                 7.625000000000000E+05,      /* I = 30 */
+(PID.TID 0002.0001)                 7.675000000000000E+05,      /* I = 31 */
+(PID.TID 0002.0001)                 7.725000000000000E+05,      /* I = 32 */
+(PID.TID 0002.0001)                 7.775000000000000E+05,      /* I = 33 */
+(PID.TID 0002.0001)                 7.825000000000000E+05,      /* I = 34 */
+(PID.TID 0002.0001)      . . .
+(PID.TID 0002.0001)                 9.125000000000000E+05,      /* I = 60 */
+(PID.TID 0002.0001)                 9.175000000000000E+05,      /* I = 61 */
+(PID.TID 0002.0001)                 9.225000000000000E+05,      /* I = 62 */
+(PID.TID 0002.0001)                 9.275000000000000E+05,      /* I = 63 */
+(PID.TID 0002.0001)                 9.325000000000000E+05,      /* I = 64 */
+(PID.TID 0002.0001)                 9.375000000000000E+05,      /* I = 65 */
+(PID.TID 0002.0001)      . . .
+(PID.TID 0002.0001)                 1.067500000000000E+06,      /* I = 91 */
+(PID.TID 0002.0001)                 1.072500000000000E+06,      /* I = 92 */
+(PID.TID 0002.0001)                 1.077500000000000E+06,      /* I = 93 */
+(PID.TID 0002.0001)                 1.082500000000000E+06,      /* I = 94 */
+(PID.TID 0002.0001)                 1.087500000000000E+06,      /* I = 95 */
+(PID.TID 0002.0001)                 1.092500000000000E+06,      /* I = 96 */
+(PID.TID 0002.0001)      . . .
+(PID.TID 0002.0001)                 1.222500000000000E+06,      /* I =122 */
+(PID.TID 0002.0001)                 1.227500000000000E+06,      /* I =123 */
+(PID.TID 0002.0001)                 1.232500000000000E+06       /* I =124 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) yC =  /* yC(1,:,1,:) : P-point Y coord ( deg. or m if cartesian) */
+(PID.TID 0002.0001)                -2.500000000000000E+03,      /* J =  1 */
+(PID.TID 0002.0001)                 2.500000000000000E+03,      /* J =  2 */
+(PID.TID 0002.0001)                 7.500000000000000E+03,      /* J =  3 */
+(PID.TID 0002.0001)      . . .
+(PID.TID 0002.0001)                 1.375000000000000E+05,      /* J = 29 */
+(PID.TID 0002.0001)                 1.425000000000000E+05,      /* J = 30 */
+(PID.TID 0002.0001)                 1.475000000000000E+05,      /* J = 31 */
+(PID.TID 0002.0001)                 1.525000000000000E+05,      /* J = 32 */
+(PID.TID 0002.0001)                 1.575000000000000E+05,      /* J = 33 */
+(PID.TID 0002.0001)                 1.625000000000000E+05,      /* J = 34 */
+(PID.TID 0002.0001)      . . .
+(PID.TID 0002.0001)                 2.925000000000000E+05,      /* J = 60 */
+(PID.TID 0002.0001)                 2.975000000000000E+05,      /* J = 61 */
+(PID.TID 0002.0001)                 3.025000000000000E+05,      /* J = 62 */
+(PID.TID 0002.0001)                 3.075000000000000E+05,      /* J = 63 */
+(PID.TID 0002.0001)                 3.125000000000000E+05,      /* J = 64 */
+(PID.TID 0002.0001)                 3.175000000000000E+05,      /* J = 65 */
+(PID.TID 0002.0001)      . . .
+(PID.TID 0002.0001)                 4.475000000000000E+05,      /* J = 91 */
+(PID.TID 0002.0001)                 4.525000000000000E+05,      /* J = 92 */
+(PID.TID 0002.0001)                 4.575000000000000E+05,      /* J = 93 */
+(PID.TID 0002.0001)                 4.625000000000000E+05,      /* J = 94 */
+(PID.TID 0002.0001)                 4.675000000000000E+05,      /* J = 95 */
+(PID.TID 0002.0001)                 4.725000000000000E+05,      /* J = 96 */
+(PID.TID 0002.0001)      . . .
+(PID.TID 0002.0001)                 6.025000000000000E+05,      /* J =122 */
+(PID.TID 0002.0001)                 6.075000000000000E+05,      /* J =123 */
+(PID.TID 0002.0001)                 6.125000000000000E+05       /* J =124 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) rcoord = /* P-point R coordinate (  units of r ) */
+(PID.TID 0002.0001)                -2.500000000000000E+03       /* K =  1 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) rF =   /* W-Interf. R coordinate (  units of r ) */
+(PID.TID 0002.0001)                 0.000000000000000E+00,      /* K =  1 */
+(PID.TID 0002.0001)                -5.000000000000000E+03       /* K =  2 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) deepFacC = /* deep-model grid factor @ cell-Center (-) */
+(PID.TID 0002.0001)                 1.000000000000000E+00       /* K =  1 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) deepFacF = /* deep-model grid factor @ W-Interface (-) */
+(PID.TID 0002.0001)     2 @  1.000000000000000E+00              /* K =  1:  2 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) rVel2wUnit = /* convert units: rVel -> wSpeed (=1 if z-coord)*/
+(PID.TID 0002.0001)     2 @  1.000000000000000E+00              /* K =  1:  2 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) wUnit2rVel = /* convert units: wSpeed -> rVel (=1 if z-coord)*/
+(PID.TID 0002.0001)     2 @  1.000000000000000E+00              /* K =  1:  2 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) dBdrRef = /* Vertical grad. of reference buoyancy [(m/s/r)^2] */
+(PID.TID 0002.0001)                 0.000000000000000E+00       /* K =  1 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) rotateGrid = /* use rotated grid ( True/False ) */
+(PID.TID 0002.0001)                   F
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) phiEuler = /* Euler angle, rotation about original z-coordinate [rad] */
+(PID.TID 0002.0001)                 0.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) thetaEuler = /* Euler angle, rotation about new x-coordinate [rad] */
+(PID.TID 0002.0001)                 0.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) psiEuler = /* Euler angle, rotation about new z-coordinate [rad] */
+(PID.TID 0002.0001)                 0.000000000000000E+00
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) dxF =  /* dxF(:,1,:,1) ( units: m ) */
+(PID.TID 0002.0001)   124 @  5.000000000000000E+03              /* I =  1:124 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) dxF =  /* dxF(1,:,1,:) ( units: m ) */
+(PID.TID 0002.0001)   124 @  5.000000000000000E+03              /* J =  1:124 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) dyF =  /* dyF(:,1,:,1) ( units: m ) */
+(PID.TID 0002.0001)   124 @  5.000000000000000E+03              /* I =  1:124 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) dyF =  /* dyF(1,:,1,:) ( units: m ) */
+(PID.TID 0002.0001)   124 @  5.000000000000000E+03              /* J =  1:124 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) dxG =  /* dxG(:,1,:,1) ( units: m ) */
+(PID.TID 0002.0001)   124 @  5.000000000000000E+03              /* I =  1:124 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) dxG =  /* dxG(1,:,1,:) ( units: m ) */
+(PID.TID 0002.0001)   124 @  5.000000000000000E+03              /* J =  1:124 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) dyG =  /* dyG(:,1,:,1) ( units: m ) */
+(PID.TID 0002.0001)   124 @  5.000000000000000E+03              /* I =  1:124 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) dyG =  /* dyG(1,:,1,:) ( units: m ) */
+(PID.TID 0002.0001)   124 @  5.000000000000000E+03              /* J =  1:124 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) dxC =  /* dxC(:,1,:,1) ( units: m ) */
+(PID.TID 0002.0001)   124 @  5.000000000000000E+03              /* I =  1:124 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) dxC =  /* dxC(1,:,1,:) ( units: m ) */
+(PID.TID 0002.0001)   124 @  5.000000000000000E+03              /* J =  1:124 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) dyC =  /* dyC(:,1,:,1) ( units: m ) */
+(PID.TID 0002.0001)   124 @  5.000000000000000E+03              /* I =  1:124 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) dyC =  /* dyC(1,:,1,:) ( units: m ) */
+(PID.TID 0002.0001)   124 @  5.000000000000000E+03              /* J =  1:124 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) dxV =  /* dxV(:,1,:,1) ( units: m ) */
+(PID.TID 0002.0001)   124 @  5.000000000000000E+03              /* I =  1:124 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) dxV =  /* dxV(1,:,1,:) ( units: m ) */
+(PID.TID 0002.0001)   124 @  5.000000000000000E+03              /* J =  1:124 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) dyU =  /* dyU(:,1,:,1) ( units: m ) */
+(PID.TID 0002.0001)   124 @  5.000000000000000E+03              /* I =  1:124 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) dyU =  /* dyU(1,:,1,:) ( units: m ) */
+(PID.TID 0002.0001)   124 @  5.000000000000000E+03              /* J =  1:124 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) rA  =  /* rA (:,1,:,1) ( units: m^2 ) */
+(PID.TID 0002.0001)   124 @  2.500000000000000E+07              /* I =  1:124 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) rA  =  /* rA (1,:,1,:) ( units: m^2 ) */
+(PID.TID 0002.0001)   124 @  2.500000000000000E+07              /* J =  1:124 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) rAw =  /* rAw(:,1,:,1) ( units: m^2 ) */
+(PID.TID 0002.0001)   124 @  2.500000000000000E+07              /* I =  1:124 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) rAw =  /* rAw(1,:,1,:) ( units: m^2 ) */
+(PID.TID 0002.0001)   124 @  2.500000000000000E+07              /* J =  1:124 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) rAs =  /* rAs(:,1,:,1) ( units: m^2 ) */
+(PID.TID 0002.0001)   124 @  2.500000000000000E+07              /* I =  1:124 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) rAs =  /* rAs(1,:,1,:) ( units: m^2 ) */
+(PID.TID 0002.0001)   124 @  2.500000000000000E+07              /* J =  1:124 */
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) globalArea = /* Integrated horizontal Area (m^2) */
+(PID.TID 0002.0001)                 1.512900000000000E+12
+(PID.TID 0002.0001)     ;
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) // End of Model config. summary
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) 
+(PID.TID 0002.0001) == Packages configuration : Check & print summary ==
+(PID.TID 0002.0001) 
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) // Check Model config. (CONFIG_CHECK):
+(PID.TID 0002.0001) // CONFIG_CHECK : Normal End
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) 
+(PID.TID 0002.0001) Start initial hydrostatic pressure computation
+(PID.TID 0002.0001) Pressure is predetermined for buoyancyRelation OCEANIC
+(PID.TID 0002.0001) 
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) // Model current state
+(PID.TID 0002.0001) // =======================================================
+(PID.TID 0002.0001) 
+(PID.TID 0002.0001) SOLVE_FOR_PRESSURE: putPmEinXvector =    F
+ cg2d: Sum(rhs),rhsMax =   0.00000000000000E+00  9.73592635192475E-05
+ cg2d: Sum(rhs),rhsMax =   8.24229573481716E-13  1.15786318361866E-04
+ cg2d: Sum(rhs),rhsMax =   3.06243919112603E-12  1.40965044910048E-04
+ cg2d: Sum(rhs),rhsMax =   4.67537120130146E-12  1.66424792285971E-04
+ cg2d: Sum(rhs),rhsMax =  -4.27036184191820E-12  1.93531974506246E-04
+ cg2d: Sum(rhs),rhsMax =  -9.33653154788772E-12  2.21051268892998E-04
+ cg2d: Sum(rhs),rhsMax =  -7.87281351222191E-12  2.48418964895491E-04
+ cg2d: Sum(rhs),rhsMax =  -8.15703060652595E-12  2.75497529609692E-04
+ cg2d: Sum(rhs),rhsMax =  -9.61719592851296E-12  3.02245044066557E-04
+ cg2d: Sum(rhs),rhsMax =  -1.07185371689411E-11  3.28652306993531E-04
+ cg2d: Sum(rhs),rhsMax =  -1.04414255019947E-11  3.54730592727831E-04
+ cg2d: Sum(rhs),rhsMax =  -1.09139364212751E-11  3.80522708237529E-04
+ cg2d: Sum(rhs),rhsMax =  -1.42303946404354E-11  4.06041333538053E-04
+ cg2d: Sum(rhs),rhsMax =  -1.69091407542510E-11  4.31321752116575E-04
+ cg2d: Sum(rhs),rhsMax =  -2.14672724041520E-11  4.56392661603088E-04
+ cg2d: Sum(rhs),rhsMax =  -2.15560902461220E-11  4.81277303503287E-04
+(PID.TID 0002.0001)      cg2d_init_res =   9.56895098468310E-01
+(PID.TID 0002.0001)      cg2d_iters(min,last) =      -1     579
+(PID.TID 0002.0001)      cg2d_last_res =   9.58646616995533E-08
+ cg2d: Sum(rhs),rhsMax =  -2.31317187626701E-11  5.06007244526225E-04
+ cg2d: Sum(rhs),rhsMax =  -2.71542788254919E-11  5.30609139322489E-04
+ cg2d: Sum(rhs),rhsMax =  -3.46247475135897E-11  5.55079243039223E-04
+ cg2d: Sum(rhs),rhsMax =  -3.46966899655854E-11  5.79477159384276E-04
+ cg2d: Sum(rhs),rhsMax =  -3.68061137123732E-11  6.03774869058215E-04
+ cg2d: Sum(rhs),rhsMax =  -3.90407706163387E-11  6.28024247329852E-04
+ cg2d: Sum(rhs),rhsMax =  -4.37951896969935E-11  6.52216354240634E-04
+ cg2d: Sum(rhs),rhsMax =  -4.69266847602512E-11  6.76356265774115E-04
+ cg2d: Sum(rhs),rhsMax =  -5.08562081336095E-11  7.00492772370714E-04
+ cg2d: Sum(rhs),rhsMax =  -5.45310463451187E-11  7.24602151638976E-04
+ cg2d: Sum(rhs),rhsMax =  -6.48265885416777E-11  7.48693567570007E-04
+ cg2d: Sum(rhs),rhsMax =  -6.85003165301623E-11  7.72781277207900E-04
+ cg2d: Sum(rhs),rhsMax =  -7.59747820211487E-11  7.96893276050346E-04
+ cg2d: Sum(rhs),rhsMax =  -8.07878208775037E-11  8.21011580226213E-04
+ cg2d: Sum(rhs),rhsMax =  -8.40554292835805E-11  8.45142853744120E-04
+ cg2d: Sum(rhs),rhsMax =  -8.81179573752888E-11  8.69293069792758E-04
+(PID.TID 0002.0001)      cg2d_init_res =   4.85972645987831E-01
+(PID.TID 0002.0001)      cg2d_iters(min,last) =      -1     578
+(PID.TID 0002.0001)      cg2d_last_res =   9.53391462727624E-08
+ cg2d: Sum(rhs),rhsMax =  -9.16191567057467E-11  8.93467581210172E-04
+ cg2d: Sum(rhs),rhsMax =  -1.00958352788894E-10  9.17679467319540E-04
+ cg2d: Sum(rhs),rhsMax =  -1.06801678612101E-10  9.41937152254738E-04
+ cg2d: Sum(rhs),rhsMax =  -1.09753983679184E-10  9.66231248955807E-04
+ cg2d: Sum(rhs),rhsMax =  -1.16084919454806E-10  9.90565162567292E-04
+ cg2d: Sum(rhs),rhsMax =  -1.22273746683277E-10  1.01494191865982E-03
+ cg2d: Sum(rhs),rhsMax =  -1.27549526496296E-10  1.03936419711467E-03
+ cg2d: Sum(rhs),rhsMax =  -1.36337163780809E-10  1.06383436077117E-03
+ cg2d: Sum(rhs),rhsMax =  -1.40556011274384E-10  1.08835448174433E-03
+ cg2d: Sum(rhs),rhsMax =  -1.47149847862238E-10  1.11292636475254E-03
+ cg2d: Sum(rhs),rhsMax =  -1.52180490431419E-10  1.13755156808102E-03
+ cg2d: Sum(rhs),rhsMax =  -1.58467017286057E-10  1.16223142240936E-03
+ cg2d: Sum(rhs),rhsMax =  -1.69169567243443E-10  1.18696704777579E-03
+ cg2d: Sum(rhs),rhsMax =  -1.74717129652890E-10  1.21175936889824E-03
+ cg2d: Sum(rhs),rhsMax =  -1.85130133445455E-10  1.23660912903874E-03
+ cg2d: Sum(rhs),rhsMax =  -1.97136529322961E-10  1.26151690258250E-03
+(PID.TID 0002.0001)      cg2d_init_res =   3.37729072211182E-01
+(PID.TID 0002.0001)      cg2d_iters(min,last) =      -1     577
+(PID.TID 0002.0001)      cg2d_last_res =   9.55987890802906E-08
+ cg2d: Sum(rhs),rhsMax =  -2.03847605462215E-10  1.28648310647334E-03
+ cg2d: Sum(rhs),rhsMax =  -2.09841033438352E-10  1.31150965628625E-03
+ cg2d: Sum(rhs),rhsMax =  -2.18602025370274E-10  1.33659504701162E-03
+ cg2d: Sum(rhs),rhsMax =  -2.27357688231677E-10  1.36173821821337E-03
+ cg2d: Sum(rhs),rhsMax =  -2.34685160194203E-10  1.38693903477899E-03
+ cg2d: Sum(rhs),rhsMax =  -2.44266828985928E-10  1.41219724792836E-03
+ cg2d: Sum(rhs),rhsMax =  -2.54996024295906E-10  1.43751332423225E-03
+ cg2d: Sum(rhs),rhsMax =  -2.68851607643228E-10  1.46288896801097E-03
+ cg2d: Sum(rhs),rhsMax =  -2.82476264601428E-10  1.48832179118682E-03
+ cg2d: Sum(rhs),rhsMax =  -2.94839708203654E-10  1.51381117199430E-03
+ cg2d: Sum(rhs),rhsMax =  -3.07394998344535E-10  1.53935640307279E-03
+ cg2d: Sum(rhs),rhsMax =  -3.22337712077569E-10  1.56495669737281E-03
+ cg2d: Sum(rhs),rhsMax =  -3.34750893671298E-10  1.59061119208227E-03
+ cg2d: Sum(rhs),rhsMax =  -3.49437812019460E-10  1.61631895257807E-03
+ cg2d: Sum(rhs),rhsMax =  -3.62799568165428E-10  1.64207897613171E-03
+ cg2d: Sum(rhs),rhsMax =  -3.79223763502523E-10  1.66789019536307E-03
+(PID.TID 0002.0001)      cg2d_init_res =   2.64699860515211E-01
+(PID.TID 0002.0001)      cg2d_iters(min,last) =      -1     576
+(PID.TID 0002.0001)      cg2d_last_res =   9.73474817421977E-08
+ cg2d: Sum(rhs),rhsMax =  -3.95260713048629E-10  1.69375148148205E-03
+ cg2d: Sum(rhs),rhsMax =  -4.09656308875128E-10  1.71966164732652E-03
+ cg2d: Sum(rhs),rhsMax =  -4.23128199145140E-10  1.74561945021870E-03
+ cg2d: Sum(rhs),rhsMax =  -4.37783143070192E-10  1.77162359465369E-03
+ cg2d: Sum(rhs),rhsMax =  -4.55603554883055E-10  1.79767273483295E-03
+ cg2d: Sum(rhs),rhsMax =  -4.67057503783508E-10  1.82376547705769E-03
+ cg2d: Sum(rhs),rhsMax =  -4.85563589336380E-10  1.84990038199163E-03
+ cg2d: Sum(rhs),rhsMax =  -5.02215158348918E-10  1.87607596680493E-03
+ cg2d: Sum(rhs),rhsMax =  -5.18603826549224E-10  1.90229070720674E-03
+ cg2d: Sum(rhs),rhsMax =  -5.37259126076606E-10  1.92854303937828E-03
+ cg2d: Sum(rhs),rhsMax =  -5.53889378807071E-10  1.95483136180995E-03
+ cg2d: Sum(rhs),rhsMax =  -5.68434188608080E-10  1.98115403705281E-03
+ cg2d: Sum(rhs),rhsMax =  -5.86403814395453E-10  2.00752587082928E-03
+ cg2d: Sum(rhs),rhsMax =  -6.05485439564291E-10  2.03394073657628E-03
+ cg2d: Sum(rhs),rhsMax =  -6.24304163920897E-10  2.06038639718327E-03
+ cg2d: Sum(rhs),rhsMax =  -6.43879616291088E-10  2.08686110612999E-03
+(PID.TID 0002.0001)      cg2d_init_res =   2.19609124255652E-01
+(PID.TID 0002.0001)      cg2d_iters(min,last) =      -1     576
+(PID.TID 0002.0001)      cg2d_last_res =   9.22917252430144E-08
+ cg2d: Sum(rhs),rhsMax =  -6.60815402397930E-10  2.11336308853065E-03
+ cg2d: Sum(rhs),rhsMax =  -6.82476297697576E-10  2.13989054247678E-03
+ cg2d: Sum(rhs),rhsMax =  -7.00300262224118E-10  2.16644164032873E-03
+ cg2d: Sum(rhs),rhsMax =  -7.23385795708964E-10  2.19301452996064E-03
+ cg2d: Sum(rhs),rhsMax =  -7.40637773333219E-10  2.21960733595846E-03
+ cg2d: Sum(rhs),rhsMax =  -7.67482077890236E-10  2.24621816062786E-03
+ cg2d: Sum(rhs),rhsMax =  -7.97612642600143E-10  2.27284508570010E-03
+ cg2d: Sum(rhs),rhsMax =  -8.24744716965142E-10  2.29948766244473E-03
+ cg2d: Sum(rhs),rhsMax =  -8.54623039003855E-10  2.32618267403502E-03
+ cg2d: Sum(rhs),rhsMax =  -8.83538575635612E-10  2.35288966769175E-03
+ cg2d: Sum(rhs),rhsMax =  -9.12795172780534E-10  2.37960666920079E-03
+ cg2d: Sum(rhs),rhsMax =  -9.45075129266115E-10  2.40633168819214E-03
+ cg2d: Sum(rhs),rhsMax =  -9.74171854295491E-10  2.43306271922269E-03
+ cg2d: Sum(rhs),rhsMax =  -1.00896713206566E-09  2.45979774254615E-03
+ cg2d: Sum(rhs),rhsMax =  -1.04470032624704E-09  2.48653472508966E-03
+ cg2d: Sum(rhs),rhsMax =  -1.08178710434004E-09  2.51327162123251E-03
+(PID.TID 0002.0001)      cg2d_init_res =   1.87716469922485E-01
+(PID.TID 0002.0001)      cg2d_iters(min,last) =      -1     575
+(PID.TID 0002.0001)      cg2d_last_res =   9.61708341535157E-08
+ cg2d: Sum(rhs),rhsMax =  -1.11730713570068E-09  2.54000637369982E-03
+ cg2d: Sum(rhs),rhsMax =  -1.15448983706301E-09  2.56676770177390E-03
+ cg2d: Sum(rhs),rhsMax =  -1.19643317475493E-09  2.59354702156961E-03
+ cg2d: Sum(rhs),rhsMax =  -1.23629462223107E-09  2.62031989153430E-03
+(PID.TID 0002.0001) %CHECKPOINT       100 ckptA
+(PID.TID 0002.0001)   Seconds in section "ALL                    [THE_MODEL_MAIN]":
+(PID.TID 0002.0001)           User time:   537.057692307979
+(PID.TID 0002.0001)         System time:  0.000000000000000E+000
+(PID.TID 0002.0001)     Wall clock time:   599.426252841949
+(PID.TID 0002.0001)          No. starts:           1
+(PID.TID 0002.0001)           No. stops:           1
+(PID.TID 0002.0001)   Seconds in section "INITIALISE_FIXED       [THE_MODEL_MAIN]":
+(PID.TID 0002.0001)           User time:  0.190368998795748
+(PID.TID 0002.0001)         System time:  0.000000000000000E+000
+(PID.TID 0002.0001)     Wall clock time:  0.228248119354248
+(PID.TID 0002.0001)          No. starts:           1
+(PID.TID 0002.0001)           No. stops:           1
+(PID.TID 0002.0001)   Seconds in section "THE_MAIN_LOOP          [THE_MODEL_MAIN]":
+(PID.TID 0002.0001)           User time:   536.867291301489
+(PID.TID 0002.0001)         System time:  0.000000000000000E+000
+(PID.TID 0002.0001)     Wall clock time:   599.197960138321
+(PID.TID 0002.0001)          No. starts:           1
+(PID.TID 0002.0001)           No. stops:           1
+(PID.TID 0002.0001)   Seconds in section "INITIALISE_VARIA    [THE_MAIN_LOOP]":
+(PID.TID 0002.0001)           User time:  0.106037989258766
+(PID.TID 0002.0001)         System time:  0.000000000000000E+000
+(PID.TID 0002.0001)     Wall clock time:  0.118164062500000
+(PID.TID 0002.0001)          No. starts:           1
+(PID.TID 0002.0001)           No. stops:           1
+(PID.TID 0002.0001)   Seconds in section "MAIN LOOP           [THE_MAIN_LOOP]":
+(PID.TID 0002.0001)           User time:   536.761165261269
+(PID.TID 0002.0001)         System time:  0.000000000000000E+000
+(PID.TID 0002.0001)     Wall clock time:   599.079756021500
+(PID.TID 0002.0001)          No. starts:           1
+(PID.TID 0002.0001)           No. stops:           1
+(PID.TID 0002.0001)   Seconds in section "MAIN_DO_LOOP        [THE_MAIN_LOOP]":
+(PID.TID 0002.0001)           User time:   536.760073184967
+(PID.TID 0002.0001)         System time:  0.000000000000000E+000
+(PID.TID 0002.0001)     Wall clock time:   599.078764677048
+(PID.TID 0002.0001)          No. starts:         100
+(PID.TID 0002.0001)           No. stops:         100
+(PID.TID 0002.0001)   Seconds in section "FORWARD_STEP        [MAIN_DO_LOOP]":
+(PID.TID 0002.0001)           User time:   536.758162260056
+(PID.TID 0002.0001)         System time:  0.000000000000000E+000
+(PID.TID 0002.0001)     Wall clock time:   599.076774597168
+(PID.TID 0002.0001)          No. starts:         100
+(PID.TID 0002.0001)           No. stops:         100
+(PID.TID 0002.0001)   Seconds in section "LOAD_FIELDS_DRIVER  [FORWARD_STEP]":
+(PID.TID 0002.0001)           User time:  2.617955207824707E-003
+(PID.TID 0002.0001)         System time:  0.000000000000000E+000
+(PID.TID 0002.0001)     Wall clock time:  2.938270568847656E-003
+(PID.TID 0002.0001)          No. starts:         100
+(PID.TID 0002.0001)           No. stops:         100
+(PID.TID 0002.0001)   Seconds in section "EXTERNAL_FLDS_LOAD [LOAD_FLDS_DRIVER]":
+(PID.TID 0002.0001)           User time:  8.336007595062256E-004
+(PID.TID 0002.0001)         System time:  0.000000000000000E+000
+(PID.TID 0002.0001)     Wall clock time:  9.779930114746094E-004
+(PID.TID 0002.0001)          No. starts:         100
+(PID.TID 0002.0001)           No. stops:         100
+(PID.TID 0002.0001)   Seconds in section "DO_ATMOSPHERIC_PHYS [FORWARD_STEP]":
+(PID.TID 0002.0001)           User time:  9.967684745788574E-004
+(PID.TID 0002.0001)         System time:  0.000000000000000E+000
+(PID.TID 0002.0001)     Wall clock time:  9.770393371582031E-004
+(PID.TID 0002.0001)          No. starts:         100
+(PID.TID 0002.0001)           No. stops:         100
+(PID.TID 0002.0001)   Seconds in section "DO_OCEANIC_PHYS     [FORWARD_STEP]":
+(PID.TID 0002.0001)           User time:  9.148788452148438E-002
+(PID.TID 0002.0001)         System time:  0.000000000000000E+000
+(PID.TID 0002.0001)     Wall clock time:  9.468054771423340E-002
+(PID.TID 0002.0001)          No. starts:         100
+(PID.TID 0002.0001)           No. stops:         100
+(PID.TID 0002.0001)   Seconds in section "THERMODYNAMICS      [FORWARD_STEP]":
+(PID.TID 0002.0001)           User time:   3.04318445920944
+(PID.TID 0002.0001)         System time:  0.000000000000000E+000
+(PID.TID 0002.0001)     Wall clock time:   3.36459875106812
+(PID.TID 0002.0001)          No. starts:         100
+(PID.TID 0002.0001)           No. stops:         100
+(PID.TID 0002.0001)   Seconds in section "DYNAMICS            [FORWARD_STEP]":
+(PID.TID 0002.0001)           User time:  0.510494053363800
+(PID.TID 0002.0001)         System time:  0.000000000000000E+000
+(PID.TID 0002.0001)     Wall clock time:  0.517857789993286
+(PID.TID 0002.0001)          No. starts:         100
+(PID.TID 0002.0001)           No. stops:         100
+(PID.TID 0002.0001)   Seconds in section "SOLVE_FOR_PRESSURE  [FORWARD_STEP]":
+(PID.TID 0002.0001)           User time:   491.821877270937
+(PID.TID 0002.0001)         System time:  0.000000000000000E+000
+(PID.TID 0002.0001)     Wall clock time:   548.794709444046
+(PID.TID 0002.0001)          No. starts:         100
+(PID.TID 0002.0001)           No. stops:         100
+(PID.TID 0002.0001)   Seconds in section "MOM_CORRECTION_STEP [FORWARD_STEP]":
+(PID.TID 0002.0001)           User time:  3.290322422981262E-002
+(PID.TID 0002.0001)         System time:  0.000000000000000E+000
+(PID.TID 0002.0001)     Wall clock time:  3.480577468872070E-002
+(PID.TID 0002.0001)          No. starts:         100
+(PID.TID 0002.0001)           No. stops:         100
+(PID.TID 0002.0001)   Seconds in section "INTEGR_CONTINUITY   [FORWARD_STEP]":
+(PID.TID 0002.0001)           User time:  2.175581455230713E-002
+(PID.TID 0002.0001)         System time:  0.000000000000000E+000
+(PID.TID 0002.0001)     Wall clock time:  2.268266677856445E-002
+(PID.TID 0002.0001)          No. starts:         100
+(PID.TID 0002.0001)           No. stops:         100
+(PID.TID 0002.0001)   Seconds in section "TRC_CORRECTION_STEP [FORWARD_STEP]":
+(PID.TID 0002.0001)           User time:  6.895363330841064E-004
+(PID.TID 0002.0001)         System time:  0.000000000000000E+000
+(PID.TID 0002.0001)     Wall clock time:  1.012325286865234E-003
+(PID.TID 0002.0001)          No. starts:         100
+(PID.TID 0002.0001)           No. stops:         100
+(PID.TID 0002.0001)   Seconds in section "BLOCKING_EXCHANGES  [FORWARD_STEP]":
+(PID.TID 0002.0001)           User time:   29.7869592010975
+(PID.TID 0002.0001)         System time:  0.000000000000000E+000
+(PID.TID 0002.0001)     Wall clock time:   33.5184874534607
+(PID.TID 0002.0001)          No. starts:         100
+(PID.TID 0002.0001)           No. stops:         100
+(PID.TID 0002.0001)   Seconds in section "MONITOR             [FORWARD_STEP]":
+(PID.TID 0002.0001)           User time:   11.2811000645161
+(PID.TID 0002.0001)         System time:  0.000000000000000E+000
+(PID.TID 0002.0001)     Wall clock time:   12.5444781780243
+(PID.TID 0002.0001)          No. starts:         100
+(PID.TID 0002.0001)           No. stops:         100
+(PID.TID 0002.0001)   Seconds in section "DO_THE_MODEL_IO     [FORWARD_STEP]":
+(PID.TID 0002.0001)           User time:  6.185647845268250E-002
+(PID.TID 0002.0001)         System time:  0.000000000000000E+000
+(PID.TID 0002.0001)     Wall clock time:  6.994390487670898E-002
+(PID.TID 0002.0001)          No. starts:         100
+(PID.TID 0002.0001)           No. stops:         100
+(PID.TID 0002.0001)   Seconds in section "DO_WRITE_PICKUP     [FORWARD_STEP]":
+(PID.TID 0002.0001)           User time:  8.724099397659302E-002
+(PID.TID 0002.0001)         System time:  0.000000000000000E+000
+(PID.TID 0002.0001)     Wall clock time:  9.530639648437500E-002
+(PID.TID 0002.0001)          No. starts:         100
+(PID.TID 0002.0001)           No. stops:         100
+(PID.TID 0002.0001) // ======================================================
+(PID.TID 0002.0001) // Tile <-> Tile communication statistics
+(PID.TID 0002.0001) // ======================================================
+(PID.TID 0002.0001) // o Tile number: 000002
+(PID.TID 0002.0001) //         No. X exchanges =              0
+(PID.TID 0002.0001) //            Max. X spins =              0
+(PID.TID 0002.0001) //            Min. X spins =     1000000000
+(PID.TID 0002.0001) //          Total. X spins =              0
+(PID.TID 0002.0001) //            Avg. X spins =       0.00E+00
+(PID.TID 0002.0001) //         No. Y exchanges =              0
+(PID.TID 0002.0001) //            Max. Y spins =              0
+(PID.TID 0002.0001) //            Min. Y spins =     1000000000
+(PID.TID 0002.0001) //          Total. Y spins =              0
+(PID.TID 0002.0001) //            Avg. Y spins =       0.00E+00
+(PID.TID 0002.0001) // o Thread number: 000001
+(PID.TID 0002.0001) //            No. barriers =         346620
+(PID.TID 0002.0001) //      Max. barrier spins =              1
+(PID.TID 0002.0001) //      Min. barrier spins =              1
+(PID.TID 0002.0001) //     Total barrier spins =         346620
+(PID.TID 0002.0001) //      Avg. barrier spins =       1.00E+00
+PROGRAM MAIN: Execution ended Normally
