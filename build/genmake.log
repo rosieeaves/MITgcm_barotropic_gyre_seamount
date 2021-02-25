@@ -1,14 +1,14 @@
-Get compiler version using: ifort --version
-/network/software/linux-x86_64/arc/compilers/intel/intelCS-2013/bin/ifort
+Get compiler version using: mpiifort --version
+/network/software/linux-x86_64/arc/compilers/intel/intelCS-2013/impi/4.1.1.036//bin64/mpiifort
 ifort (IFORT) 14.0.0 20130728
 Copyright (C) 1985-2013 Intel Corporation.  All rights reserved.
 
 <-- compiler version ----
 
 running: check_fortran_compiler
- ifort -m64 -convert big_endian -assume byterecl -mcmodel=medium -O2 -align -ip -fp-model source -xHost -c genmake_tcomp.f
- ifort -shared-intel -m64 -convert big_endian -assume byterecl -mcmodel=medium -O2 -align -ip -fp-model source -xHost -o genmake_tcomp genmake_tcomp.o
- ./genmake_tcomp
+ mpiifort -m64 -convert big_endian -assume byterecl -mcmodel=medium -O2 -align -ip -fp-model source -xHost -c genmake_tcomp.f
+ mpiifort -shared-intel -no-ipo -m64 -convert big_endian -assume byterecl -mcmodel=medium -O2 -align -ip -fp-model source -xHost -o genmake_tcomp genmake_tcomp.o
+ mpirun -np 1 ./genmake_tcomp
  hello world :            1
  hello world :            2
  hello world :            3
@@ -19,25 +19,25 @@ running: look_for_makedepend()
 
 running: check_HAVE_CLOC()
  running: get_fortran_c_namemangling()
- icc -O0 -ip -m64 -xHost -mcmodel=medium -c genmake_test.c
- ifort -m64 -convert big_endian -assume byterecl -mcmodel=medium -c genmake_tcomp.f
+ mpiicc -O0 -ip -m64 -xHost -mcmodel=medium -c genmake_test.c
+ mpiifort -m64 -convert big_endian -assume byterecl -mcmodel=medium -c genmake_tcomp.f
  --> set FC_NAMEMANGLE='#define FC_NAMEMANGLE(X)  X ## _'
-icc -O0 -ip -m64 -xHost -mcmodel=medium -c genmake_tc_1.c
-ifort -m64 -convert big_endian -assume byterecl -mcmodel=medium -o genmake_tc genmake_tc_2.f genmake_tc_1.o
-  HELLO WORLD   1614262685.37705     
+mpiicc -O0 -ip -m64 -xHost -mcmodel=medium -c genmake_tc_1.c
+mpiifort -m64 -convert big_endian -assume byterecl -mcmodel=medium -o genmake_tc genmake_tc_2.f genmake_tc_1.o
+  HELLO WORLD   1614263146.62182     
  --> set HAVE_CLOC='t'
 
 running: check_HAVE_SETRLSTK()
-icc -O0 -ip -m64 -xHost -mcmodel=medium -c genmake_tc_1.c
+mpiicc -O0 -ip -m64 -xHost -mcmodel=medium -c genmake_tc_1.c
       program hello
       external setrlstk
       call setrlstk()
       end
-ifort -m64 -convert big_endian -assume byterecl -mcmodel=medium -o genmake_tc genmake_tc_2.f genmake_tc_1.o
+mpiifort -m64 -convert big_endian -assume byterecl -mcmodel=medium -o genmake_tc genmake_tc_2.f genmake_tc_1.o
  --> set HAVE_SETRLSTK='t'
 
 running: check_HAVE_SIGREG()
-icc -O0 -ip -m64 -xHost -mcmodel=medium -c genmake_tc_1.c
+mpiicc -O0 -ip -m64 -xHost -mcmodel=medium -c genmake_tc_1.c
 genmake_tc_1.c(11): warning #274: declaration is not visible outside of function
       unsigned int sn, siginfo_t  si, struct ucontext *sc )
                                              ^
@@ -48,17 +48,17 @@ genmake_tc_1.c(11): warning #274: declaration is not visible outside of function
       external sigreg
       call sigreg(anint)
       end
-ifort -m64 -convert big_endian -assume byterecl -mcmodel=medium -o genmake_tc genmake_tc_2.f genmake_tc_1.o
+mpiifort -m64 -convert big_endian -assume byterecl -mcmodel=medium -o genmake_tc genmake_tc_2.f genmake_tc_1.o
  --> set HAVE_SIGREG='t'
 
 running: check_HAVE_STAT()
-icc -O0 -ip -m64 -xHost -mcmodel=medium -c genmake_tc_1.c
+mpiicc -O0 -ip -m64 -xHost -mcmodel=medium -c genmake_tc_1.c
       program hello
       integer nbyte
       call tfsize(nbyte)
       print *," HELLO WORLD", nbyte
       end
-ifort -m64 -convert big_endian -assume byterecl -mcmodel=medium -o genmake_tc genmake_tc_2.f genmake_tc_1.o
+mpiifort -m64 -convert big_endian -assume byterecl -mcmodel=medium -o genmake_tc genmake_tc_2.f genmake_tc_1.o
  --> set HAVE_STAT='t'
 
 running: check_netcdf_libs()
@@ -74,9 +74,9 @@ running: check_netcdf_libs()
       IF (iret .NE. NF_NOERR) write(*,*) NF_STRERROR(iret)
       end
 <<<  genmake_tnc.F  ===
-cat genmake_tnc.F |  cpp -traditional -P -DWORDLENGTH=4 -DHAVE_SYSTEM -DHAVE_FDATE -DHAVE_ETIME_FCT -DHAVE_CLOC -DHAVE_SETRLSTK -DHAVE_SIGREG -DHAVE_STAT 
-ifort  -m64 -convert big_endian -assume byterecl -mcmodel=medium -O2 -align -ip -fp-model source -xHost -c genmake_tnc.f  \ 
-  &&  ifort -shared-intel  -m64 -convert big_endian -assume byterecl -mcmodel=medium -O2 -align -ip -fp-model source -xHost -o genmake_tnc.o 
+cat genmake_tnc.F |  cpp -traditional -P -DWORDLENGTH=4 -DALLOW_USE_MPI -DHAVE_SYSTEM -DHAVE_FDATE -DHAVE_ETIME_FCT -DHAVE_CLOC -DHAVE_SETRLSTK -DHAVE_SIGREG -DHAVE_STAT  -I/network/software/linux-x86_64/arc/compilers/intel/intelCS-2013/impi/4.1.1.036//intel64/include
+mpiifort  -m64 -convert big_endian -assume byterecl -mcmodel=medium -O2 -align -ip -fp-model source -xHost -c genmake_tnc.f  \ 
+  &&  mpiifort -shared-intel -no-ipo  -m64 -convert big_endian -assume byterecl -mcmodel=medium -O2 -align -ip -fp-model source -xHost -o genmake_tnc.o 
 genmake_tnc.o: In function `MAIN__':
 genmake_tnc.f:(.text+0x53): undefined reference to `nf_create_'
 genmake_tnc.f:(.text+0x93): undefined reference to `nf_def_dim_'
@@ -86,9 +86,9 @@ genmake_tnc.f:(.text+0x158): undefined reference to `nf_strerror_'
 genmake_tnc.f:(.text+0x1ca): undefined reference to `nf_strerror_'
 
 ==> try again with added '-lnetcdf'
-cat genmake_tnc.F |  cpp -traditional -P -DWORDLENGTH=4 -DHAVE_SYSTEM -DHAVE_FDATE -DHAVE_ETIME_FCT -DHAVE_CLOC -DHAVE_SETRLSTK -DHAVE_SIGREG -DHAVE_STAT  > genmake_tnc.f \ 
- &&  ifort  -m64 -convert big_endian -assume byterecl -mcmodel=medium -O2 -align -ip -fp-model source -xHost -c genmake_tnc.f \ 
- &&  ifort -shared-intel  -m64 -convert big_endian -assume byterecl -mcmodel=medium -O2 -align -ip -fp-model source -xHost -o genmake_tnc genmake_tnc.o  -lnetcdf
+cat genmake_tnc.F |  cpp -traditional -P -DWORDLENGTH=4 -DALLOW_USE_MPI -DHAVE_SYSTEM -DHAVE_FDATE -DHAVE_ETIME_FCT -DHAVE_CLOC -DHAVE_SETRLSTK -DHAVE_SIGREG -DHAVE_STAT  -I/network/software/linux-x86_64/arc/compilers/intel/intelCS-2013/impi/4.1.1.036//intel64/include > genmake_tnc.f \ 
+ &&  mpiifort  -m64 -convert big_endian -assume byterecl -mcmodel=medium -O2 -align -ip -fp-model source -xHost -c genmake_tnc.f \ 
+ &&  mpiifort -shared-intel -no-ipo  -m64 -convert big_endian -assume byterecl -mcmodel=medium -O2 -align -ip -fp-model source -xHost -o genmake_tnc genmake_tnc.o  -lnetcdf
 genmake_tnc.o: In function `MAIN__':
 genmake_tnc.f:(.text+0x53): undefined reference to `nf_create_'
 genmake_tnc.f:(.text+0x93): undefined reference to `nf_def_dim_'
@@ -98,9 +98,9 @@ genmake_tnc.f:(.text+0x158): undefined reference to `nf_strerror_'
 genmake_tnc.f:(.text+0x1ca): undefined reference to `nf_strerror_'
 
 ==> try again with added '-lnetcdff -lnetcdf'
-cat genmake_tnc.F |  cpp -traditional -P -DWORDLENGTH=4 -DHAVE_SYSTEM -DHAVE_FDATE -DHAVE_ETIME_FCT -DHAVE_CLOC -DHAVE_SETRLSTK -DHAVE_SIGREG -DHAVE_STAT  > genmake_tnc.f \ 
- &&  ifort  -m64 -convert big_endian -assume byterecl -mcmodel=medium -O2 -align -ip -fp-model source -xHost -c genmake_tnc.f \ 
- &&  ifort -shared-intel  -m64 -convert big_endian -assume byterecl -mcmodel=medium -O2 -align -ip -fp-model source -xHost -o genmake_tnc genmake_tnc.o  -lnetcdf
+cat genmake_tnc.F |  cpp -traditional -P -DWORDLENGTH=4 -DALLOW_USE_MPI -DHAVE_SYSTEM -DHAVE_FDATE -DHAVE_ETIME_FCT -DHAVE_CLOC -DHAVE_SETRLSTK -DHAVE_SIGREG -DHAVE_STAT  -I/network/software/linux-x86_64/arc/compilers/intel/intelCS-2013/impi/4.1.1.036//intel64/include > genmake_tnc.f \ 
+ &&  mpiifort  -m64 -convert big_endian -assume byterecl -mcmodel=medium -O2 -align -ip -fp-model source -xHost -c genmake_tnc.f \ 
+ &&  mpiifort -shared-intel -no-ipo  -m64 -convert big_endian -assume byterecl -mcmodel=medium -O2 -align -ip -fp-model source -xHost -o genmake_tnc genmake_tnc.o  -lnetcdf
 check_netcdf: successful
  --> set HAVE_NETCDF='t'
 

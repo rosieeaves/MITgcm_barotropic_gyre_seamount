@@ -1,13 +1,13 @@
 # Multithreaded + multi-processing makefile for:
 #    Linux atmlxint3 4.15.0-134-generic #138-Ubuntu SMP Fri Jan 15 10:52:18 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
 # This makefile was generated automatically on
-#    Thu 25 Feb 14:18:02 GMT 2021
+#    Thu 25 Feb 14:25:42 GMT 2021
 # by the command:
-#    /home/eavesr/MITgcm/tools/genmake2 -rootdir /home/eavesr/MITgcm -mods ../code -of /home/eavesr/MITgcm/tools/build_options/linux_amd64_ifort
+#    /home/eavesr/MITgcm/tools/genmake2 -rootdir /home/eavesr/MITgcm -mods ../code -of /home/eavesr/MITgcm/tools/build_options/linux_amd64_ifort+impi -mpi
 # executed by:
 #    eavesr@atmlxint3:/home/eavesr/Documents/MITgcm/MITgcm_barotropic_wind_seamount/build
 #
-# OPTFILE="/home/eavesr/MITgcm/tools/build_options/linux_amd64_ifort"
+# OPTFILE="/home/eavesr/MITgcm/tools/build_options/linux_amd64_ifort+impi"
 #
 # BUILDDIR     : Directory where object files are written
 # SOURCEDIRS   : Directories containing the source (.F) files
@@ -28,7 +28,7 @@
 ROOTDIR     = /home/eavesr/MITgcm
 BUILDDIR    = .
 SOURCEDIRS  =  ../code $(ROOTDIR)/pkg/debug $(ROOTDIR)/pkg/generic_advdiff $(ROOTDIR)/pkg/mdsio $(ROOTDIR)/pkg/mom_common $(ROOTDIR)/pkg/mom_fluxform $(ROOTDIR)/pkg/mom_vecinv $(ROOTDIR)/pkg/monitor $(ROOTDIR)/pkg/rw $(ROOTDIR)/eesupp/src $(ROOTDIR)/model/src
-INCLUDEDIRS =  ../code $(ROOTDIR)/pkg/debug $(ROOTDIR)/pkg/generic_advdiff $(ROOTDIR)/pkg/mdsio $(ROOTDIR)/pkg/mom_common $(ROOTDIR)/pkg/mom_fluxform $(ROOTDIR)/pkg/mom_vecinv $(ROOTDIR)/pkg/monitor $(ROOTDIR)/pkg/rw $(ROOTDIR)/eesupp/inc $(ROOTDIR)/model/inc
+INCLUDEDIRS =  /network/software/linux-x86_64/arc/compilers/intel/intelCS-2013/impi/4.1.1.036//intel64/include ../code $(ROOTDIR)/pkg/debug $(ROOTDIR)/pkg/generic_advdiff $(ROOTDIR)/pkg/mdsio $(ROOTDIR)/pkg/mom_common $(ROOTDIR)/pkg/mom_fluxform $(ROOTDIR)/pkg/mom_vecinv $(ROOTDIR)/pkg/monitor $(ROOTDIR)/pkg/rw $(ROOTDIR)/eesupp/inc $(ROOTDIR)/model/inc
 EXEDIR      = .
 EXECUTABLE  = $(EXEDIR)/mitgcmuv
 TOOLSDIR    = $(ROOTDIR)/tools
@@ -53,18 +53,18 @@ MAKEDEPEND = $(TOOLSDIR)/xmakedepend
 # Special preprocessor (KAP on DECs, FPP on Crays)
 KPP = 
 # Fortran compiler
-FC = ifort
+FC = mpiifort
 # Fortran compiler
-F90C = ifort
+F90C = mpiifort
 # C compiler
-CC = icc
+CC = mpiicc
 # Link editor
-LINK = ifort -shared-intel 
+LINK = mpiifort -shared-intel -no-ipo 
 
 # Defines for CPP
-DEFINES = -DWORDLENGTH=4 -DHAVE_SYSTEM -DHAVE_FDATE -DHAVE_ETIME_FCT -DHAVE_CLOC -DHAVE_SETRLSTK -DHAVE_SIGREG -DHAVE_STAT -DHAVE_NETCDF -DHAVE_FLUSH 
+DEFINES = -DWORDLENGTH=4 -DALLOW_USE_MPI -DHAVE_SYSTEM -DHAVE_FDATE -DHAVE_ETIME_FCT -DHAVE_CLOC -DHAVE_SETRLSTK -DHAVE_SIGREG -DHAVE_STAT -DHAVE_NETCDF -DHAVE_FLUSH 
 # Includes for CPP
-INCLUDES = 
+INCLUDES =  -I/network/software/linux-x86_64/arc/compilers/intel/intelCS-2013/impi/4.1.1.036//intel64/include
 # default CPP includes for makedepend
 CPPINCLUDES =  -I/network/software/linux-x86_64/arc/lib/netcdf/4.2__intel-2013/include -I/network/software/linux-x86_64/arc/compilers/intel/intelCS-2013/impi/4.1.1.036//include -I/network/software/linux-x86_64/arc/lib/hdf5/1.8.14__intel-2013/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include
 # Flags for KPP
@@ -1043,6 +1043,12 @@ H_SRC_FILES =  \
  MONITOR_OPTIONS.h \
  RW_MFLDS.h \
  RW_OPTIONS.h \
+ i_malloc.h \
+ mpicxx.h \
+ mpif.h \
+ mpi.h \
+ mpiof.h \
+ mpio.h \
  BAR2.h \
  BARRIER.h \
  CPP_EEMACROS.h \
@@ -1184,7 +1190,7 @@ CLEAN:
 	-rm -f oad_cp.[0-9][0-9][0-9].?????
 
 makefile:
-	$(TOOLSDIR)/genmake2  "-rootdir" "/home/eavesr/MITgcm" "-mods" "../code" "-of" "/home/eavesr/MITgcm/tools/build_options/linux_amd64_ifort"
+	$(TOOLSDIR)/genmake2  "-rootdir" "/home/eavesr/MITgcm" "-mods" "../code" "-of" "/home/eavesr/MITgcm/tools/build_options/linux_amd64_ifort+impi" "-mpi"
 cleanlinks:
 	-find . -type l -exec rm {} \;
 
@@ -1203,7 +1209,7 @@ BUILD_INFO.h:
 	@echo Creating $@ ...
 	-echo "#define THISVER 'checkpoint67v'" > $@
 	-echo "#define THISUSER 'eavesr'" >> $@
-	-echo "#define THISDATE 'Thu 25 Feb 14:18:02 GMT 2021'" >> $@
+	-echo "#define THISDATE 'Thu 25 Feb 14:25:42 GMT 2021'" >> $@
 	-echo "#define THISHOST 'atmlxint3'" >> $@
 
 # The normal chain of rules is (  .F - .f - .o  )
@@ -1643,6 +1649,10 @@ svd_touch:
 #  These files are linked from $(ROOTDIR)/model/src ( aka /home/eavesr/MITgcm/model/src )
  adams_bashforth2.F adams_bashforth3.F add_walls2masks.F apply_forcing.F calc_3d_diffusivity.F calc_adv_flow.F calc_div_ghat.F calc_eddy_stress.F calc_grad_phi_fv.F calc_grad_phi_hyd.F calc_grad_phi_surf.F calc_grid_angles.F calc_gw.F calc_ivdc.F calc_oce_mxlayer.F calc_phi_hyd.F calc_r_star.F calc_surf_dr.F calc_viscosity.F calc_wsurf_tr.F cg2d_ex0.F cg2d.F cg2d_nsa.F cg2d_sr.F cg3d_ex0.F cg3d.F check_pickup.F config_check.F config_summary.F convective_adjustment.F convective_adjustment_ini.F convectively_mixtracer.F convective_weights.F correction_step.F cycle_ab_tracer.F cycle_tracer.F diags_oceanic_surf_flux.F diags_phi_hyd.F diags_phi_rlow.F diags_rho.F do_atmospheric_phys.F do_fields_blocking_exchanges.F do_oceanic_phys.F do_stagger_fields_exchanges.F do_statevars_diags.F do_statevars_tave.F do_the_model_io.F do_write_pickup.F dynamics.F external_fields_load.F external_forcing.F external_forcing_surf.F find_alpha.F find_hyd_press_1d.F find_rho.F forcing_surf_relax.F forward_step.F freesurf_rescale_g.F freeze_surface.F grad_sigma.F gsw_teos10.F impldiff.F ini_cartesian_grid.F ini_cg2d.F ini_cg3d.F ini_cori.F ini_curvilinear_grid.F ini_cylinder_grid.F ini_depths.F ini_dynvars.F ini_eos.F ini_ffields.F ini_fields.F ini_forcing.F ini_global_domain.F ini_grid.F ini_linear_phisurf.F ini_local_grid.F ini_masks_etc.F ini_mixing.F ini_mnc_vars.F ini_model_io.F ini_nh_fields.F ini_nh_vars.F ini_nlfs_vars.F ini_parms.F ini_p_ground.F ini_pressure.F ini_psurf.F ini_salt.F ini_sigma_hfac.F ini_spherical_polar_grid.F ini_theta.F initialise_fixed.F initialise_varia.F ini_vel.F ini_vertical_grid.F integrate_for_w.F integr_continuity.F load_fields_driver.F load_grid_spacing.F load_ref_files.F main_do_loop.F momentum_correction_step.F packages_boot.F packages_check.F packages_error_msg.F packages_init_fixed.F packages_init_variables.F packages_print_msg.F packages_readparms.F packages_unused_msg.F packages_write_pickup.F plot_field.F port_rand.F post_cg3d.F pre_cg3d.F pressure_for_eos.F read_pickup.F remove_mean.F reset_nlfs_vars.F rotate_spherical_polar_grid.F rotate_uv2en.F salt_integrate.F seawater.F set_defaults.F set_grid_factors.F set_parms.F set_ref_state.F solve_for_pressure.F solve_pentadiagonal.F solve_tridiagonal.F solve_uv_tridiago.F state_summary.F swfrac.F taueddy_init_varia.F taueddy_tendency_apply.F temp_integrate.F the_main_loop.F the_model_main.F thermodynamics.F timestep.F timestep_tracer.F timestep_wvel.F tracers_correction_step.F tracers_iigw_correction.F turnoff_model_io.F update_cg2d.F update_etah.F update_etaws.F update_masks_etc.F update_r_star.F update_sigma.F update_surf_dr.F write_grid.F write_pickup.F write_state.F :
 	if [ ! -L $@ ]; then $(LN) $(ROOTDIR)/model/src/$@ $@; fi
+
+#  These files are linked from /network/software/linux-x86_64/arc/compilers/intel/intelCS-2013/impi/4.1.1.036//intel64/include ( aka /network/software/linux-x86_64/arc/compilers/intel/intelCS-2013/impi/4.1.1.036//intel64/include )
+ i_malloc.h mpicxx.h mpif.h mpi.h mpiof.h mpio.h :
+	if [ ! -L $@ ]; then $(LN) /network/software/linux-x86_64/arc/compilers/intel/intelCS-2013/impi/4.1.1.036//intel64/include/$@ $@; fi
 
 #  These files are linked from $(ROOTDIR)/eesupp/inc ( aka /home/eavesr/MITgcm/eesupp/inc )
  BAR2.h BARRIER.h CPP_EEMACROS.h CPP_EEOPTIONS.h CUMULSUM.h DEF_IN_MAKEFILE.h EEBUFF_SCPU.h EEPARAMS.h EESUPPORT.h EXCH.h GLOBAL_MAX.h GLOBAL_SUM.h MAIN_PDIRECTIVES1.h MAIN_PDIRECTIVES2.h MPI_INFO.h SIGREG.h :
